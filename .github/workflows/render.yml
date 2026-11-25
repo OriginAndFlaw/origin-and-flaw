@@ -67,7 +67,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "$EPISODE" out/$EPISODE/*.mp4 out/$EPISODE/*.jpg out/$EPISODE/*.srt \
+          gh release create "$EPISODE" out/$EPISODE/*.mp4 out/$EPISODE/*.jpg out/$EPISODE/*.srt out/$EPISODE/*.m4a \
             --title "$EPISODE" --notes "rendered by Actions" || true
       - name: Upload
         if: ${{ vars.UPLOAD_MODE == 'api' || vars.UPLOAD_MODE == 'make' }}

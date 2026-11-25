@@ -58,14 +58,24 @@ def main() -> None:
         log("upload mode is none: files stay in the run's artifact")
         return
     if mode == "make":
+        # one webhook call per video; the scenario uploads it and sets the thumbnail when one is given
         url = env("MAKE_WEBHOOK_URL")
-        payload = {"episode": a.episode, "title": ep["title"], "description": ep["description"], "tags": ep["tags"],
-                   "video_url": a.base_url + "long.mp4", "thumbnail_url": a.base_url + "thumbnail.jpg",
-                   "srt_en_url": a.base_url + "long_en.srt", "short_title": ep["short"]["title"],
-                   "short_url": a.base_url + "short_en.mp4", "privacy": cfg["upload"]["privacy"]}
-        r = requests.post(url, json=payload, timeout=60)
-        log(f"Make webhook answered {r.status_code}")
-        r.raise_for_status()
+        up = cfg["upload"]
+        calls = [{"kind": "long", "file": "long_upload.mp4" if (out / "long_upload.mp4").exists() else "long.mp4",
+                  "title": ep["title"], "description": ep["description"], "thumb": "thumbnail.jpg"}]
+        if (out / "short_en.mp4").exists():
+            calls.append({"kind": "short", "file": "short_en.mp4", "title": ep["short"]["title"], "thumb": "",
+                          "description": f"{ep['short']['title']}\n\nFull documentary on the channel.\n\n"
+                                         "#shorts #history #engineering"})
+        for c in calls:
+            payload = {"episode": a.episode, "kind": c["kind"], "title": c["title"][:100],
+                       "description": c["description"][:4900], "tags": ",".join(ep["tags"])[:480],
+                       "video_url": a.base_url + c["file"],
+                       "thumbnail_url": a.base_url + c["thumb"] if c["thumb"] else "",
+                       "privacy": up["privacy"], "category_id": up["category_id"]}
+            r = requests.post(url, json=payload, timeout=60)
+            log(f"Make webhook ({c['kind']}) answered {r.status_code}")
+            r.raise_for_status()
         return
     yt = yt_client()
     vid = api_upload(yt, out / "long.mp4", ep["title"], ep["description"], ep["tags"], cfg)

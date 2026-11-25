@@ -173,7 +173,21 @@ def build_long(ep: dict, folder: Path, cfg: dict, work: Path, out: Path, max_wor
     if cfg["subtitles"].get("burn_in_long"):
         ass = subtitles.write_word_ass(ws, work / "long.ass", W, H, cfg["subtitles"]["font"], per_group=6)
     finish(picture, audio, total, cfg, out / "long.mp4", ass)
+    upload_copy(out / "long.mp4", total, cfg)
     return {"total": total}
+
+
+def upload_copy(src: Path, total: float, cfg: dict) -> None:
+    """Make.com moves files only up to its plan's size limit (Core: 100 MB). When the master is bigger,
+    write long_upload.mp4 aimed at `upload.max_mb` (slow Ken Burns stills compress well)."""
+    max_mb = cfg["upload"].get("max_mb")
+    if not max_mb or src.stat().st_size <= max_mb * 1e6:
+        return
+    kbps = int(max_mb * 8000 / total) - 160 - 40  # minus audio and container overhead
+    log(f"master is {src.stat().st_size / 1e6:.0f} MB: writing a {max_mb} MB upload copy at {kbps} kb/s")
+    run(["ffmpeg", "-y", "-i", str(src), "-c:v", "libx264", "-preset", "medium", "-b:v", f"{kbps}k",
+         "-maxrate", f"{int(kbps * 1.5)}k", "-bufsize", f"{kbps * 3}k", "-pix_fmt", "yuv420p",
+         "-c:a", "aac", "-b:a", "160k", "-movflags", "+faststart", str(src.with_name("long_upload.mp4"))])
 
 
 def build_arabic_track(ep: dict, folder: Path, cfg: dict, work: Path, out: Path, total: float,

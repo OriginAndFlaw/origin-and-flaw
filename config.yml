@@ -46,6 +46,7 @@ upload:
   category_id: "27"     # Education
   made_for_kids: false
   ai_disclosure: true   # sets "altered or synthetic content"
+  max_mb: 95            # Make.com Core plan moves files up to 100 MB
 
 research:
   # Competitor channels to scan for outliers (channel IDs, UC...). Add or remove freely.
