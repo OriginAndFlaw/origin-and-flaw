@@ -66,18 +66,18 @@
       "clip": "hook/04.mp4"
     },
     {
-      "n": 5,
+      "n": 6,
       "t": "0:16",
       "tool": "flux",
-      "prompt": "Mount Vesuvius above the Bay of Naples at sunrise, ancient Roman ships in the water",
-      "sfx": "wind, gulls"
+      "prompt": "Inside the Pantheon dome looking straight up, the oculus glowing, coffered concrete ceiling",
+      "sfx": "choir-like pad"
     },
     {
-      "n": 6,
+      "n": 5,
       "t": "0:40",
       "tool": "flux",
-      "prompt": "Inside the Pantheon dome looking straight up, the oculus glowing, coffered concrete ceiling",
-      "sfx": "choir-like pad",
+      "prompt": "Mount Vesuvius above the Bay of Naples at sunrise, ancient Roman ships in the water",
+      "sfx": "wind, gulls",
       "chapter": "A recipe from a volcano",
       "cue": "The story starts in the Bay of Naples"
     },
@@ -145,6 +145,34 @@
       "tool": "flux",
       "prompt": "An old Latin manuscript page on a desk beside a quill, warm lamplight, no readable words",
       "sfx": "page turn"
+    },
+    {
+      "n": 30,
+      "t": "4:08",
+      "tool": "flux",
+      "prompt": "Lumps of light grey pumice stone floating on dark water",
+      "sfx": ""
+    },
+    {
+      "n": 31,
+      "t": "4:12",
+      "tool": "flux",
+      "prompt": "Cut-away of the Pantheon dome, thick at the base, light pumice near the top",
+      "sfx": ""
+    },
+    {
+      "n": 32,
+      "t": "4:16",
+      "tool": "flux",
+      "prompt": "Square sunken coffers in the Pantheon dome ceiling",
+      "sfx": ""
+    },
+    {
+      "n": 33,
+      "t": "4:20",
+      "tool": "flux",
+      "prompt": "Rain falling through the Pantheon oculus onto the wet marble floor",
+      "sfx": ""
     },
     {
       "n": 16,
