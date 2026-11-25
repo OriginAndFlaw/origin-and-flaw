@@ -33,7 +33,7 @@ jobs:
       - name: Read queue/next.txt (push trigger)
         if: ${{ github.event_name == 'push' }}
         run: |
-          read ep up < queue/next.txt
+          read ep up rest < queue/next.txt
           echo "EPISODE=$ep" >> "$GITHUB_ENV"
           echo "UPLOAD=${up:-no}" >> "$GITHUB_ENV"
       - uses: actions/setup-python@v5
