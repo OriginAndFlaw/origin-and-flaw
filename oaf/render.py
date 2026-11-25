@@ -70,15 +70,38 @@ def concat(parts: list[Path], dst: Path) -> Path:
     return dst
 
 
-def pick_music(cfg: dict, seed: str) -> Path | None:
+def music_bed(cfg: dict, seed: str, total: float, dst: Path) -> Path | None:
+    """Several tracks in a shuffled order, joined with 4 s crossfades, long enough for the whole video
+    (one 3-minute track looped four times sounds like a loop)."""
     folder = Path(__file__).resolve().parent.parent / cfg["music"]["folder"]
     tracks = sorted(p for p in folder.glob("*") if p.suffix.lower() in (".mp3", ".wav", ".m4a", ".ogg"))
-    return random.Random(seed).choice(tracks) if tracks else None
+    if not tracks:
+        return None
+    random.Random(seed).shuffle(tracks)
+    chosen, length, i = [], 0.0, 0
+    while length < total + 6:
+        t = tracks[i % len(tracks)]
+        chosen.append(t)
+        length += duration(t) - (4 if chosen[1:] else 0)
+        i += 1
+    if len(chosen) == 1:
+        run(["ffmpeg", "-y", "-i", str(chosen[0]), "-ar", "48000", "-ac", "2", str(dst)])
+        return dst
+    cmd = ["ffmpeg", "-y"]
+    for t in chosen:
+        cmd += ["-i", str(t)]
+    fc, last = "", "[0:a]"
+    for k in range(1, len(chosen)):
+        out = f"[x{k}]"
+        fc += f"{last}[{k}:a]acrossfade=d=4:c1=tri:c2=tri{out};"
+        last = out
+    run(cmd + ["-filter_complex", fc.rstrip(";"), "-map", last, "-ar", "48000", "-ac", "2", str(dst)])
+    return dst
 
 
 def mix_audio(voice: Path, total: float, cfg: dict, dst: Path, seed: str) -> Path:
     """Voice + looping music ducked under it, levelled to -14 LUFS, exactly `total` seconds."""
-    music = pick_music(cfg, seed)
+    music = music_bed(cfg, seed, total, dst.with_name(dst.stem + "_bed.wav"))
     if not music:
         run(["ffmpeg", "-y", "-i", str(voice), "-af",
              f"apad,atrim=0:{total:.3f},loudnorm=I=-14:TP=-1.5", "-ar", "48000", str(dst)])
@@ -92,7 +115,7 @@ def mix_audio(voice: Path, total: float, cfg: dict, dst: Path, seed: str) -> Pat
     else:
         fc += "[sc]anullsink;[v][m]"
     fc += "amix=inputs=2:duration=first:normalize=0,loudnorm=I=-14:TP=-1.5[out]"
-    run(["ffmpeg", "-y", "-i", str(voice), "-stream_loop", "-1", "-i", str(music), "-filter_complex", fc,
+    run(["ffmpeg", "-y", "-i", str(voice), "-i", str(music), "-filter_complex", fc,
          "-map", "[out]", "-ar", "48000", str(dst)])
     return dst
 
