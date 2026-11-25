@@ -1,0 +1,133 @@
+Forty one thousand feet above Canada. A brand-new passenger jet. Sixty nine people on board.
+
+And then, one after the other, both engines stop.
+
+The screens in the cockpit go dark. The cabin goes quiet. There is no fuel left. None.
+
+The nearest big airport is too far away to reach. And the aircraft is now, effectively, a hundred and thirty tonne glider.
+
+This was not a leak. It was not a bomb. It was not a broken engine.
+
+It was a number. One number, written in the wrong unit.
+
+In the next ten minutes, you will see exactly how that number got onto the aircraft, why nobody caught it, and how two pilots brought sixty nine people home anyway.
+
+The aircraft was almost new.
+
+On the twenty third of July, nineteen eighty three, Air Canada Flight one four three was a Boeing 767, one of the first the airline owned. It was a modern machine. Computers instead of dials. Glass screens instead of needles.
+
+And it had a problem.
+
+The system that measured how much fuel was in the tanks was not working properly. It had two channels, for safety. The day before, one channel had failed. A technician pulled its circuit breaker and put a tag on it, so nobody would turn it back on.
+
+There were no spare parts available.
+
+Then, at the airport in Montreal, another technician tried to fix it. He switched the faulty channel back on. The fuel gauges went completely blank. He left the breaker tagged, and the next crew did not know exactly what had happened.
+
+Now the aircraft had no working fuel gauges at all.
+
+The rule book said the aircraft should not fly like that. But the captain, Robert Pearson, believed it was acceptable, as long as the fuel was checked by hand before departure.
+
+So they would measure the fuel the old way. With a stick.
+
+Hold on to that word. Measure. Because measuring was about to go very wrong.
+
+You have to understand what Canada was going through at the time.
+
+The country was in the middle of switching from the old imperial system to the metric system. Road signs were changing. Supermarket labels were changing. And so were aircraft.
+
+Older aircraft in the fleet measured fuel in pounds. This new 767 measured fuel in kilograms.
+
+Same fuel. Different numbers. And a kilogram is about two point two times heavier than a pound.
+
+Here is where the mistake happened.
+
+The flight needed twenty two thousand three hundred kilograms of fuel to reach Edmonton, by way of Ottawa.
+
+The ground crew measured how much was already in the tanks using a dipstick. That gave them a volume, in litres. To turn litres into weight, you multiply by the density of the fuel.
+
+The correct density for this fuel was about zero point eight kilograms per litre.
+
+But the number they used was the density in pounds per litre. About two point two times bigger.
+
+Nobody noticed. The pilots, the fuellers and the mechanics checked the arithmetic. The arithmetic was perfect. It was simply done in the wrong unit.
+
+So the calculation said the tanks were far fuller than they really were. And the fuel truck added far less than it should have.
+
+When Flight one four three pushed back from the gate, it was carrying roughly forty five percent of the fuel it needed.
+
+And because the gauges were blank, nothing in the cockpit could warn anyone.
+
+They stopped in Ottawa. The fuel was checked again with a dipstick. And the same wrong conversion was used again. It said there was plenty. No fuel was added.
+
+The jet took off for Edmonton and climbed to forty one thousand feet.
+
+Before we see what happened next, a quick favour. If you like discovering how tiny mistakes create huge disasters, subscribe to Origin and Flaw. Every week, one story, one flaw. Now, the moment the engines stopped.
+
+The first warning came over Red Lake, Ontario.
+
+A chime in the cockpit. Low fuel pressure in the left engine.
+
+The pilots assumed it was a faulty fuel pump. With no working gauge, they had no way to know the tanks were nearly empty. They decided to divert to Winnipeg as a precaution.
+
+Then a second warning. The right side.
+
+Then the left engine stopped.
+
+The crew began to prepare for a landing on one engine. Something airline pilots train for.
+
+And then the right engine stopped too.
+
+Suddenly, the cockpit was almost silent. Most of the glass screens went black, because they were powered by the engines. The pilots were left with a few basic backup instruments.
+
+There was one more surprise. Below the aircraft, a small propeller dropped out into the wind. A ram air turbine. Spinning in the airflow, it gave just enough hydraulic power to move the controls. Not the flaps. Not much else. Just enough to fly.
+
+Now the question was simple and terrible. How far can a fully loaded airliner glide?
+
+No manual had a page for this. Nobody had imagined a 767 losing both engines like this.
+
+But Captain Pearson happened to be an experienced glider pilot. He knew how to fly an aircraft with no engine. He found the speed that would carry them furthest, and held it.
+
+The first officer, Maurice Quintal, did the maths. For every thousand feet they lost, how many miles were they travelling forward? The answer was bad. They were coming down too fast. They would not reach Winnipeg.
+
+Quintal had a different idea.
+
+Years earlier, he had served at a Royal Canadian Air Force base, at a place called Gimli. A long, flat runway, closer than Winnipeg.
+
+They turned toward it.
+
+There was one more problem. The air force had closed that base years before. Part of it was now used as a motor racing track. And on that evening, a car race was taking place. Cars, campers and families lined the old runway. Two boys were riding bicycles near the end of the concrete.
+
+Nobody on the ground had any idea that a jet was coming. It was making no engine noise at all.
+
+As they approached, the pilots saw they were still too high. They had to lose height quickly, without gaining speed. A normal jet would use its flaps or speed brakes. Those did not work.
+
+So Pearson did something you would expect from a small glider, not a 767. He crossed the controls, turning the aircraft slightly sideways into the wind. This is called a forward slip. It makes the aircraft drag through the air like a brick, falling faster without speeding up.
+
+They dropped the landing gear by gravity. The main wheels locked down. The nose wheel did not.
+
+The jet touched down. The nose wheel collapsed. The nose hit the concrete and scraped along the runway, which actually helped it slow down. Pearson braked so hard that tyres burst.
+
+The aircraft stopped before reaching the people at the race.
+
+Seventeen minutes after running out of fuel, Flight one four three was on the ground. Nobody died. A few passengers were hurt sliding down the emergency slides, which were too short because the tail was raised in the air. A small fire under the nose was put out by people from the race.
+
+So who was to blame?
+
+At first, the airline blamed the pilots and the mechanics.
+
+But the investigation looked deeper. It found that the airline had not prepared its people for the switch to metric. Responsibilities for fuel calculations were unclear. Training and manuals had gaps. The final report placed much of the responsibility on the airline's organisation and equipment.
+
+The pilots were later honoured for their flying. In nineteen eighty five, they received an international award for outstanding airmanship.
+
+And the aircraft? It was repaired and flew for many more years, finally retiring in two thousand and eight. Pilots called it the Gimli Glider.
+
+And the lesson did not stay in Canada. Sixteen years later, in nineteen ninety nine, NASA lost a spacecraft called the Mars Climate Orbiter. The investigation found that one piece of ground software produced its numbers in pound-force seconds, while the software receiving them expected newton seconds. The spacecraft flew too close to Mars and was lost. A different decade, a different machine, the same kind of mistake.
+
+Today, aircraft fuel systems double check themselves, and crews cross check fuel in more than one way. Not because the maths is hard. Because the units are easy to forget.
+
+The flaw was never in the engines.
+
+It was in a single number, and the quiet assumption that everyone meant the same thing by it.
+
+In the next episode, we look at an object you probably used today, whose origin is far darker than you would ever guess.

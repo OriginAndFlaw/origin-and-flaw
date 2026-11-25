@@ -1,0 +1,405 @@
+{
+  "id": "ep03-gimli-glider",
+  "title": "The Jet That Ran Out of Fuel at 41,000 Feet",
+  "alt_titles": [
+    "One Wrong Number Turned a Jet Into a Glider",
+    "Out of Fuel, No Engines, 69 People: The Gimli Glider"
+  ],
+  "description": "On 23 July 1983, Air Canada Flight 143, a brand-new Boeing 767 carrying 69 people, ran out of fuel at 41,000 feet over Canada. Both engines stopped. Most of the instruments went dark. The nearest big airport was too far away.\n\nThe cause was not a leak or a broken engine. It was a number. In a country halfway through switching to the metric system, a fuel calculation mixed up pounds and kilograms, and the jet took off with less than half the fuel it needed.\n\nThis is the story of that number, and of the two pilots who turned a 132-tonne airliner into a glider and landed it on an old air force runway in the middle of a car race.\n\nChapters\n0:00 Silence at 41,000 feet\n0:40 A brand-new jet and a broken gauge\n2:30 The number\n4:20 When the engines stopped\n6:20 The runway nobody expected\n8:00 Who was to blame\n\nSources: Canadian Aviation Safety Board / Board of Inquiry final report (1985); AOPA Pilot, \"The Gimli Glider\" (2000); Wikipedia, Gimli Glider.\n\nAI note: narration voice and visuals are AI-generated; no images show the real people involved.\n\n#aviation #engineering #history #documentary #gimliglider",
+  "tags": [
+    "gimli glider",
+    "air canada 143",
+    "plane ran out of fuel",
+    "metric conversion mistake",
+    "pounds kilograms mistake",
+    "aviation disaster explained",
+    "boeing 767 glider",
+    "engineering mistakes",
+    "aviation history",
+    "documentary",
+    "the 1 inch mistake",
+    "origin and flaw"
+  ],
+  "thumbnail": {
+    "scene": 6,
+    "words": "NO FUEL."
+  },
+  "hook_seconds": 20,
+  "intro_chapter": "Silence at 41,000 feet",
+  "scripts": {
+    "en": "script_en.txt",
+    "ar": "script_ar.txt"
+  },
+  "scenes": [
+    {
+      "n": 1,
+      "t": "0:00",
+      "tool": "flow",
+      "prompt": "Inside a dark airliner cockpit at night, rows of instrument screens flicker and go black one after another, two pilots seen only as silhouettes from behind, static camera",
+      "sfx": "alarm chime, then silence",
+      "clip": "hook/01.mp4"
+    },
+    {
+      "n": 2,
+      "t": "0:04",
+      "tool": "flow",
+      "prompt": "A white twin-engine airliner gliding silently high above dark farmland at dusk, both engines still with no exhaust, slow tracking shot alongside",
+      "sfx": "wind only",
+      "clip": "hook/02.mp4"
+    },
+    {
+      "n": 3,
+      "t": "0:08",
+      "tool": "flow",
+      "prompt": "Close-up of a gloved hand pulling a long metal measuring stick down from under an airliner wing on a night apron, fuel drips, static camera",
+      "sfx": "metal slide",
+      "clip": "hook/03.mp4"
+    },
+    {
+      "n": 4,
+      "t": "0:12",
+      "tool": "flow",
+      "prompt": "Low wide shot at the end of an old concrete runway at sunset, a large airliner descends steeply toward the camera with no engine sound, slow push-in",
+      "sfx": "rushing air",
+      "clip": "hook/04.mp4"
+    },
+    {
+      "n": 5,
+      "t": "0:16",
+      "tool": "flux",
+      "prompt": "Airliner cruising high above clouds at golden hour, seen from a distance",
+      "sfx": "cabin hum"
+    },
+    {
+      "n": 6,
+      "t": "0:24",
+      "tool": "flux",
+      "prompt": "Airliner gliding over the dark flat prairie of Manitoba at dusk, engines dark, lakes reflecting the sky",
+      "sfx": "wind"
+    },
+    {
+      "n": 7,
+      "t": "0:32",
+      "tool": "flux",
+      "prompt": "Passengers in a 1980s airliner cabin seen from behind, reading and sleeping, warm cabin light",
+      "sfx": "murmur"
+    },
+    {
+      "n": 8,
+      "t": "0:40",
+      "tool": "flux",
+      "prompt": "A brand-new Boeing 767 in 1983 parked at a Montreal airport gate at evening",
+      "sfx": "airport ambience",
+      "chapter": "A brand-new jet and a broken gauge",
+      "cue": "The aircraft was almost new"
+    },
+    {
+      "n": 9,
+      "t": "0:50",
+      "tool": "flux",
+      "prompt": "A 1983 airliner cockpit with the new glass computer screens glowing green and amber",
+      "sfx": "electronic hum"
+    },
+    {
+      "n": 10,
+      "t": "1:00",
+      "tool": "flux",
+      "prompt": "Close-up of a cockpit fuel gauge display that is completely blank",
+      "sfx": "soft beep"
+    },
+    {
+      "n": 11,
+      "t": "1:10",
+      "tool": "flux",
+      "prompt": "A maintenance technician seen from behind opening an electronics panel with a flashlight inside an airliner, 1983",
+      "sfx": "tools"
+    },
+    {
+      "n": 12,
+      "t": "1:20",
+      "tool": "flux",
+      "prompt": "A cockpit circuit breaker panel with one breaker pulled and a small paper tag hanging from it",
+      "sfx": "click"
+    },
+    {
+      "n": 13,
+      "t": "1:30",
+      "tool": "flux",
+      "prompt": "A thick airline maintenance manual open on a cockpit seat, 1980s",
+      "sfx": "page turn"
+    },
+    {
+      "n": 14,
+      "t": "1:40",
+      "tool": "flux",
+      "prompt": "Two pilots seen from behind in the cockpit, one pointing at a dark screen, night",
+      "sfx": "low voices"
+    },
+    {
+      "n": 15,
+      "t": "1:50",
+      "tool": "flux",
+      "prompt": "A 1970s Canadian road sign showing a speed limit in kilometres per hour, a new metric sign beside an old one, no readable words",
+      "sfx": "traffic"
+    },
+    {
+      "n": 16,
+      "t": "2:00",
+      "tool": "flux",
+      "prompt": "A supermarket shelf in the 1970s with packages switching from pounds to kilograms, no readable words",
+      "sfx": "store ambience"
+    },
+    {
+      "n": 17,
+      "t": "2:10",
+      "tool": "flux",
+      "prompt": "A fuel truck beside an airliner on a night apron, hose connected",
+      "sfx": "engine idle"
+    },
+    {
+      "n": 18,
+      "t": "2:20",
+      "tool": "flux",
+      "prompt": "Close-up of a long metal dipstick under an airliner wing, a worker reading the marks with a flashlight",
+      "sfx": "drip"
+    },
+    {
+      "n": 19,
+      "t": "2:30",
+      "tool": "flux",
+      "prompt": "A paper fuel slip and a pencil on a clipboard, handwritten numbers blurred and unreadable",
+      "sfx": "pencil",
+      "chapter": "The number",
+      "cue": "Here is where the mistake"
+    },
+    {
+      "n": 20,
+      "t": "2:40",
+      "tool": "flux",
+      "prompt": "Two old metal weights on a balance scale, one marked with a pound symbol shape, one with a kilogram shape, no letters",
+      "sfx": "metal clink"
+    },
+    {
+      "n": 21,
+      "t": "2:50",
+      "tool": "flux",
+      "prompt": "A pocket calculator from the early 1980s on a cockpit glare shield, glowing red digits blurred",
+      "sfx": "button beeps"
+    },
+    {
+      "n": 22,
+      "t": "3:00",
+      "tool": "flux",
+      "prompt": "Clean 3D diagram on dark teal: a full fuel tank beside a tank less than half full, amber glow, no labels",
+      "sfx": "soft tick"
+    },
+    {
+      "n": 23,
+      "t": "3:15",
+      "tool": "flux",
+      "prompt": "An airliner taking off at dusk from Ottawa airport",
+      "sfx": "jet roar"
+    },
+    {
+      "n": 24,
+      "t": "3:30",
+      "tool": "flux",
+      "prompt": "A dipstick being read a second time under a wing at a small airport, evening",
+      "sfx": "drip"
+    },
+    {
+      "n": 25,
+      "t": "3:45",
+      "tool": "flux",
+      "prompt": "An airliner climbing into a darkening sky above clouds",
+      "sfx": "engine drone"
+    },
+    {
+      "n": 26,
+      "t": "4:00",
+      "tool": "flux",
+      "prompt": "Map-like aerial view of Ontario lakes and forest at dusk from 41,000 feet",
+      "sfx": "wind"
+    },
+    {
+      "n": 27,
+      "t": "4:20",
+      "tool": "flux",
+      "prompt": "A single amber warning light glowing on a dark cockpit panel",
+      "sfx": "warning beep",
+      "chapter": "When the engines stopped",
+      "cue": "The first warning came"
+    },
+    {
+      "n": 28,
+      "t": "4:35",
+      "tool": "flux",
+      "prompt": "Close-up of an airliner jet engine at night with the fan slowing to a stop",
+      "sfx": "spool-down"
+    },
+    {
+      "n": 29,
+      "t": "4:50",
+      "tool": "flux",
+      "prompt": "A dark airliner cockpit lit only by a few standby instruments and moonlight",
+      "sfx": "silence"
+    },
+    {
+      "n": 30,
+      "t": "5:05",
+      "tool": "flux",
+      "prompt": "A small ram air turbine propeller dropped out of the belly of an airliner into the airflow",
+      "sfx": "whirr"
+    },
+    {
+      "n": 31,
+      "t": "5:20",
+      "tool": "flux",
+      "prompt": "Glider sailplane soaring over hills at sunset, peaceful",
+      "sfx": "wind"
+    },
+    {
+      "n": 32,
+      "t": "5:35",
+      "tool": "flux",
+      "prompt": "Pilot's hands on an airliner control column, gripping firmly, dim light",
+      "sfx": "breathing"
+    },
+    {
+      "n": 33,
+      "t": "5:50",
+      "tool": "flux",
+      "prompt": "Aerial view of the city lights of Winnipeg in the distance at dusk, far away",
+      "sfx": "wind"
+    },
+    {
+      "n": 34,
+      "t": "6:05",
+      "tool": "flux",
+      "prompt": "An old abandoned military airfield in flat prairie, long concrete runways with grass growing through cracks",
+      "sfx": "crickets"
+    },
+    {
+      "n": 35,
+      "t": "6:20",
+      "tool": "flux",
+      "prompt": "Sports cars and camper vans parked beside an old runway at a weekend car race, evening, people tiny in the distance",
+      "sfx": "engines revving",
+      "chapter": "The runway nobody expected",
+      "cue": "There was one more problem"
+    },
+    {
+      "n": 36,
+      "t": "6:35",
+      "tool": "flux",
+      "prompt": "Two boys on bicycles on an empty runway at sunset seen from far away",
+      "sfx": "bicycle bell"
+    },
+    {
+      "n": 37,
+      "t": "6:50",
+      "tool": "flux",
+      "prompt": "An airliner seen from the ground, tilted sideways in a steep slip, high above a runway",
+      "sfx": "rushing air"
+    },
+    {
+      "n": 38,
+      "t": "7:05",
+      "tool": "flux",
+      "prompt": "Airliner landing gear partly lowered, the nose wheel not locked, close-up from below",
+      "sfx": "metal clunk"
+    },
+    {
+      "n": 39,
+      "t": "7:20",
+      "tool": "flux",
+      "prompt": "An airliner on a runway with its nose down on the concrete, a long trail of dust and smoke behind it",
+      "sfx": "screech"
+    },
+    {
+      "n": 40,
+      "t": "7:35",
+      "tool": "flux",
+      "prompt": "Passengers sliding down emergency slides from an airliner at dusk, seen from far away",
+      "sfx": "shouts, then calm"
+    },
+    {
+      "n": 41,
+      "t": "7:50",
+      "tool": "flux",
+      "prompt": "People with fire extinguishers spraying a small fire under the nose of an airliner on a runway, distant",
+      "sfx": "hiss"
+    },
+    {
+      "n": 42,
+      "t": "8:05",
+      "tool": "flux",
+      "prompt": "A formal inquiry room in 1984 with stacks of reports on a long table",
+      "sfx": "room tone",
+      "chapter": "Who was to blame",
+      "cue": "So who was to blame"
+    },
+    {
+      "n": 43,
+      "t": "8:20",
+      "tool": "flux",
+      "prompt": "A stack of airline procedure manuals with tabs and handwritten notes, no readable words",
+      "sfx": "page turn"
+    },
+    {
+      "n": 44,
+      "t": "8:35",
+      "tool": "flux",
+      "prompt": "A modern airliner cockpit with clear fuel displays glowing, calm",
+      "sfx": "soft hum"
+    },
+    {
+      "n": 45,
+      "t": "8:50",
+      "tool": "flux",
+      "prompt": "An old airliner parked in the Mojave desert boneyard at sunset, retired",
+      "sfx": "desert wind"
+    },
+    {
+      "n": 46,
+      "t": "9:05",
+      "tool": "flux",
+      "prompt": "A single metal fuel dipstick resting on an open logbook under amber light",
+      "sfx": "single note"
+    }
+  ],
+  "short": {
+    "title": "This Jet Ran Out of Fuel Because of One Number #shorts",
+    "en": "short_en.txt",
+    "ar": "short_ar.txt",
+    "scenes": [
+      {
+        "n": "s1",
+        "tool": "flow",
+        "prompt": "A white airliner gliding silently over dark prairie at dusk, both engines dark, the camera tracking alongside.",
+        "clip": "hook/short.mp4",
+        "use": 5
+      },
+      {
+        "tool": "flux",
+        "use": 5
+      },
+      {
+        "tool": "flux",
+        "use": 15
+      },
+      {
+        "tool": "flux",
+        "use": 25
+      },
+      {
+        "tool": "flux",
+        "use": 35
+      },
+      {
+        "tool": "flux",
+        "use": 46
+      }
+    ]
+  }
+}
