@@ -144,23 +144,24 @@ def read_script(folder: Path, name: str, max_words: int | None) -> str:
 
 # ---------- timing ----------
 
-def plan_long(scenes: list[dict], total: float, hook_seconds: float) -> list[float]:
-    """Seconds per scene: hook scenes keep their planned length, body scenes are scaled to fill the voice."""
+def plan_long(scenes: list[dict], total: float, hook_seconds: float,
+              clip_len: dict[int, float] | None = None) -> list[float]:
+    """Seconds per scene: a hook scene with a real Flow clip plays that clip's full length (never a frozen
+    tail), other hook scenes share the planned hook time, body scenes are scaled to fill the voice."""
+    clip_len = clip_len or {}
     starts = [secs(s["t"]) for s in scenes]
     gaps = [b - a for a, b in zip(starts, starts[1:])]
     tail = sorted(gaps)[len(gaps) // 2] if gaps else total
     planned = gaps + [tail]
     hook_idx = [i for i, s in enumerate(scenes) if s["tool"] == "flow"]
-    hook_total = min(sum(planned[i] for i in hook_idx), hook_seconds, total * 0.5)
+    hook = {i: clip_len.get(i, min(planned[i], hook_seconds / max(1, len(hook_idx)))) for i in hook_idx}
+    scale = min(1.0, total * 0.5 / (sum(hook.values()) or 1))
+    hook = {i: v * scale for i, v in hook.items()}
+    hook_total = sum(hook.values())
     body_idx = [i for i in range(len(scenes)) if i not in hook_idx]
     body_planned = sum(planned[i] for i in body_idx) or 1
-    out = []
-    for i in range(len(scenes)):
-        if i in hook_idx:
-            out.append(hook_total / max(1, len(hook_idx)))
-        else:
-            out.append(planned[i] * (total - hook_total) / body_planned)
-    return out
+    return [hook[i] if i in hook else planned[i] * (total - hook_total) / body_planned
+            for i in range(len(scenes))]
 
 
 # ---------- builders ----------
@@ -173,7 +174,9 @@ def build_long(ep: dict, folder: Path, cfg: dict, work: Path, out: Path, max_wor
     scenes = ep["scenes"]
     if max_words:
         scenes = scenes[:6]
-    lengths = plan_long(scenes, total, ep.get("hook_seconds", 20))
+    clip_len = {i: duration(folder / s["clip"]) for i, s in enumerate(scenes)
+                if s["tool"] == "flow" and s.get("clip") and (folder / s["clip"]).exists()}
+    lengths = plan_long(scenes, total, ep.get("hook_seconds", 20), clip_len)
     parts, chapter_no = [], 0
     for i, (sc, d) in enumerate(zip(scenes, lengths)):
         seg = work / f"seg_{i:03d}.mp4"
