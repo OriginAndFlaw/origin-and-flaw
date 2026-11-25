@@ -21,17 +21,19 @@ jobs:
         env:
           MAKE_WEBHOOK_URL: ${{ secrets.MAKE_WEBHOOK_URL }}
         run: |
-          # queue/publish.txt: one "<episode> [YYYY-MM-DD]" per line. The first line whose date is today or
-          # earlier (or that has no date) is posted tonight and removed; later lines wait for their day.
+          # queue/publish.txt: one "<episode> [YYYY-MM-DD] [short-id]" per line. The first line whose date is
+          # today or earlier (or that has no date) is posted tonight and removed; later lines wait for their day.
+          # With a short id (b, c, d...) only that extra Short of the episode is posted.
           today=$(date -u +%F)
           line=$(tr -d '\r' < queue/publish.txt | awk -v t="$today" 'NF && ($2=="" || $2<=t) {print; exit}')
           ep=$(echo "$line" | awk '{print $1}')
+          sid=$(echo "$line" | awk '{print $3}')
           if [ -z "$ep" ]; then echo "nothing due today"; exit 0; fi
           sed -i "s/^  mode: .*/  mode: make/" config.yml
-          python -m oaf.upload --episode "$ep" \
+          python -m oaf.upload --episode "$ep" ${sid:+--short "$sid"} \
             --base-url "https://github.com/${{ github.repository }}/releases/download/$ep/"
           git checkout config.yml
-          echo "$ep $(date -u +%F)" >> queue/published.txt
+          echo "$ep $(date -u +%F) $sid" >> queue/published.txt
           tr -d '\r' < queue/publish.txt | grep -vxF "$line" > queue/rest.txt || true
           mv queue/rest.txt queue/publish.txt
           git config user.name "oaf-bot"

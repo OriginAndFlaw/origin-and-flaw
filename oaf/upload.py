@@ -76,6 +76,7 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--episode", required=True)
     ap.add_argument("--base-url", default="", help="public folder URL of the files (mode make)")
+    ap.add_argument("--short", default="", help="post only this extra Short (its id, e.g. b), mode make")
     a = ap.parse_args()
     cfg = load_config()
     ep, _ = load_episode(a.episode)
@@ -94,10 +95,17 @@ def main() -> None:
             if not a.base_url:
                 return False
             return requests.head(a.base_url + name, allow_redirects=True, timeout=30).status_code == 200
-        calls = [{"kind": "long", "file": "long_upload.mp4" if have("long_upload.mp4") else "long.mp4",
+        if a.short:  # a day without a new episode: one extra Short, pointing at the episode it came from
+            x = next(x for x in ep.get("extra_shorts", []) if x["id"] == a.short)
+            calls = [{"kind": "short", "file": f"short_{a.short}_en.mp4", "title": x["title"], "thumb": "",
+                      "description": f"{x['title']}\n\nFull documentary: \"{ep['title']}\" on @OriginAndFlaw\n\n"
+                                     "#shorts #history #engineering"}]
+        else:
+            calls = []
+        calls = calls or [{"kind": "long", "file": "long_upload.mp4" if have("long_upload.mp4") else "long.mp4",
                   "title": ep["title"], "description": real_chapters(ep["description"], out, a.base_url),
                   "thumb": "thumbnail.jpg"}]
-        if have("short_en.mp4"):
+        if not a.short and have("short_en.mp4"):
             calls.append({"kind": "short", "file": "short_en.mp4", "title": ep["short"]["title"], "thumb": "",
                           "description": f"{ep['short']['title']}\n\nFull documentary on the channel.\n\n"
                                          "#shorts #history #engineering"})

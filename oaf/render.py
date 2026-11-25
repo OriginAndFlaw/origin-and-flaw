@@ -285,10 +285,13 @@ def build_arabic_track(ep: dict, folder: Path, cfg: dict, work: Path, out: Path,
     subtitles.write_srt(subtitles.words(fitted, "ar", cfg["subtitles"]["model"]), out / "long_ar.srt")
 
 
-def build_short(ep: dict, folder: Path, cfg: dict, work: Path, out: Path, lang: str) -> None:
+def build_short(ep: dict, folder: Path, cfg: dict, work: Path, out: Path, lang: str,
+                sh: dict | None = None, tag: str = "") -> None:
+    """tag "" = the episode's main Short (short_<lang>.mp4); "b", "c"... = extra Shorts (short_b_<lang>.mp4)"""
     W, H = 1080, 1920
-    sh = ep["short"]
-    voice = tts.narrate((folder / sh[lang]).read_text(encoding="utf-8"), lang, cfg, work / f"voice_short_{lang}.wav")
+    sh = sh or ep["short"]
+    lang_tag = f"{tag}_{lang}" if tag else lang
+    voice = tts.narrate((folder / sh[lang]).read_text(encoding="utf-8"), lang, cfg, work / f"voice_short_{lang_tag}.wav")
     total = duration(voice)
     if total > 59:
         log(f"WARNING: {lang} Short narration is {total:.0f}s (over 59 s)")
@@ -299,7 +302,7 @@ def build_short(ep: dict, folder: Path, cfg: dict, work: Path, out: Path, lang: 
     by_n = {int(s["n"]): s for s in ep["scenes"]}
     parts = []
     for i, sc in enumerate(scenes):
-        seg = work / f"short_{lang}_{i:02d}.mp4"
+        seg = work / f"short_{lang_tag}_{i:02d}.mp4"
         d = hook_len if sc["tool"] == "flow" else rest
         clip = folder / sc["clip"] if sc.get("clip") else None
         if sc["tool"] == "flow" and clip and clip.exists():
@@ -308,12 +311,12 @@ def build_short(ep: dict, folder: Path, cfg: dict, work: Path, out: Path, lang: 
             src = by_n.get(int(sc["use"])) if sc.get("use") else sc
             ken_burns(images.get_still(src, folder, cfg), d, seg, i + 7, cfg, W, H)
         parts.append(seg)
-    picture = concat(parts, work / f"picture_short_{lang}.mp4")
-    audio = mix_audio(voice, total, cfg, work / f"mix_short_{lang}.wav", ep["id"] + lang)
+    picture = concat(parts, work / f"picture_short_{lang_tag}.mp4")
+    audio = mix_audio(voice, total, cfg, work / f"mix_short_{lang_tag}.wav", ep["id"] + lang_tag)
     ws = subtitles.words(voice, lang, cfg["subtitles"]["model"])
     font = "Noto Naskh Arabic" if lang == "ar" else cfg["subtitles"]["font"]
-    ass = subtitles.write_word_ass(ws, work / f"short_{lang}.ass", W, H, font)
-    finish(picture, audio, total, cfg, out / f"short_{lang}.mp4", ass)
+    ass = subtitles.write_word_ass(ws, work / f"short_{lang_tag}.ass", W, H, font)
+    finish(picture, audio, total, cfg, out / f"short_{lang_tag}.mp4", ass)
 
 
 def build_thumb(ep: dict, folder: Path, cfg: dict, out: Path) -> None:
@@ -326,7 +329,7 @@ def build_thumb(ep: dict, folder: Path, cfg: dict, out: Path) -> None:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--episode", required=True)
-    ap.add_argument("--only", default="long,arabic,short,thumb")
+    ap.add_argument("--only", default="long,arabic,short,extra,thumb")
     ap.add_argument("--test", action="store_true", help="first 120 words and 6 scenes only")
     a = ap.parse_args()
     need("ffmpeg")
@@ -347,9 +350,14 @@ def main() -> None:
         for lang in ("en", "ar"):
             if ep["short"].get(lang):
                 build_short(ep, folder, cfg, work, out, lang)
+    if "extra" in what and not a.test:
+        for x in ep.get("extra_shorts", []):
+            for lang in ("en", "ar"):
+                if x.get(lang):
+                    build_short(ep, folder, cfg, work, out, lang, x, x["id"])
     if "thumb" in what:
         build_thumb(ep, folder, cfg, out)
-    (out / "meta.json").write_text(json.dumps({k: ep.get(k) for k in ("id", "title", "description", "tags", "short")},
+    (out / "meta.json").write_text(json.dumps({k: ep.get(k) for k in ("id", "title", "description", "tags", "short", "extra_shorts")},
                                               ensure_ascii=False, indent=2), encoding="utf-8")
     log(f"done: {out}")
 

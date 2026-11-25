@@ -65,9 +65,12 @@ def write_word_ass(ws: list[dict], dst: Path, w: int, h: int, font: str = "Arial
     ) % (w, h, font, size, max(3, size // 12), int(h * 0.30))
     ev = []
     groups = [ws[i:i + per_group] for i in range(0, len(ws), per_group)]
-    for g in groups:
+    for gi, g in enumerate(groups):
+        nxt = groups[gi + 1][0]["s"] if gi + 1 < len(groups) else None
         for k, cur in enumerate(g):
             end = g[k + 1]["s"] if k + 1 < len(g) else cur["e"] + 0.15
+            if nxt is not None:  # never overlap the next group: libass would stack the two lines
+                end = min(end, nxt)
             txt = " ".join(("{\\c&H48A8E8&}" + x["w"].upper() + "{\\c&HFFFFFF&}") if j == k else x["w"].upper()
                            for j, x in enumerate(g))
             ev.append(f"Dialogue: 0,{_ts(cur['s'], '.')[:-1]},{_ts(end, '.')[:-1]},W,,0,0,0,,{txt}")

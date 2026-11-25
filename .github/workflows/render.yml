@@ -1,7 +1,7 @@
 name: render
 on:
   push:
-    paths: ["queue/next.txt"]     # "<episode> <upload yes|no>": committing this file starts a render
+    paths: ["queue/next.txt"]     # "<episode> <upload yes|no> [only]": committing this file starts a render
   repository_dispatch:
     types: [render-episode]      # Make.com sends {"event_type":"render-episode","client_payload":{"episode":"ep01-..."}}
   workflow_dispatch:
@@ -10,8 +10,8 @@ on:
         description: "episode folder name, e.g. ep01-hyatt-regency"
         required: true
       only:
-        description: "long,arabic,short,thumb"
-        default: "long,arabic,short,thumb"
+        description: "long,arabic,short,extra,thumb"
+        default: "long,arabic,short,extra,thumb"
       upload:
         description: "send to YouTube when done (yes/no)"
         default: "no"
@@ -26,16 +26,17 @@ jobs:
     timeout-minutes: 150
     env:
       EPISODE: ${{ github.event.client_payload.episode || inputs.episode }}
-      ONLY: ${{ github.event.client_payload.only || inputs.only || 'long,arabic,short,thumb' }}
+      ONLY: ${{ github.event.client_payload.only || inputs.only || 'long,arabic,short,extra,thumb' }}
       UPLOAD: ${{ inputs.upload || 'yes' }}
     steps:
       - uses: actions/checkout@v4
       - name: Read queue/next.txt (push trigger)
         if: ${{ github.event_name == 'push' }}
         run: |
-          read ep up rest < queue/next.txt
+          read ep up only rest < <(tr -d '' < queue/next.txt)
           echo "EPISODE=$ep" >> "$GITHUB_ENV"
           echo "UPLOAD=${up:-no}" >> "$GITHUB_ENV"
+          if [ -n "$only" ]; then echo "ONLY=$only" >> "$GITHUB_ENV"; fi
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
@@ -78,9 +79,14 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release delete "$EPISODE" --yes --cleanup-tag 2>/dev/null || true
-          gh release create "$EPISODE" out/$EPISODE/*.mp4 out/$EPISODE/*.jpg out/$EPISODE/*.srt out/$EPISODE/*.m4a out/$EPISODE/chapters.txt \
-            --title "$EPISODE" --notes "rendered by Actions" || true
+          # add or replace only the files this run made; files from earlier runs (e.g. the long video) stay
+          shopt -s nullglob
+          files=(out/$EPISODE/*.mp4 out/$EPISODE/*.jpg out/$EPISODE/*.srt out/$EPISODE/*.m4a out/$EPISODE/chapters*.txt)
+          if gh release view "$EPISODE" >/dev/null 2>&1; then
+            gh release upload "$EPISODE" "${files[@]}" --clobber
+          else
+            gh release create "$EPISODE" "${files[@]}" --title "$EPISODE" --notes "rendered by Actions"
+          fi
       - name: Upload
         if: ${{ (vars.UPLOAD_MODE == 'api' || vars.UPLOAD_MODE == 'make') && env.UPLOAD != 'no' }}
         env:
