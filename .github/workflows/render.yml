@@ -1,5 +1,7 @@
 name: render
 on:
+  push:
+    paths: ["queue/next.txt"]     # "<episode> <upload yes|no>": committing this file starts a render
   repository_dispatch:
     types: [render-episode]      # Make.com sends {"event_type":"render-episode","client_payload":{"episode":"ep01-..."}}
   workflow_dispatch:
@@ -25,8 +27,15 @@ jobs:
     env:
       EPISODE: ${{ github.event.client_payload.episode || inputs.episode }}
       ONLY: ${{ github.event.client_payload.only || inputs.only || 'long,arabic,short,thumb' }}
+      UPLOAD: ${{ inputs.upload || 'yes' }}
     steps:
       - uses: actions/checkout@v4
+      - name: Read queue/next.txt (push trigger)
+        if: ${{ github.event_name == 'push' }}
+        run: |
+          read ep up < queue/next.txt
+          echo "EPISODE=$ep" >> "$GITHUB_ENV"
+          echo "UPLOAD=${up:-no}" >> "$GITHUB_ENV"
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
@@ -73,7 +82,7 @@ jobs:
           gh release create "$EPISODE" out/$EPISODE/*.mp4 out/$EPISODE/*.jpg out/$EPISODE/*.srt out/$EPISODE/*.m4a \
             --title "$EPISODE" --notes "rendered by Actions" || true
       - name: Upload
-        if: ${{ (vars.UPLOAD_MODE == 'api' || vars.UPLOAD_MODE == 'make') && inputs.upload != 'no' }}
+        if: ${{ (vars.UPLOAD_MODE == 'api' || vars.UPLOAD_MODE == 'make') && env.UPLOAD != 'no' }}
         env:
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
