@@ -201,10 +201,11 @@ def anchor_chapters(scenes: list[dict], lengths: list[float], ws: list[dict]):
     for (a, ta), (b, tb) in zip(bounds, bounds[1:]):
         fixed = sum(lengths[k] for k in range(a, b) if scenes[k]["tool"] == "flow")
         flex = [k for k in range(a, b) if scenes[k]["tool"] != "flow"]
-        span = sum(lengths[k] for k in flex) or 1
         room = max(tb - ta - fixed, 0.5 * len(flex))
+        # Even pace inside a chapter: the package's planned times are rough, and uneven ones left one still
+        # on screen for 40 s and another for 4 s (EP02).
         for k in flex:
-            new[k] = max(lengths[k] * room / span, 0.5)
+            new[k] = max(room / len(flex), 0.5)
     starts = [sum(new[:i]) for i in range(len(new))]
     return new, [(starts[i], sc["chapter"]) for i, sc in enumerate(scenes) if sc.get("chapter")]
 
