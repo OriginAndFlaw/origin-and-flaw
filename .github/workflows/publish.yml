@@ -1,0 +1,36 @@
+name: publish
+# Every day at 22:30 Qatar time (19:30 UTC): if queue/publish.txt names an episode whose files are in a
+# release, Make uploads the long video and the Short to YouTube. The file is then emptied, so nothing posts twice.
+on:
+  schedule:
+    - cron: "30 19 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install pyyaml requests
+      - name: Publish the queued episode
+        env:
+          MAKE_WEBHOOK_URL: ${{ secrets.MAKE_WEBHOOK_URL }}
+        run: |
+          ep=$(tr -d '\r' < queue/publish.txt | head -1 | awk '{print $1}')
+          if [ -z "$ep" ]; then echo "nothing queued"; exit 0; fi
+          sed -i "s/^  mode: .*/  mode: make/" config.yml
+          python -m oaf.upload --episode "$ep" \
+            --base-url "https://github.com/${{ github.repository }}/releases/download/$ep/"
+          git checkout config.yml
+          echo "$ep $(date -u +%F)" >> queue/published.txt
+          : > queue/publish.txt
+          git config user.name "oaf-bot"
+          git config user.email "oaf-bot@users.noreply.github.com"
+          git add queue/
+          git commit -m "published $ep"
+          git pull --rebase -q && git push

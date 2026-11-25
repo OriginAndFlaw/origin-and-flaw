@@ -61,9 +61,15 @@ def main() -> None:
         # one webhook call per video; the scenario uploads it and sets the thumbnail when one is given
         url = env("MAKE_WEBHOOK_URL")
         up = cfg["upload"]
-        calls = [{"kind": "long", "file": "long_upload.mp4" if (out / "long_upload.mp4").exists() else "long.mp4",
+        def have(name: str) -> bool:  # local render folder, else the published release
+            if (out / name).exists():
+                return True
+            if not a.base_url:
+                return False
+            return requests.head(a.base_url + name, allow_redirects=True, timeout=30).status_code == 200
+        calls = [{"kind": "long", "file": "long_upload.mp4" if have("long_upload.mp4") else "long.mp4",
                   "title": ep["title"], "description": ep["description"], "thumb": "thumbnail.jpg"}]
-        if (out / "short_en.mp4").exists():
+        if have("short_en.mp4"):
             calls.append({"kind": "short", "file": "short_en.mp4", "title": ep["short"]["title"], "thumb": "",
                           "description": f"{ep['short']['title']}\n\nFull documentary on the channel.\n\n"
                                          "#shorts #history #engineering"})
