@@ -119,6 +119,13 @@
       "cue": "Now take that recipe"
     },
     {
+      "n": 34,
+      "t": "2:40",
+      "tool": "flux",
+      "prompt": "Aerial view of an ancient Roman harbour with curved concrete breakwaters",
+      "sfx": ""
+    },
+    {
       "n": 12,
       "t": "2:50",
       "tool": "flux",
@@ -126,11 +133,32 @@
       "sfx": "underwater hum"
     },
     {
+      "n": 37,
+      "t": "3:00",
+      "tool": "flux",
+      "prompt": "Seawater washing over ancient Roman concrete with barnacles",
+      "sfx": ""
+    },
+    {
       "n": 13,
       "t": "3:15",
       "tool": "flux",
       "prompt": "Ruins of the ancient harbour of Caesarea Maritima on the Mediterranean coast, stone and concrete blocks in turquoise water",
       "sfx": "gentle surf"
+    },
+    {
+      "n": 35,
+      "t": "3:25",
+      "tool": "flux",
+      "prompt": "A Roman scholar writing on a scroll by lamp light",
+      "sfx": ""
+    },
+    {
+      "n": 36,
+      "t": "3:35",
+      "tool": "flux",
+      "prompt": "Geologists drilling a core sample out of an ancient sea wall",
+      "sfx": ""
     },
     {
       "n": 14,
