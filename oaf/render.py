@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import json
 import random
+import re
 import shutil
 from pathlib import Path
 
@@ -164,6 +165,50 @@ def plan_long(scenes: list[dict], total: float, hook_seconds: float,
             for i in range(len(scenes))]
 
 
+def _norm(w: str) -> str:
+    return re.sub(r"[^a-z0-9]", "", w.lower())
+
+
+def find_phrase(ws: list[dict], phrase: str) -> float | None:
+    """Start time of the first place the narration says `phrase` (words compared without punctuation)."""
+    want = [_norm(w) for w in phrase.split() if _norm(w)]
+    heard = [_norm(w["w"]) for w in ws]
+    for i in range(len(heard) - len(want) + 1):
+        if heard[i:i + len(want)] == want:
+            return ws[i]["s"]
+    return None
+
+
+def anchor_chapters(scenes: list[dict], lengths: list[float], ws: list[dict]):
+    """Move scene boundaries so every chapter scene starts exactly when the narration reaches its `cue`
+    phrase; the stills between two anchors are stretched or squeezed evenly. Returns new lengths and
+    [(time, chapter title)] for the description's chapter list."""
+    starts = [sum(lengths[:i]) for i in range(len(lengths))]
+    anchors = {}
+    for i, sc in enumerate(scenes):
+        if sc.get("chapter") and sc.get("cue"):
+            t = find_phrase(ws, sc["cue"])
+            if t is None:
+                log(f"chapter cue not heard: {sc['cue']!r} (scene {sc['n']}): left where it was")
+            else:
+                anchors[i] = max(t - 0.3, 0.0)
+    if not anchors:
+        return lengths, [(starts[i], sc["chapter"]) for i, sc in enumerate(scenes) if sc.get("chapter")]
+    total = sum(lengths)
+    keys = sorted(anchors)
+    bounds = [(0, 0.0)] + [(i, anchors[i]) for i in keys] + [(len(scenes), total)]
+    new = list(lengths)
+    for (a, ta), (b, tb) in zip(bounds, bounds[1:]):
+        fixed = sum(lengths[k] for k in range(a, b) if scenes[k]["tool"] == "flow")
+        flex = [k for k in range(a, b) if scenes[k]["tool"] != "flow"]
+        span = sum(lengths[k] for k in flex) or 1
+        room = max(tb - ta - fixed, 0.5 * len(flex))
+        for k in flex:
+            new[k] = max(lengths[k] * room / span, 0.5)
+    starts = [sum(new[:i]) for i in range(len(new))]
+    return new, [(starts[i], sc["chapter"]) for i, sc in enumerate(scenes) if sc.get("chapter")]
+
+
 # ---------- builders ----------
 
 def build_long(ep: dict, folder: Path, cfg: dict, work: Path, out: Path, max_words: int | None) -> dict:
@@ -177,6 +222,12 @@ def build_long(ep: dict, folder: Path, cfg: dict, work: Path, out: Path, max_wor
     clip_len = {i: duration(folder / s["clip"]) for i, s in enumerate(scenes)
                 if s["tool"] == "flow" and s.get("clip") and (folder / s["clip"]).exists()}
     lengths = plan_long(scenes, total, ep.get("hook_seconds", 20), clip_len)
+    ws = subtitles.words(voice, "en", cfg["subtitles"]["model"])
+    lengths, chapter_times = anchor_chapters(scenes, lengths, ws)
+    if chapter_times:
+        (out / "chapters.txt").write_text(
+            f"0:00 {ep.get('intro_chapter', 'Intro')}\n" + "".join(f"{int(t // 60)}:{int(t % 60):02d} {title}\n" for t, title in chapter_times),
+            encoding="utf-8")
     parts, chapter_no = [], 0
     for i, (sc, d) in enumerate(zip(scenes, lengths)):
         seg = work / f"seg_{i:03d}.mp4"
@@ -194,7 +245,6 @@ def build_long(ep: dict, folder: Path, cfg: dict, work: Path, out: Path, max_wor
     picture = concat(parts, work / "picture_long.mp4")
     audio = mix_audio(voice, total, cfg, work / "mix_en.wav", ep["id"])
     ass = None
-    ws = subtitles.words(voice, "en", cfg["subtitles"]["model"])
     subtitles.write_srt(ws, out / "long_en.srt")
     if cfg["subtitles"].get("burn_in_long"):
         ass = subtitles.write_word_ass(ws, work / "long.ass", W, H, cfg["subtitles"]["font"], per_group=6)

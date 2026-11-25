@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 
 import requests
 
@@ -45,6 +46,32 @@ def api_upload(yt, path, title, description, tags, cfg) -> str:
     return resp["id"]
 
 
+def real_chapters(description: str, out, base_url: str) -> str:
+    """Swap the planned chapter list in the description for the times the render really produced
+    (chapters.txt, from the narration), so YouTube's chapters land on the right words."""
+    txt = None
+    if (out / "chapters.txt").exists():
+        txt = (out / "chapters.txt").read_text(encoding="utf-8")
+    elif base_url:
+        r = requests.get(base_url + "chapters.txt", timeout=30)
+        txt = r.text if r.status_code == 200 else None
+    if not txt:
+        return description
+    lines = description.splitlines()
+    keep, skipping = [], False
+    for ln in lines:
+        if ln.strip() == "Chapters":
+            keep.append(ln)
+            keep.extend(txt.strip().splitlines())
+            skipping = True
+            continue
+        if skipping and re.match(r"^\d+:\d\d ", ln):
+            continue
+        skipping = False
+        keep.append(ln)
+    return "\n".join(keep)
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--episode", required=True)
@@ -68,7 +95,8 @@ def main() -> None:
                 return False
             return requests.head(a.base_url + name, allow_redirects=True, timeout=30).status_code == 200
         calls = [{"kind": "long", "file": "long_upload.mp4" if have("long_upload.mp4") else "long.mp4",
-                  "title": ep["title"], "description": ep["description"], "thumb": "thumbnail.jpg"}]
+                  "title": ep["title"], "description": real_chapters(ep["description"], out, a.base_url),
+                  "thumb": "thumbnail.jpg"}]
         if have("short_en.mp4"):
             calls.append({"kind": "short", "file": "short_en.mp4", "title": ep["short"]["title"], "thumb": "",
                           "description": f"{ep['short']['title']}\n\nFull documentary on the channel.\n\n"

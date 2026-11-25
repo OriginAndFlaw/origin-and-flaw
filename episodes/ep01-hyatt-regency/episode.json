@@ -79,7 +79,8 @@
       "tool": "flux",
       "prompt": "Grand opening of a modern hotel, 1980, ribbon, guests in suits and dresses, glass atrium behind",
       "sfx": "crowd murmur",
-      "chapter": "A hotel built to impress"
+      "chapter": "A hotel built to impress",
+      "cue": "Kansas City Missouri"
     },
     {
       "n": 7,
@@ -108,7 +109,8 @@
       "tool": "flux",
       "prompt": "Engineer's desk 1978, rolled blueprints, slide rule, coffee cup, desk lamp",
       "sfx": "pencil scratch",
-      "chapter": "How do you hang a bridge in the air?"
+      "chapter": "How do you hang a bridge in the air?",
+      "cue": "So how do you hang a bridge"
     },
     {
       "n": 11,
@@ -144,7 +146,8 @@
       "tool": "flux",
       "prompt": "Clean 3D diagram: the single rod replaced by two shorter offset rods, the upper beam now carrying both walkways, amber warning glow on the upper nut",
       "sfx": "warning tone",
-      "chapter": "The phone call"
+      "chapter": "The phone call",
+      "cue": "According to the fabricator"
     },
     {
       "n": 16,
@@ -173,7 +176,8 @@
       "tool": "flux",
       "prompt": "Hotel lobby evening July 1981, tea dance, people on the walkways watching the dancers below",
       "sfx": "big-band music",
-      "chapter": "7:05 PM"
+      "chapter": "7:05 PM",
+      "cue": "Friday July"
     },
     {
       "n": 20,
@@ -209,7 +213,8 @@
       "tool": "flux",
       "prompt": "Investigators in 1981 in a warehouse examining twisted steel beams laid out on the floor",
       "sfx": "echoing footsteps",
-      "chapter": "Inside the investigation"
+      "chapter": "Inside the investigation",
+      "cue": "The National Bureau of Standards"
     },
     {
       "n": 25,
@@ -231,7 +236,8 @@
       "tool": "flux",
       "prompt": "Modern engineering classroom, a lecture slide with two walkway diagrams",
       "sfx": "soft piano",
-      "chapter": "The lesson every engineer now learns"
+      "chapter": "The lesson every engineer now learns",
+      "cue": "After Kansas City that changed"
     },
     {
       "n": 28,
@@ -281,5 +287,6 @@
         "use": 29
       }
     ]
-  }
+  },
+  "intro_chapter": "The flaw you would never notice"
 }

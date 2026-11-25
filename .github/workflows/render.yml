@@ -79,7 +79,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release delete "$EPISODE" --yes --cleanup-tag 2>/dev/null || true
-          gh release create "$EPISODE" out/$EPISODE/*.mp4 out/$EPISODE/*.jpg out/$EPISODE/*.srt out/$EPISODE/*.m4a \
+          gh release create "$EPISODE" out/$EPISODE/*.mp4 out/$EPISODE/*.jpg out/$EPISODE/*.srt out/$EPISODE/*.m4a out/$EPISODE/chapters.txt \
             --title "$EPISODE" --notes "rendered by Actions" || true
       - name: Upload
         if: ${{ (vars.UPLOAD_MODE == 'api' || vars.UPLOAD_MODE == 'make') && env.UPLOAD != 'no' }}
