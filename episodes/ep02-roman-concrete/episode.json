@@ -73,6 +73,20 @@
       "sfx": "choir-like pad"
     },
     {
+      "n": 38,
+      "t": "0:28",
+      "tool": "flux",
+      "prompt": "Modern concrete bridge pillar with rusty exposed steel",
+      "sfx": ""
+    },
+    {
+      "n": 39,
+      "t": "0:36",
+      "tool": "flux",
+      "prompt": "Ancient concrete crack filled with white crystals",
+      "sfx": ""
+    },
+    {
       "n": 5,
       "t": "0:40",
       "tool": "flux",
