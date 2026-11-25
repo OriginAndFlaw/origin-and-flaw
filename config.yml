@@ -1,0 +1,60 @@
+# Origin & Flaw pipeline settings. Secrets never go here: they are GitHub secrets / env vars.
+
+video:
+  width: 1920
+  height: 1080
+  fps: 25
+  crf: 21            # lower = sharper + bigger file
+  preset: veryfast
+  vignette: true
+  ken_burns_zoom: 0.10   # how far each still zooms over its time (0.10 = 10 %)
+
+voice:
+  engine: edge        # edge (free, no key) | chirp (Google Cloud TTS Chirp 3 HD, needs GOOGLE_TTS_KEY_JSON + billing)
+  edge:
+    en: en-US-AndrewNeural
+    ar: ar-SA-HamedNeural
+    rate: "-6%"        # a little slower = documentary pace and longer runtime
+  chirp:
+    en: en-US-Chirp3-HD-Charon
+    ar: ar-XA-Chirp3-HD-Charon
+    speaking_rate: 0.94
+  trim_silence: true   # shorten long pauses
+  trim_tool: ffmpeg    # ffmpeg (tested) | auto-editor (squeezed speech in tests)
+
+music:
+  folder: assets/music   # put free tracks here (YouTube Audio Library / Pixabay). Empty = no music.
+  volume: 0.22           # music level under the voice before ducking
+  duck: true
+
+images:
+  # Tried in this order for every FLUX scene that has no ready-made file:
+  order: [local, fal, pollinations, pexels]
+  fal_model: fal-ai/flux/schnell
+  fal_usd_per_image: 0.003
+  fal_monthly_cap_usd: 11.5     # = about INR 1,000
+  style: "moody 35mm documentary cinematography, dark teal and amber color grading, dramatic chiaroscuro lighting, ultra-detailed, photorealistic, 16:9 aspect ratio, no text"
+
+subtitles:
+  model: small          # faster-whisper model: tiny | base | small | medium
+  burn_in_long: false   # long videos get an .srt (uploaded as CC); Shorts get burned word captions
+  font: Arial
+
+upload:
+  mode: none            # none (files kept as GitHub artifact) | api (YouTube Data API) | make (Make.com webhook)
+  privacy: private      # private | unlisted | public  (an unaudited Google API project can only upload private)
+  category_id: "27"     # Education
+  made_for_kids: false
+  ai_disclosure: true   # sets "altered or synthetic content"
+
+research:
+  # Competitor channels to scan for outliers (channel IDs, UC...). Add or remove freely.
+  channels: []
+  search_queries:
+    - ancient engineering mystery
+    - history of everyday objects
+    - engineering disaster explained
+    - accidental inventions history
+  outlier_multiplier: 3
+  days: 30
+  trends_keywords: [ancient engineering, engineering disaster, history of inventions, roman concrete, lost technology]

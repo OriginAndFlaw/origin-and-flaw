@@ -1,0 +1,129 @@
+You have walked under something like this a thousand times. One steel rod, moved a few inches, and one hundred and fourteen people never went home.
+
+Why did nobody stop it?
+
+The drawing that killed them passed through the hands of architects, engineers, steel fabricators and inspectors. Every one of them could have caught it. None of them did.
+
+Tonight, we rebuild that drawing piece by piece. And by the end, you will see the flaw so clearly you will wonder how anyone missed it.
+
+Kansas City, Missouri. July nineteen eighty.
+
+A new hotel opens its doors. The Hyatt Regency. Forty storeys of glass and steel. And at its heart, a lobby unlike anything the city has seen.
+
+A huge open atrium. Light pouring in from above. And hanging in the air, three walkways. Thin bridges of steel and concrete that let guests cross the lobby high above the floor.
+
+Two of them sit one directly above the other. The second floor walkway, and right above it, the fourth floor walkway. The third floor walkway runs beside them, on its own.
+
+There are no columns underneath. That is the whole point. The walkways seem to float.
+
+Instead, they hang from the roof. On steel rods.
+
+Hold on to that word. Rods. Because everything that happens next comes down to how those rods were connected.
+
+So how do you hang a bridge in the air?
+
+The original design was simple. Imagine one long steel rod dropping from the ceiling. It passes straight through the fourth floor walkway. A nut underneath holds that walkway up. Then the same rod keeps going down, through the second floor walkway. Another nut. That one holds the lower walkway.
+
+One rod. Two walkways. Each walkway hangs on its own nut, and the rod carries everything up to the roof.
+
+Here is the strange part. Even this original design was weak. Investigators later found it could carry only about sixty percent of what the Kansas City building code required.
+
+So the design was already flawed on paper. But it was about to get much worse.
+
+Because that long rod had a practical problem.
+
+To put a nut in the middle of a rod, the rod has to be threaded, cut with a screw pattern, along most of its length. And the nut has to be spun all the way up, past the lower walkway, to reach the upper one.
+
+For the steel company building the parts, Havens Steel, that was a headache.
+
+So they suggested a change.
+
+Instead of one long rod, use two short ones. The first rod would drop from the ceiling and hold the fourth floor walkway. Then a second rod would hang from the fourth floor walkway itself, and hold the second floor walkway below it.
+
+Easier to make. Easier to install. On a drawing, it looks almost the same.
+
+It is not the same.
+
+According to the fabricator, the engineering firm approved the change over the phone. The engineers later disputed that call. But the revised shop drawings came back with the engineers' stamp on them.
+
+Before we go further, a quick word. If you like seeing the hidden mistakes behind famous disasters, broken down so anyone can follow them, subscribe to Origin and Flaw. Every week, one story, one flaw. Now, here is where this one turns deadly.
+
+Look at the fourth floor walkway in the new design.
+
+In the original, it only carried itself. The second floor walkway hung on the same long rod, but its weight went straight up the rod to the roof.
+
+In the new design, the second floor walkway hangs from the fourth floor walkway.
+
+So the nut under the fourth floor beam now carries two walkways. Its own weight. And everything hanging below it.
+
+The load on that one connection doubled.
+
+And that connection was the weakest point in the whole system.
+
+The walkway beams were box beams. Two C-shaped steel channels welded together, edge to edge. The rod passed through a hole drilled right where those two welded edges met. The nut sat underneath, pressing up on that seam.
+
+The original design was already at sixty percent of the code. The new one was at around thirty percent.
+
+The walkways were now hanging by a thread. Almost literally.
+
+And there were warnings.
+
+During construction, part of the atrium roof had already collapsed, in October nineteen seventy nine. Workers later said the walkways felt shaky. Some reportedly avoided pushing heavy carts across them.
+
+Nobody went back and checked the hanger connections.
+
+Friday, July seventeenth, nineteen eighty one.
+
+The Hyatt Regency is hosting a tea dance. A popular weekly event. Live big band music. Around one thousand six hundred people fill the lobby.
+
+People dance on the floor. And people gather on the walkways above to watch, some swaying to the music.
+
+At five past seven in the evening, there is a loud crack.
+
+On the fourth floor walkway, one nut pulls straight through the welded seam of its box beam. The load jumps to the next connection. It fails too. Then the next.
+
+The fourth floor walkway drops. It lands on the second floor walkway below it. Both fall together, onto the crowded lobby floor.
+
+In a few seconds, the dance became the deadliest structural collapse in American history up to that time.
+
+One hundred and fourteen people died. More than two hundred were injured.
+
+Rescue went on through the night. Cranes and forklifts were brought inside to lift the concrete. One survivor was trapped under the wreckage for hours before he could be freed.
+
+The question now was not what happened. Everyone had seen what happened.
+
+The question was why.
+
+The National Bureau of Standards sent investigators. They examined the twisted beams one by one. They tested the connections in a laboratory.
+
+The result was clear. The box beam connections failed exactly where the rods passed through. The change from one rod to two had doubled the load on those connections. And even before the change, the design had not met the code.
+
+So who was responsible?
+
+The fabricator said it had asked for approval. The engineers said they were never properly asked to check the change. The paperwork passed from desk to desk, and each person seemed to assume someone else had done the maths.
+
+In the end, the Missouri licensing board found the project's structural engineers guilty of gross negligence. They lost their engineering licences in the state. Their firm lost its licence too.
+
+But the real story is not about blame.
+
+It is about the gap between people.
+
+The architect trusted the engineer. The engineer trusted the drawing. The steel company trusted the stamp. And a crowd of people trusted the floor beneath their feet.
+
+Nobody owned the whole connection.
+
+After Kansas City, that changed. Engineering bodies made it clear: the engineer of record is responsible for the safety of the connections, even when someone else draws them. Change requests must be checked with real calculations, not a quick yes over the phone.
+
+Today, the Hyatt Regency walkway collapse is taught in engineering schools around the world. Students draw the two designs side by side. One rod. Two rods. And they work out the load on that one nut.
+
+It takes a few minutes.
+
+Five minutes of maths that nobody did in time.
+
+That is the flaw. Not in the steel, but in the space between the people who were supposed to check it.
+
+So the next time you walk under a bridge, a balcony, or a walkway, take a look at how it is held up.
+
+Somewhere, someone did that maths for you.
+
+In the next episode, we go back two thousand years, to a material the Romans used that modern engineers are still trying to copy. It heals its own cracks. And for centuries, nobody knew why.

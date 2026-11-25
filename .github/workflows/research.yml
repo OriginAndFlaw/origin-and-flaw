@@ -1,0 +1,29 @@
+name: research
+on:
+  schedule:
+    - cron: "30 3 * * *"      # every day 06:30 Qatar time
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install pyyaml requests pytrends youtube-transcript-api
+      - name: Find outliers and trends
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: python -m oaf.research
+      - name: Save the report
+        run: |
+          git config user.name "oaf-bot"
+          git config user.email "oaf-bot@users.noreply.github.com"
+          git add research/
+          git diff --cached --quiet || git commit -m "research $(date -u +%F)"
+          git push

@@ -1,0 +1,285 @@
+{
+  "id": "ep01-hyatt-regency",
+  "title": "The Tiny Change That Killed 114 People",
+  "alt_titles": [
+    "One Steel Rod Brought Down Two Walkways",
+    "Approved by Phone. 114 Dead. The Hyatt Disaster"
+  ],
+  "description": "On July 17, 1981, two walkways fell into the crowded lobby of the Hyatt Regency hotel in Kansas City during a Friday tea dance. 114 people died. It was the deadliest structural collapse in American history at the time. The cause was not an earthquake or a bomb. It was a small change to how two steel rods held the walkways up, and nobody checked it properly.\n\nIn this documentary we rebuild the design step by step: the original plan, the change, the one weak connection in a steel beam, and the chain of people who each assumed someone else had done the maths. Then we look at how this one disaster changed engineering rules around the world.\n\nChapters\n0:00 The flaw you would never notice\n0:45 A hotel built to impress\n2:30 How do you hang a bridge in the air?\n4:30 The phone call\n6:30 7:05 PM\n8:30 Inside the investigation\n10:00 The lesson every engineer now learns\n\nSources: US National Bureau of Standards investigation report (1982); Missouri Board for Architects, Professional Engineers and Land Surveyors ruling; ASCE case studies.\n\nAI note: narration voice and some visuals are AI-generated; all facts are from the public record.\n\n#engineering #history #documentary #disaster #hyattregency",
+  "tags": [
+    "hyatt regency walkway collapse",
+    "kansas city 1981",
+    "engineering disaster",
+    "engineering failure explained",
+    "structural failure",
+    "hyatt regency collapse explained",
+    "engineering mistakes",
+    "documentary",
+    "history documentary",
+    "disaster documentary",
+    "civil engineering",
+    "box beam failure",
+    "hanger rod design",
+    "engineering ethics",
+    "worst engineering disasters",
+    "origin and flaw"
+  ],
+  "thumbnail": {
+    "scene": 21,
+    "words": "ONE NUT."
+  },
+  "hook_seconds": 20,
+  "scripts": {
+    "en": "script_en.txt",
+    "ar": "script_ar.txt"
+  },
+  "scenes": [
+    {
+      "n": 1,
+      "t": "0:00",
+      "tool": "flow",
+      "prompt": "Slow upward camera glide through a vast 1980s hotel atrium, three thin steel-and-glass walkways suspended high in the air by slender vertical rods, warm evening light, empty and silent",
+      "sfx": "low drone, distant echo",
+      "clip": "hook/01.mp4"
+    },
+    {
+      "n": 2,
+      "t": "0:05",
+      "tool": "flow",
+      "prompt": "Extreme macro of a steel nut on a threaded vertical rod under a steel beam, camera slowly circles, fine dust falls, the metal creaks",
+      "sfx": "metal creak, heartbeat",
+      "clip": "hook/02.mp4"
+    },
+    {
+      "n": 3,
+      "t": "0:10",
+      "tool": "flow",
+      "prompt": "Hotel lobby crowd in 1981 clothing dancing below suspended walkways, seen from above, slight slow motion, a band in the corner",
+      "sfx": "muffled big-band music",
+      "clip": "hook/03.mp4"
+    },
+    {
+      "n": 4,
+      "t": "0:15",
+      "tool": "flow",
+      "prompt": "Suspended walkway shudders, light fixtures sway, a single drop of dust falls toward the camera, then cut to black",
+      "sfx": "sharp crack, silence",
+      "clip": "hook/04.mp4"
+    },
+    {
+      "n": 5,
+      "t": "0:20",
+      "tool": "flux",
+      "prompt": "Kansas City skyline at dusk in 1980, a new modern hotel tower lit up",
+      "sfx": "city ambience"
+    },
+    {
+      "n": 6,
+      "t": "0:45",
+      "tool": "flux",
+      "prompt": "Grand opening of a modern hotel, 1980, ribbon, guests in suits and dresses, glass atrium behind",
+      "sfx": "crowd murmur",
+      "chapter": "A hotel built to impress"
+    },
+    {
+      "n": 7,
+      "t": "1:10",
+      "tool": "flux",
+      "prompt": "Wide interior of a 1980s glass atrium lobby, three suspended walkways crossing high above, two stacked one above the other, one offset",
+      "sfx": "room tone"
+    },
+    {
+      "n": 8,
+      "t": "1:35",
+      "tool": "flux",
+      "prompt": "Architectural cross-section drawing style illustration of a hotel atrium with walkways hanging from the ceiling, blueprint lines",
+      "sfx": "paper rustle"
+    },
+    {
+      "n": 9,
+      "t": "2:00",
+      "tool": "flux",
+      "prompt": "Close-up of a construction site in 1979, steel beams lifted by a crane inside an unfinished atrium",
+      "sfx": "construction clank"
+    },
+    {
+      "n": 10,
+      "t": "2:30",
+      "tool": "flux",
+      "prompt": "Engineer's desk 1978, rolled blueprints, slide rule, coffee cup, desk lamp",
+      "sfx": "pencil scratch",
+      "chapter": "How do you hang a bridge in the air?"
+    },
+    {
+      "n": 11,
+      "t": "2:55",
+      "tool": "flux",
+      "prompt": "Clean 3D diagram: one long steel rod passing through two walkways, a nut under each walkway, glowing amber",
+      "sfx": "soft tick"
+    },
+    {
+      "n": 12,
+      "t": "3:20",
+      "tool": "flux",
+      "prompt": "Close-up of a box beam made of two C-shaped steel channels welded edge to edge, a hole through the weld seam",
+      "sfx": "metal tap"
+    },
+    {
+      "n": 13,
+      "t": "3:45",
+      "tool": "flux",
+      "prompt": "Steel workshop 1979, a very long threaded rod on a workbench, workers frowning at it",
+      "sfx": "workshop hum"
+    },
+    {
+      "n": 14,
+      "t": "4:10",
+      "tool": "flux",
+      "prompt": "Old rotary desk phone ringing on a cluttered office desk, shop drawings beside it",
+      "sfx": "phone ring"
+    },
+    {
+      "n": 15,
+      "t": "4:35",
+      "tool": "flux",
+      "prompt": "Clean 3D diagram: the single rod replaced by two shorter offset rods, the upper beam now carrying both walkways, amber warning glow on the upper nut",
+      "sfx": "warning tone",
+      "chapter": "The phone call"
+    },
+    {
+      "n": 16,
+      "t": "5:00",
+      "tool": "flux",
+      "prompt": "Diagram with arrows showing load doubling on one connection, red arrows pulling down on one nut",
+      "sfx": "bass hit"
+    },
+    {
+      "n": 17,
+      "t": "5:30",
+      "tool": "flux",
+      "prompt": "Official rubber stamp pressed onto engineering drawings, ink close-up",
+      "sfx": "stamp thud"
+    },
+    {
+      "n": 18,
+      "t": "6:00",
+      "tool": "flux",
+      "prompt": "Workers pushing wheelbarrows across a suspended walkway that visibly bends, 1980",
+      "sfx": "creak"
+    },
+    {
+      "n": 19,
+      "t": "6:30",
+      "tool": "flux",
+      "prompt": "Hotel lobby evening July 1981, tea dance, people on the walkways watching the dancers below",
+      "sfx": "big-band music",
+      "chapter": "7:05 PM"
+    },
+    {
+      "n": 20,
+      "t": "7:00",
+      "tool": "flux",
+      "prompt": "Large clock in a hotel lobby reading 7:05",
+      "sfx": "clock tick stops"
+    },
+    {
+      "n": 21,
+      "t": "7:20",
+      "tool": "flux",
+      "prompt": "Macro: a steel nut and washer tearing through a split steel beam, metal deformed",
+      "sfx": "tearing metal"
+    },
+    {
+      "n": 22,
+      "t": "7:40",
+      "tool": "flux",
+      "prompt": "Dust cloud filling a hotel atrium, light beams through dust, no people visible",
+      "sfx": "rumble then silence"
+    },
+    {
+      "n": 23,
+      "t": "8:00",
+      "tool": "flux",
+      "prompt": "Emergency vehicle lights reflecting on a wet street outside a hotel at night, 1981",
+      "sfx": "distant sirens"
+    },
+    {
+      "n": 24,
+      "t": "8:30",
+      "tool": "flux",
+      "prompt": "Investigators in 1981 in a warehouse examining twisted steel beams laid out on the floor",
+      "sfx": "echoing footsteps",
+      "chapter": "Inside the investigation"
+    },
+    {
+      "n": 25,
+      "t": "9:00",
+      "tool": "flux",
+      "prompt": "Laboratory test rig pulling a steel rod through a box beam, gauges, 1981",
+      "sfx": "hydraulic whine"
+    },
+    {
+      "n": 26,
+      "t": "9:30",
+      "tool": "flux",
+      "prompt": "Formal hearing room, empty witness chair, wooden panels",
+      "sfx": "room tone"
+    },
+    {
+      "n": 27,
+      "t": "10:00",
+      "tool": "flux",
+      "prompt": "Modern engineering classroom, a lecture slide with two walkway diagrams",
+      "sfx": "soft piano",
+      "chapter": "The lesson every engineer now learns"
+    },
+    {
+      "n": 28,
+      "t": "10:30",
+      "tool": "flux",
+      "prompt": "A single steel nut resting on an open engineering textbook, amber light",
+      "sfx": "single note"
+    },
+    {
+      "n": 29,
+      "t": "11:00",
+      "tool": "flux",
+      "prompt": "Empty modern hotel atrium at night with a solid walkway, calm, reflective",
+      "sfx": "ambient pad"
+    }
+  ],
+  "short": {
+    "title": "One Nut. Two Walkways. 114 Lives. #shorts",
+    "en": "short_en.txt",
+    "ar": "short_ar.txt",
+    "scenes": [
+      {
+        "n": "s1",
+        "tool": "flow",
+        "prompt": "Vertical shot looking straight up through a hotel atrium at two stacked suspended walkways; camera pushes in on one nut under the upper beam; the metal shudders; cut to black on the crack.",
+        "clip": "hook/short.mp4",
+        "use": 5
+      },
+      {
+        "tool": "flux",
+        "use": 5
+      },
+      {
+        "tool": "flux",
+        "use": 11
+      },
+      {
+        "tool": "flux",
+        "use": 17
+      },
+      {
+        "tool": "flux",
+        "use": 23
+      },
+      {
+        "tool": "flux",
+        "use": 29
+      }
+    ]
+  }
+}

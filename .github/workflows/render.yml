@@ -1,0 +1,82 @@
+name: render
+on:
+  repository_dispatch:
+    types: [render-episode]      # Make.com sends {"event_type":"render-episode","client_payload":{"episode":"ep01-..."}}
+  workflow_dispatch:
+    inputs:
+      episode:
+        description: "episode folder name, e.g. ep01-hyatt-regency"
+        required: true
+      only:
+        description: "long,arabic,short,thumb"
+        default: "long,arabic,short,thumb"
+permissions:
+  contents: write
+concurrency:
+  group: render
+  cancel-in-progress: false
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    env:
+      EPISODE: ${{ github.event.client_payload.episode || inputs.episode }}
+      ONLY: ${{ github.event.client_payload.only || inputs.only || 'long,arabic,short,thumb' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: System tools (FFmpeg with libass, fonts)
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg fonts-dejavu-core fonts-noto-core
+      - run: pip install -r requirements.txt
+      - name: Cache speech model
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: whisper-small
+      - name: Render
+        env:
+          FAL_KEY: ${{ secrets.FAL_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          GOOGLE_TTS_KEY_JSON: ${{ secrets.GOOGLE_TTS_KEY_JSON }}
+        run: python -m oaf.render --episode "$EPISODE" --only "$ONLY"
+      - name: Keep the stills and the Fal.ai spend record
+        run: |
+          git config user.name "oaf-bot"
+          git config user.email "oaf-bot@users.noreply.github.com"
+          git add "episodes/$EPISODE/images" budget/ || true
+          git diff --cached --quiet || git commit -m "stills + budget for $EPISODE"
+          git push || true
+      - name: Files as a downloadable artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.EPISODE }}
+          path: |
+            out/${{ env.EPISODE }}/*.mp4
+            out/${{ env.EPISODE }}/*.m4a
+            out/${{ env.EPISODE }}/*.srt
+            out/${{ env.EPISODE }}/*.jpg
+            out/${{ env.EPISODE }}/meta.json
+          retention-days: 14
+      - name: Release (public file links, needed for upload mode "make")
+        if: ${{ vars.UPLOAD_MODE == 'make' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$EPISODE" out/$EPISODE/*.mp4 out/$EPISODE/*.jpg out/$EPISODE/*.srt \
+            --title "$EPISODE" --notes "rendered by Actions" || true
+      - name: Upload
+        if: ${{ vars.UPLOAD_MODE == 'api' || vars.UPLOAD_MODE == 'make' }}
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+          MAKE_WEBHOOK_URL: ${{ secrets.MAKE_WEBHOOK_URL }}
+        run: |
+          sed -i "s/^  mode: .*/  mode: ${{ vars.UPLOAD_MODE }}/" config.yml
+          python -m oaf.upload --episode "$EPISODE" \
+            --base-url "https://github.com/${{ github.repository }}/releases/download/$EPISODE/"
