@@ -53,7 +53,7 @@ jobs:
           git config user.email "oaf-bot@users.noreply.github.com"
           git add "episodes/$EPISODE/images" budget/ || true
           git diff --cached --quiet || git commit -m "stills + budget for $EPISODE"
-          git push || true
+          git pull --rebase -q && git push || echo "could not save stills"
       - name: Files as a downloadable artifact
         uses: actions/upload-artifact@v4
         with:
@@ -65,11 +65,11 @@ jobs:
             out/${{ env.EPISODE }}/*.jpg
             out/${{ env.EPISODE }}/meta.json
           retention-days: 14
-      - name: Release (public file links, needed for upload mode "make")
-        if: ${{ vars.UPLOAD_MODE == 'make' && inputs.upload != 'no' }}
+      - name: Release (public file links: for review, and for upload mode "make")
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          gh release delete "$EPISODE" --yes --cleanup-tag 2>/dev/null || true
           gh release create "$EPISODE" out/$EPISODE/*.mp4 out/$EPISODE/*.jpg out/$EPISODE/*.srt out/$EPISODE/*.m4a \
             --title "$EPISODE" --notes "rendered by Actions" || true
       - name: Upload

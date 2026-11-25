@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import datetime as dt
+import hashlib
 import json
 import time
 import urllib.parse
@@ -68,7 +69,7 @@ def from_fal(prompt: str, dst: Path, cfg: dict) -> bool:
 
 def from_pollinations(prompt: str, dst: Path, cfg: dict) -> bool:
     url = ("https://image.pollinations.ai/prompt/" + urllib.parse.quote(prompt[:900]) +
-           "?width=1920&height=1080&nologo=true&model=flux&seed=" + str(abs(hash(prompt)) % 100000))
+           "?width=1920&height=1080&nologo=true&model=flux&seed=" + str(int(hashlib.md5(prompt.encode()).hexdigest(), 16) % 100000))
     for attempt in range(3):
         try:
             if _save(url, dst):
