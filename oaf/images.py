@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import datetime as dt
 import hashlib
+import os
 import json
 import time
 import urllib.parse
@@ -120,6 +121,9 @@ def get_still(scene: dict, folder: Path, cfg: dict) -> Path:
                 return dst
         except Exception as e:  # one bad source must not stop the render
             log(f"scene {n:02d}: {name} failed: {e}")
-    log(f"scene {n:02d}: NO SOURCE WORKED, placeholder used")
-    placeholder(scene["prompt"], dst)
-    return dst
+    if os.environ.get("ALLOW_PLACEHOLDER"):
+        log(f"scene {n:02d}: NO SOURCE WORKED, placeholder used (test mode)")
+        placeholder(scene["prompt"], dst)
+        return dst
+    raise RuntimeError(f"scene {n:02d}: no still could be made. Put images/{n:02d}.jpg in the episode "
+                       "(Flow Nano Banana, free) or set FAL_KEY / PEXELS_API_KEY. Never publish placeholders.")

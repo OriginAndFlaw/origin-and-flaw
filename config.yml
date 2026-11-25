@@ -29,7 +29,7 @@ music:
 
 images:
   # Tried in this order for every FLUX scene that has no ready-made file:
-  order: [local, fal, pollinations, pexels]
+  order: [local, fal, pexels]   # pollinations adds a watermark and blocks cloud runners: opt-in only
   fal_model: fal-ai/flux/schnell
   fal_usd_per_image: 0.003
   fal_monthly_cap_usd: 11.5     # = about INR 1,000

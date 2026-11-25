@@ -54,13 +54,13 @@ def write_srt(ws: list[dict], dst: Path, max_words: int = 9) -> Path:
 
 def write_word_ass(ws: list[dict], dst: Path, w: int, h: int, font: str = "Arial", per_group: int = 3) -> Path:
     """Big centred captions, three words at a time, the spoken word in amber (Shorts style)."""
-    size = int(h * 0.055)
+    size = int(min(h * 0.045, w * 0.08))
     head = (
-        "[Script Info]\nScriptType: v4.00+\nPlayResX: %d\nPlayResY: %d\nWrapStyle: 2\n\n"
+        "[Script Info]\nScriptType: v4.00+\nPlayResX: %d\nPlayResY: %d\nWrapStyle: 0\n\n"
         "[V4+ Styles]\nFormat: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, "
         "Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, "
         "Alignment, MarginL, MarginR, MarginV, Encoding\n"
-        "Style: W,%s,%d,&H00FFFFFF,&H00FFFFFF,&H00101010,&H64000000,-1,0,0,0,100,100,0,0,1,%d,2,2,60,60,%d,1\n\n"
+        "Style: W,%s,%d,&H00FFFFFF,&H00FFFFFF,&H00101010,&H64000000,-1,0,0,0,100,100,0,0,1,%d,2,2,90,90,%d,1\n\n"
         "[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\n"
     ) % (w, h, font, size, max(3, size // 12), int(h * 0.30))
     ev = []
