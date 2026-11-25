@@ -51,10 +51,14 @@ def main(pkg: str, ep_id: str) -> None:
             sc["clip"] = f"hook/{int(n):02d}.mp4"
         scenes.append(sc)
     # a chapter title shows on the first still at or after its time (the first chapter is the hook: skipped)
-    for ct, title in chapters[1:]:
-        later = [s for s in scenes if s["tool"] == "flux" and secs(s["t"]) >= secs(ct) - 1]
+    # "0:40 A recipe from a volcano | The story starts in" -> title + narration cue (the words that open it)
+    parsed = [(ct, *(t.split("|", 1) if "|" in t else (t, ""))) for ct, t in chapters]
+    for ct, title, cue in parsed[1:]:
+        later = [s for s in scenes if s["tool"] == "flux" and secs(s["t"]) >= secs(ct) - 1 and not s.get("chapter")]
         if later:
             later[0]["chapter"] = title.strip()
+            if cue.strip():
+                later[0]["cue"] = cue.strip()
 
     (folder / "script_en.txt").write_text(body_text(section(md, 3)), encoding="utf-8")
     (folder / "script_ar.txt").write_text(body_text(section(md, 4)), encoding="utf-8")
@@ -72,11 +76,12 @@ def main(pkg: str, ep_id: str) -> None:
         "id": ep_id,
         "title": titles[0] if titles else ep_id,
         "alt_titles": titles[1:],
-        "description": desc.group(1).strip() if desc else "",
+        "description": re.sub(r" \| [^\n]*", "", desc.group(1).strip()) if desc else "",
         "tags": [x.strip() for x in tags.group(1).split(",")] if tags else [],
         "thumbnail": {"scene": int(thumb_scene.group(1)) if thumb_scene else pick[len(pick) // 2],
                       "words": thumb_words.group(1).strip() if thumb_words else ""},
         "hook_seconds": 20,
+        "intro_chapter": parsed[0][1].strip() if chapters else "Intro",
         "scripts": {"en": "script_en.txt", "ar": "script_ar.txt"},
         "scenes": scenes,
         "short": {
