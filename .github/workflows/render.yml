@@ -10,6 +10,9 @@ on:
       only:
         description: "long,arabic,short,thumb"
         default: "long,arabic,short,thumb"
+      upload:
+        description: "send to YouTube when done (yes/no)"
+        default: "no"
 permissions:
   contents: write
 concurrency:
@@ -63,14 +66,14 @@ jobs:
             out/${{ env.EPISODE }}/meta.json
           retention-days: 14
       - name: Release (public file links, needed for upload mode "make")
-        if: ${{ vars.UPLOAD_MODE == 'make' }}
+        if: ${{ vars.UPLOAD_MODE == 'make' && inputs.upload != 'no' }}
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release create "$EPISODE" out/$EPISODE/*.mp4 out/$EPISODE/*.jpg out/$EPISODE/*.srt out/$EPISODE/*.m4a \
             --title "$EPISODE" --notes "rendered by Actions" || true
       - name: Upload
-        if: ${{ vars.UPLOAD_MODE == 'api' || vars.UPLOAD_MODE == 'make' }}
+        if: ${{ (vars.UPLOAD_MODE == 'api' || vars.UPLOAD_MODE == 'make') && inputs.upload != 'no' }}
         env:
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
