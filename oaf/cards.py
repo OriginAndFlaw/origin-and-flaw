@@ -27,13 +27,14 @@ def chapter_overlay(number: int, title: str, dst: Path, w: int = 1920, h: int = 
     """Transparent PNG: small 'CHAPTER N' and the title, lower-left, with a soft dark band behind."""
     im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
     band = Image.new("RGBA", (w, h), (0, 0, 0, 0))
-    ImageDraw.Draw(band).rectangle((0, int(h * 0.70), int(w * 0.62), int(h * 0.88)), fill=(0, 0, 0, 150))
+    # Top-left: the bottom of the frame belongs to the viewer's closed captions, which must never collide.
+    ImageDraw.Draw(band).rectangle((0, int(h * 0.06), int(w * 0.62), int(h * 0.24)), fill=(0, 0, 0, 150))
     im = Image.alpha_composite(im, band.filter(ImageFilter.GaussianBlur(30)))
     d = ImageDraw.Draw(im)
     x = int(w * 0.06)
-    d.text((x, int(h * 0.725)), f"CHAPTER {number}", font=_font(True, int(h * 0.028)), fill=AMBER)
-    d.line((x, int(h * 0.77), x + int(w * 0.08), int(h * 0.77)), fill=AMBER, width=3)
-    d.text((x, int(h * 0.785)), title, font=_font(True, int(h * 0.058)), fill=CREAM)
+    d.text((x, int(h * 0.085)), f"CHAPTER {number}", font=_font(True, int(h * 0.028)), fill=AMBER)
+    d.line((x, int(h * 0.13), x + int(w * 0.08), int(h * 0.13)), fill=AMBER, width=3)
+    d.text((x, int(h * 0.145)), title, font=_font(True, int(h * 0.058)), fill=CREAM)
     im.save(dst)
     return dst
 
