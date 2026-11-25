@@ -65,7 +65,7 @@ jobs:
             out/${{ env.EPISODE }}/*.jpg
             out/${{ env.EPISODE }}/meta.json
           retention-days: 14
-      - name: Release (public file links: for review, and for upload mode "make")
+      - name: Release (public review links, also used by Make)
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
