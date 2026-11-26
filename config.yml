@@ -72,4 +72,4 @@ research:
 
 # Extra audio tracks for YouTube's multi-language audio (uploaded in Studio): audio_track_<lang>.m4a.
 # Scripts: script_<lang>.txt in the episode folder (tools/translate_scripts.py makes them; Arabic by hand).
-dubs: [ar]          # more languages later if analytics show demand: add es, pt, hi, fr, de, id
+dubs: []            # English only (owner, 26 Nov). Add ar, es, pt, hi... here if analytics show demand

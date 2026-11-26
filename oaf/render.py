@@ -355,18 +355,18 @@ def main() -> None:
     info = {}
     if "long" in what:
         info = build_long(ep, folder, cfg, work, out, mw)
-    dubs = [l for l in cfg.get("dubs", ["ar"]) if ("arabic" in what and l == "ar") or ("dubs" in what and l != "ar")]
+    dubs = [l for l in cfg.get("dubs", []) if ("arabic" in what and l == "ar") or ("dubs" in what and l != "ar")]
     if dubs:
         total = info.get("total") or duration(out / "long.mp4")
         for lang in dubs:
             build_dub(ep, folder, cfg, work, out, total, mw, lang)
     if "short" in what and ep.get("short") and not a.test:
-        for lang in ("en", "ar"):
+        for lang in ["en"] + cfg.get("dubs", []):
             if ep["short"].get(lang):
                 build_short(ep, folder, cfg, work, out, lang)
     if "extra" in what and not a.test:
         for x in ep.get("extra_shorts", []):
-            for lang in ("en", "ar"):
+            for lang in ["en"] + cfg.get("dubs", []):
                 if x.get(lang):
                     build_short(ep, folder, cfg, work, out, lang, x, x["id"])
     if "thumb" in what:
