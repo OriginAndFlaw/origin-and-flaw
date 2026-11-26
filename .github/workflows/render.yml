@@ -57,6 +57,9 @@ jobs:
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
           GOOGLE_TTS_KEY_JSON: ${{ secrets.GOOGLE_TTS_KEY_JSON }}
         run: python -m oaf.render --episode "$EPISODE" --only "$ONLY"
+      - name: Quality check (a FAIL stops the release, so the video can never be posted)
+        if: ${{ contains(env.ONLY, 'long') }}
+        run: python -m oaf.qa --episode "$EPISODE"
       - name: Keep the stills and the Fal.ai spend record
         run: |
           git config user.name "oaf-bot"
@@ -81,7 +84,7 @@ jobs:
         run: |
           # add or replace only the files this run made; files from earlier runs (e.g. the long video) stay
           shopt -s nullglob
-          files=(out/$EPISODE/*.mp4 out/$EPISODE/*.jpg out/$EPISODE/*.srt out/$EPISODE/*.m4a out/$EPISODE/chapters*.txt)
+          files=(out/$EPISODE/*.mp4 out/$EPISODE/*.jpg out/$EPISODE/*.srt out/$EPISODE/*.m4a out/$EPISODE/chapters*.txt out/$EPISODE/qa*.txt)
           if gh release view "$EPISODE" >/dev/null 2>&1; then
             gh release upload "$EPISODE" "${files[@]}" --clobber
           else
