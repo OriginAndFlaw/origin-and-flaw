@@ -1,11 +1,11 @@
+ep01-hyatt-regency 2026-11-26 b
 ep02-roman-concrete 2026-11-27
+ep02-roman-concrete 2026-11-28 b
 ep03-gimli-glider 2026-11-29
-ep01-hyatt-regency 2026-11-28 b
-ep02-roman-concrete 2026-11-30 b
-ep03-gimli-glider 2026-12-02 b
-ep01-hyatt-regency 2026-12-04 c
-ep02-roman-concrete 2026-12-06 c
-ep03-gimli-glider 2026-12-08 c
-ep01-hyatt-regency 2026-12-10 d
-ep02-roman-concrete 2026-12-12 d
-ep03-gimli-glider 2026-12-14 d
+ep03-gimli-glider 2026-11-30 b
+ep01-hyatt-regency 2026-12-02 c
+ep02-roman-concrete 2026-12-04 c
+ep03-gimli-glider 2026-12-05 c
+ep01-hyatt-regency 2026-12-06 d
+ep02-roman-concrete 2026-12-07 d
+ep03-gimli-glider 2026-12-08 d
