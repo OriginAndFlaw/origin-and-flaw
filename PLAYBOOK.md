@@ -9,7 +9,11 @@ monetization for templated AI slideshows).
   objects, accidental inventions, "the 1-inch mistake". No politics, religion or current affairs.
 - Test the title first: would a curious stranger in the US or UK click it? Under 60 characters, honest,
   a specific number or an impossible-sounding fact ("Your Frying Pan Helped Build the Atomic Bomb").
-- Facts from at least one solid source per claim; drop anything the sources disagree on.
+- Facts from at least TWO solid sources per claim (official reports, Wikipedia, papers); drop anything the
+  sources disagree on.
+- Prefer true stories most people have NOT heard. If a topic is already everywhere on YouTube, tell it only from
+  an angle nobody uses, or skip it (owner's rule, 26 Nov).
+- The first 15 seconds must make a viewer think "I never knew that".
 
 ## Script (English 1,500-1,700 words = 9-11 min with the Gemini voice; never under 8 min)
 - 0-15 s: the hook. Start inside the strangest moment, not with background. Promise what the viewer
