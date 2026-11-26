@@ -19,6 +19,14 @@ channel owner's own YouTube account.</p>
 <p>The OAuth credentials are stored as encrypted secrets in the owner's private build settings and are used only to
 upload the owner's videos. The owner can revoke access at any time at
 <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>.</p>
+<h2>Data retention and deletion</h2>
+<p>The tool stores no personal data. The only stored item is the channel owner's own OAuth token, kept as an encrypted
+build secret. Deleting that secret, or revoking the tool's access at
+<a href="https://security.google.com/settings/security/permissions">security.google.com/settings/security/permissions</a>,
+removes the tool's access immediately; nothing else needs to be deleted. Videos uploaded by the tool are the owner's own
+content on YouTube and can be deleted in YouTube Studio at any time.</p>
+<h2>YouTube API Services</h2>
+<p>This tool uses YouTube API Services (YouTube Data API v3) only to publish the channel owner's own videos.</p>
 <h2>Google and YouTube</h2>
 <p>The tool uses YouTube API Services. By using it you agree to the
 <a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a>; see also the
