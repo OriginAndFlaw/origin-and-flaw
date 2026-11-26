@@ -2,7 +2,7 @@
 
 Supreme commander: Claude (main session). Every episode passes through every seat below, in this order.
 Agent seats are run as sub-agents with the brief in team/<seat>.md; code seats are the pipeline (oaf/*).
-The commander reads every report, resolves conflicts, and nothing ships until the evaluator passes it.
+The auditor checks every agent seat's output; the algorithm analyst's rules bind every seat. The commander reads every report, resolves conflicts, and nothing ships until the evaluator passes it.
 
 | # | Seat | Who | Output |
 |---|---|---|---|
@@ -22,5 +22,9 @@ The commander reads every report, resolves conflicts, and nothing ships until th
 | 14 | Timing checker | code: oaf/qa.py + commander | chapters, callouts and cuts land on the right words |
 | 15 | Final evaluator | code: oaf/qa.py + agent: team/evaluator.md | PASS/FAIL against the playbook; FAIL blocks the release |
 | 16 | Make/publish monitor | code: publish.yml guard + commander daily check | every scheduled post went out; failures fixed the same day |
+| 17 | YouTube algorithm analyst | agent: team/algorithm.md | how recommendations work now, sourced; rules every seat follows |
+| 18 | Virality + watch-hours checker | agent: team/growth.md | virality scores and fixes per episode; the fastest honest watch-hour plan |
+| 20 | Picture and sync reviewer | agent: team/picture.md | watches the rendered video frame by frame: picture matches words, no AI faults, cuts clean |
+| 19 | Agent auditor | agent: team/auditor.md | checks every agent seat's output (brief followed, sources real, edits clean): PASS/FAIL |
 
 Rules for every seat: PLAYBOOK.md. Honesty over hype: a fact that cannot be verified is cut, never softened.

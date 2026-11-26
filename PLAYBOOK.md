@@ -46,3 +46,15 @@ monetization for templated AI slideshows).
 ## After posting
 - Watch retention: where viewers leave, fix that pattern in the next script.
 - Answer comments; use good questions as future topics.
+
+## Algorithm rules (seat 17, team/reports/algorithm-2026-11-26.md; YouTube's own sources unless marked)
+- Satisfaction beats clicks: Test & Compare picks the title/thumbnail with the most WATCH TIME. Give every episode 3
+  clearly different title+thumbnail pairs and run Test & Compare.
+- Deliver the thumbnail's promise within 15 s; no channel intro. Length follows retention (about 9-11 min).
+- Never templated: vary the structure, keep our own voice and commentary, a clear story. Label AI content; never present
+  an AI as an expert.
+- Post when ready, steady rhythm (long video every other day + a Short daily), US/UK evening = 22:00-24:00 Qatar
+  [third-party advice] until Studio's "when your viewers are on YouTube" says otherwise.
+- Every Short gets a Related Video link to its episode; end screens + series playlists; every teaser points to a real video.
+- Spanish audio track on every episode (multi-language channels got 25%+ of watch time from other tracks).
+- Judge by unique viewers, retention and engaged views, not subscriber count.

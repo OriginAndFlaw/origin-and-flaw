@@ -5,6 +5,11 @@ on:
   schedule:
     - cron: "30 19 * * *"
   workflow_dispatch:
+  push:
+    paths: ["queue/go.txt"]   # the commander pushes this at 19:30 UTC so the post goes out on time
+concurrency:
+  group: publish
+  cancel-in-progress: false
 permissions:
   contents: write
 jobs:
