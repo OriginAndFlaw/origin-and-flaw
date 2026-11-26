@@ -109,6 +109,9 @@ def main() -> None:
             calls.append({"kind": "short", "file": "short_en.mp4", "title": ep["short"]["title"], "thumb": "",
                           "description": f"{ep['short']['title']}\n\nFull documentary on the channel.\n\n"
                                          "#shorts #history #engineering"})
+        missing = [c["file"] for c in calls if not have(c["file"])]
+        if missing:  # never send Make a link to nothing: a 404 there switches the whole scenario off
+            raise SystemExit(f"not ready, nothing posted: {', '.join(missing)} missing for {a.episode}")
         for c in calls:
             payload = {"episode": a.episode, "kind": c["kind"], "title": c["title"][:100],
                        "description": c["description"][:4900], "tags": ",".join(ep["tags"])[:480],
