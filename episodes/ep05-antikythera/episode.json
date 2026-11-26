@@ -1,0 +1,486 @@
+{
+  "id": "ep05-antikythera",
+  "title": "A 2,000-Year-Old Computer Pulled From the Sea",
+  "alt_titles": [
+    "The Machine That Should Not Exist",
+    "Ancient Greeks Built a Computer. Then It Vanished."
+  ],
+  "description": "In 1901, sponge divers pulled a shapeless lump of corroded bronze and wood from a Roman-era shipwreck off the Greek island of Antikythera. For two years nobody looked at it twice. Then, on 17 May 1902, someone noticed a gear wheel inside the rock.\n\nIt turned out to be the most complex machine that survives from the ancient world: a hand-cranked bronze calculator, about the size of a shoebox, with at least 30 interlocking gears. It showed where the Sun and Moon would be, the phase of the Moon, the dates of eclipses, and even when the Olympic Games were due. Nothing comparable appears again for well over a thousand years.\n\nThis is the story of how it was found, how scientists spent a century decoding it with X-rays, gamma rays and CT scanners, and the flaw that has been hiding in plain sight all along.\n\nChapters\n0:00 A rock that was not a rock\n0:45 The storm and the divers\n2:10 Two years in a box\n3:20 What the gears were saying\n5:15 A computer for the sky\n7:00 Who built it?\n8:20 The flaw\n9:20 What we lost\n\nSources: Wikipedia, Antikythera mechanism; Freeth et al., Scientific Reports (2021); de Solla Price, Gears from the Greeks (1974).\n\nAI note: narration voice and visuals are AI-generated; no images show real people.\n\n#history #engineering #ancientgreece #documentary #antikythera",
+  "tags": [
+    "antikythera mechanism",
+    "ancient computer",
+    "ancient greek technology",
+    "ancient engineering",
+    "oldest computer",
+    "shipwreck discovery",
+    "ancient mysteries explained",
+    "history documentary",
+    "engineering history",
+    "archaeology",
+    "origin and flaw"
+  ],
+  "thumbnail": {
+    "scene": 6,
+    "words": "2,000 YEARS OLD"
+  },
+  "hook_seconds": 20,
+  "intro_chapter": "A rock that was not a rock",
+  "scripts": {
+    "en": "script_en.txt",
+    "es": "script_es.txt"
+  },
+  "scenes": [
+    {
+      "n": 1,
+      "t": "0:00",
+      "tool": "flow",
+      "prompt": "Close-up of a corroded green bronze lump on a black museum plinth, a thin beam of light sweeps across it and reveals the fine teeth of a gear wheel inside, slow push-in",
+      "sfx": "low drone",
+      "clip": "hook/01.mp4"
+    },
+    {
+      "n": 2,
+      "t": "0:04",
+      "tool": "flow",
+      "prompt": "Underwater, a diver in an old brass helmet sinks slowly toward a dark seabed scattered with ancient amphorae, shafts of light from above, slow tracking down",
+      "sfx": "bubbles",
+      "clip": "hook/02.mp4"
+    },
+    {
+      "n": 3,
+      "t": "0:08",
+      "tool": "flow",
+      "prompt": "A bronze hand crank turns slowly on the side of an ancient wooden box, interlocking bronze gears inside begin to rotate, warm lamp light, static camera",
+      "sfx": "soft ticking",
+      "clip": "hook/03.mp4"
+    },
+    {
+      "n": 4,
+      "t": "0:12",
+      "tool": "flow",
+      "prompt": "A golden Sun and a silver Moon pointer glide across an ancient bronze dial engraved with the zodiac, night sky reflected in the metal, slow push-in",
+      "sfx": "celestial hum",
+      "clip": "hook/04.mp4"
+    },
+    {
+      "n": 5,
+      "t": "0:16",
+      "tool": "flux",
+      "prompt": "The National Archaeological Museum in Athens at dusk, columns lit gold",
+      "sfx": "city ambience"
+    },
+    {
+      "n": 6,
+      "t": "0:26",
+      "tool": "flux",
+      "prompt": "A corroded green bronze lump with one perfect gear wheel visible inside it, black background",
+      "sfx": "silence"
+    },
+    {
+      "n": 7,
+      "t": "0:36",
+      "tool": "flux",
+      "prompt": "Visitors' silhouettes in a dark museum gallery around a single lit display case",
+      "sfx": "murmurs"
+    },
+    {
+      "n": 8,
+      "t": "0:45",
+      "tool": "flux",
+      "prompt": "A small Greek sponge-diving boat with a white sail in a rough grey sea, 1900",
+      "sfx": "wind, waves",
+      "chapter": "The storm and the divers",
+      "cue": "In the spring of nineteen hundred"
+    },
+    {
+      "n": 9,
+      "t": "0:55",
+      "tool": "flux",
+      "prompt": "The rocky cliffs of a small Greek island under storm clouds, a boat sheltering in a cove",
+      "sfx": "thunder"
+    },
+    {
+      "n": 10,
+      "t": "1:05",
+      "tool": "flux",
+      "prompt": "Sponge divers' gear on a wooden deck, 1900: brass helmet, canvas suit, ropes",
+      "sfx": "creak"
+    },
+    {
+      "n": 11,
+      "t": "1:15",
+      "tool": "flux",
+      "prompt": "Underwater, a diver's boots landing on sand beside a broken bronze arm of a statue",
+      "sfx": "bubbles"
+    },
+    {
+      "n": 12,
+      "t": "1:25",
+      "tool": "flux",
+      "prompt": "Underwater view of a pile of ancient amphorae and marble fragments on the seabed, 45 metres deep",
+      "sfx": "deep water"
+    },
+    {
+      "n": 13,
+      "t": "1:35",
+      "tool": "flux",
+      "prompt": "A Greek navy steamship from 1901 anchored off a rocky island, a diving barge beside it",
+      "sfx": "ship bell"
+    },
+    {
+      "n": 14,
+      "t": "1:45",
+      "tool": "flux",
+      "prompt": "Bronze statues being lifted out of the sea on ropes, covered in shells, 1901",
+      "sfx": "splash"
+    },
+    {
+      "n": 15,
+      "t": "1:55",
+      "tool": "flux",
+      "prompt": "A Roman-era cargo ship sailing at night through a storm, ancient Mediterranean",
+      "sfx": "storm"
+    },
+    {
+      "n": 16,
+      "t": "2:10",
+      "tool": "flux",
+      "prompt": "Wooden crates of ancient finds stacked in a dusty museum storeroom, 1901",
+      "sfx": "dust",
+      "chapter": "Two years in a box",
+      "cue": "The divers brought up"
+    },
+    {
+      "n": 17,
+      "t": "2:22",
+      "tool": "flux",
+      "prompt": "Lumps of corroded bronze and rotten wood drying on a tray, cracking",
+      "sfx": "crackle"
+    },
+    {
+      "n": 18,
+      "t": "2:34",
+      "tool": "flux",
+      "prompt": "A 1902 archaeologist in a dark suit seen from behind, bending over a table with a magnifying glass",
+      "sfx": "clock tick"
+    },
+    {
+      "n": 19,
+      "t": "2:46",
+      "tool": "flux",
+      "prompt": "Extreme close-up of a magnifying glass over a crusted stone, the edge of a tiny gear wheel visible",
+      "sfx": "breath"
+    },
+    {
+      "n": 20,
+      "t": "2:58",
+      "tool": "flux",
+      "prompt": "Old handwritten museum notebook and a pencil sketch of a gear, 1902, no readable words",
+      "sfx": "page turn"
+    },
+    {
+      "n": 21,
+      "t": "3:10",
+      "tool": "flux",
+      "prompt": "Scholars arguing in a 19th-century library, seen from behind, dim light",
+      "sfx": "low voices"
+    },
+    {
+      "n": 22,
+      "t": "3:20",
+      "tool": "flux",
+      "prompt": "Fragments of the bronze mechanism laid out on black velvet like puzzle pieces",
+      "sfx": "soft tone",
+      "chapter": "What the gears were saying",
+      "cue": "So what was it"
+    },
+    {
+      "n": 23,
+      "t": "3:32",
+      "tool": "flux",
+      "prompt": "1970s laboratory with an X-ray machine aimed at a bronze fragment, glowing screen",
+      "sfx": "machine hum"
+    },
+    {
+      "n": 24,
+      "t": "3:44",
+      "tool": "flux",
+      "prompt": "A grey X-ray image showing hidden gear wheels inside corroded metal",
+      "sfx": "static"
+    },
+    {
+      "n": 25,
+      "t": "3:56",
+      "tool": "flux",
+      "prompt": "A 1970s scientist's desk covered in gear diagrams and tooth counts, no readable words",
+      "sfx": "pencil"
+    },
+    {
+      "n": 26,
+      "t": "4:08",
+      "tool": "flux",
+      "prompt": "A modern CT scanner the size of a room with a small bronze fragment on its turntable",
+      "sfx": "scanner whir"
+    },
+    {
+      "n": 27,
+      "t": "4:20",
+      "tool": "flux",
+      "prompt": "A glowing 3D scan of a gear train on a computer screen in a dark lab",
+      "sfx": "electronic hum"
+    },
+    {
+      "n": 28,
+      "t": "4:32",
+      "tool": "flux",
+      "prompt": "Tiny ancient Greek letters engraved on bronze, seen in raking light, unreadable",
+      "sfx": "soft tone"
+    },
+    {
+      "n": 29,
+      "t": "4:44",
+      "tool": "flow",
+      "prompt": "Inside a reconstructed ancient bronze mechanism, dozens of small interlocking gears turn together at different speeds, warm light, slow orbit",
+      "sfx": "ticking gears",
+      "clip": "hook/29.mp4"
+    },
+    {
+      "n": 30,
+      "t": "4:54",
+      "tool": "flux",
+      "prompt": "A large bronze gear wheel with many hand-cut triangular teeth, close-up",
+      "sfx": "metal"
+    },
+    {
+      "n": 31,
+      "t": "5:05",
+      "tool": "flux",
+      "prompt": "Clean 3D diagram on dark teal: two bronze gears meshing, one large and one small, amber glow, no labels",
+      "sfx": "click"
+    },
+    {
+      "n": 32,
+      "t": "5:15",
+      "tool": "flux",
+      "prompt": "The front face of a reconstructed ancient bronze calculator with a zodiac ring and two pointers",
+      "sfx": "ticking",
+      "chapter": "A computer for the sky",
+      "cue": "Here is the part that"
+    },
+    {
+      "n": 33,
+      "t": "5:27",
+      "tool": "flux",
+      "prompt": "A small half-silver half-black ball showing the phase of the Moon on a bronze pointer",
+      "sfx": "soft tone"
+    },
+    {
+      "n": 34,
+      "t": "5:39",
+      "tool": "flux",
+      "prompt": "The real Moon over the Aegean Sea at night, half lit",
+      "sfx": "waves"
+    },
+    {
+      "n": 35,
+      "t": "5:51",
+      "tool": "flux",
+      "prompt": "Clean 3D diagram on dark teal: a pin riding inside a slot between two gears, amber glow, no labels",
+      "sfx": "click"
+    },
+    {
+      "n": 36,
+      "t": "6:03",
+      "tool": "flux",
+      "prompt": "An ancient Greek astronomer seen from behind on a rooftop at night, studying the sky, Rhodes",
+      "sfx": "night insects"
+    },
+    {
+      "n": 37,
+      "t": "6:15",
+      "tool": "flux",
+      "prompt": "A total solar eclipse over an ancient Greek temple, crowds as tiny silhouettes",
+      "sfx": "hush"
+    },
+    {
+      "n": 38,
+      "t": "6:27",
+      "tool": "flux",
+      "prompt": "The back of the mechanism with two large spiral dials, reconstruction, warm light",
+      "sfx": "ticking"
+    },
+    {
+      "n": 39,
+      "t": "6:39",
+      "tool": "flux",
+      "prompt": "The ancient stadium at Olympia at dawn, empty track",
+      "sfx": "birds"
+    },
+    {
+      "n": 40,
+      "t": "6:51",
+      "tool": "flux",
+      "prompt": "Hand turning a small bronze crank on a wooden box, close-up",
+      "sfx": "crank"
+    },
+    {
+      "n": 41,
+      "t": "7:00",
+      "tool": "flux",
+      "prompt": "An ancient Greek workshop with bronze tools and a half-built gear box, lamp light",
+      "sfx": "hammer tap",
+      "chapter": "Who built it?",
+      "cue": "Which raises the obvious question"
+    },
+    {
+      "n": 42,
+      "t": "7:12",
+      "tool": "flux",
+      "prompt": "The harbour of ancient Rhodes at sunset, ships and stone walls",
+      "sfx": "gulls"
+    },
+    {
+      "n": 43,
+      "t": "7:24",
+      "tool": "flux",
+      "prompt": "Ancient Syracuse in Sicily by the sea, a temple on a hill",
+      "sfx": "waves"
+    },
+    {
+      "n": 44,
+      "t": "7:36",
+      "tool": "flux",
+      "prompt": "A scroll with geometric drawings of circles, on a wooden table, unreadable",
+      "sfx": "scroll"
+    },
+    {
+      "n": 45,
+      "t": "7:50",
+      "tool": "flux",
+      "prompt": "Clean 3D diagram on dark teal: a timeline bar with a long dark empty gap in the middle, amber, no labels or numbers",
+      "sfx": "soft tone"
+    },
+    {
+      "n": 46,
+      "t": "8:05",
+      "tool": "flux",
+      "prompt": "A medieval astronomical clock in a stone tower, 14th century, gold dials",
+      "sfx": "bell"
+    },
+    {
+      "n": 47,
+      "t": "8:20",
+      "tool": "flux",
+      "prompt": "Macro of uneven hand-filed triangular gear teeth on old bronze",
+      "sfx": "file scrape",
+      "chapter": "The flaw",
+      "cue": "And now the flaw"
+    },
+    {
+      "n": 48,
+      "t": "8:34",
+      "tool": "flux",
+      "prompt": "Bronze fragments warped and cracked after drying, museum case",
+      "sfx": "crackle"
+    },
+    {
+      "n": 49,
+      "t": "8:48",
+      "tool": "flow",
+      "prompt": "Slow push-in on the real corroded bronze fragments in a dark museum case, dust drifting in a beam of light",
+      "sfx": "silence",
+      "clip": "hook/49.mp4"
+    },
+    {
+      "n": 50,
+      "t": "8:58",
+      "tool": "flux",
+      "prompt": "A modern engineer's bench with a 3D-printed copy of the mechanism and calipers",
+      "sfx": "workshop"
+    },
+    {
+      "n": 51,
+      "t": "9:20",
+      "tool": "flux",
+      "prompt": "The Aegean Sea at dawn over the island of Antikythera, calm water",
+      "sfx": "gentle waves",
+      "chapter": "What we lost",
+      "cue": "So why does this matter"
+    },
+    {
+      "n": 52,
+      "t": "9:40",
+      "tool": "flux",
+      "prompt": "A single bronze gear wheel resting on dark sand, amber light",
+      "sfx": "silence"
+    }
+  ],
+  "short": {
+    "title": "This Rock Is a 2,000-Year-Old Computer #shorts",
+    "en": "short_en.txt",
+    "ar": "short_ar.txt",
+    "scenes": [
+      {
+        "n": "s1",
+        "tool": "flow",
+        "prompt": "A beam of light sweeps across a corroded green bronze lump and reveals a perfect gear wheel inside it.",
+        "clip": "hook/short.mp4",
+        "use": 5
+      },
+      {
+        "tool": "flux",
+        "use": 5
+      },
+      {
+        "tool": "flux",
+        "use": 16
+      },
+      {
+        "tool": "flux",
+        "use": 27
+      },
+      {
+        "tool": "flux",
+        "use": 39
+      },
+      {
+        "tool": "flux",
+        "use": 52
+      }
+    ]
+  },
+  "callouts": [
+    {
+      "cue": "In the spring of nineteen hundred",
+      "text": "1900"
+    },
+    {
+      "cue": "Forty five metres below",
+      "text": "45 m"
+    },
+    {
+      "cue": "May, nineteen hundred and two",
+      "text": "1902"
+    },
+    {
+      "cue": "eighty two fragments",
+      "text": "82"
+    },
+    {
+      "cue": "Thirty gear wheels still survive",
+      "text": "30"
+    },
+    {
+      "cue": "two hundred and twenty three teeth",
+      "text": "223"
+    },
+    {
+      "cue": "two hundred and thirty five months",
+      "text": "235"
+    },
+    {
+      "cue": "Astronomical clocks with gear trains",
+      "text": "1300s"
+    }
+  ]
+}

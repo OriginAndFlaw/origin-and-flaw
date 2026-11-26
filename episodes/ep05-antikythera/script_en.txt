@@ -1,0 +1,113 @@
+When I first saw a photo of it, I honestly thought it was just a rock. A green, broken, ugly rock.
+
+It sits in a glass case in a museum in Athens. Thousands of people walk past it every day.
+
+But look closer. Inside that rock there is a gear wheel. Perfect, tiny, triangular teeth, cut by hand. And next to it, another. And another.
+
+This object is more than two thousand years old. It is the most complex machine that survives from the ancient world. And for well over a thousand years after it was made, nothing like it appears again.
+
+Nobody planned to find it. It was found because of a storm.
+
+In the spring of nineteen hundred, a small boat of sponge divers from the Greek island of Symi was heading home when bad weather forced them to shelter beside a tiny, rocky island called Antikythera.
+
+Sponge divers did not have modern scuba gear. They wore heavy canvas suits and brass helmets, and breathed air pumped down a hose. So while they waited for the storm to pass, they went down to look for sponges.
+
+Forty five metres below, one of them saw something on the seabed. A bronze arm. Then statues. Then hundreds of clay jars.
+
+They had found a shipwreck. A cargo ship from the Roman era, which sank somewhere around seventy to sixty years before the birth of Christ, loaded with treasures from the Greek world.
+
+The Greek navy helped bring it all up, in nineteen hundred and nineteen hundred and one. Bronze statues. Marble figures. Glass. Coins.
+
+And one more thing that nobody cared about at all.
+
+The divers brought up a shapeless lump of corroded bronze and rotten wood. Next to the statues, it looked like rubbish.
+
+It went into a museum storeroom, and sat there. Nobody treated it after it came out of the sea water, so as it dried, it cracked and broke apart.
+
+For two years, nobody looked at it twice.
+
+Then, on the seventeenth of May, nineteen hundred and two, an archaeologist named Valerios Stais was going through the finds. And in one broken piece of that lump, he saw a gear wheel.
+
+A gear wheel. Inside a Greek shipwreck from before the time of Christ.
+
+Here is how strange that was. Most experts at the time simply refused to believe it. A machine with precision gears, from that period? It had to be a mistake. A later object that fell onto the wreck. Anything but what it looked like.
+
+So for half a century, the fragments sat in a museum with their question unanswered.
+
+Remember that word: unanswered. Because the answer, when it finally came, was bigger than anyone expected.
+
+So what was it?
+
+The man who finally took it seriously was a British physicist and historian called Derek de Solla Price. He became fascinated by it in nineteen fifty one.
+
+In nineteen seventy one, together with a Greek scientist, Charalampos Karakalos, he did something nobody had done before. They looked inside the fragments with X rays and gamma rays.
+
+And the rock lit up with gears. Wheels hidden behind wheels, gears inside gears, locked inside the corrosion.
+
+Price counted the teeth on every wheel he could see. Because in a gear machine, the number of teeth is the message. Change the teeth, and you change what the machine calculates.
+
+In nineteen seventy four he published his findings. He called it a calculating machine. Some people now call it the world's first analogue computer.
+
+But Price could only see part of it. The real breakthrough needed technology that did not exist yet.
+
+In two thousand and five, a team brought a huge X ray CT scanner to Athens, the kind used to inspect engine parts, and scanned every fragment layer by layer.
+
+Suddenly they could read things that had been invisible for two thousand years. Tiny Greek letters engraved on the bronze. A user's manual, written on the machine itself.
+
+Today we know the mechanism broke into eighty two fragments. Thirty gear wheels still survive. The largest is about thirteen centimetres across, and it once had two hundred and twenty three teeth.
+
+Hold on to that number. Two hundred and twenty three. It is not random. It is a clue.
+
+Here is the part that still gives me chills.
+
+The whole machine fitted in a wooden case about the size of a shoebox. On the side, there was a crank. You turned the crank, and the gears turned, and time moved forward on its dials.
+
+On the front, pointers showed where the Sun and the Moon would be among the stars, on any day you chose.
+
+A little ball, half silver and half dark, turned to show the phase of the Moon.
+
+And the Moon is difficult. It does not move across the sky at a steady speed. It speeds up and slows down. The Greek astronomer Hipparchus had studied this. So the makers did something astonishing. They put two gears on slightly different centres, connected by a pin sliding in a slot. As the gears turned, the pin made the Moon pointer speed up and slow down, just like the real Moon.
+
+That is mechanical astronomy. Two thousand years ago.
+
+On the back were two large spiral dials. One followed a nineteen year calendar cycle of two hundred and thirty five months. The other predicted eclipses.
+
+And remember two hundred and twenty three? Eclipses repeat in a cycle of two hundred and twenty three lunar months. It is called the Saros cycle. That giant gear was built around it.
+
+There was even a small dial that told you when the great athletic games of Greece were due, including the Olympic Games.
+
+Inscriptions read in twenty sixteen even contain numbers for the cycles of Venus and Saturn. In twenty twenty one, a team at University College London published a full reconstruction suggesting it may once have shown the planets too, although other researchers still question parts of that design.
+
+Which raises the obvious question. Who built this?
+
+The honest answer is that nobody knows.
+
+Some think it came from Rhodes, where Hipparchus worked. Others point to Corinth's colonies, or to the tradition of Archimedes in Syracuse. Nobody has found a signature.
+
+We do not even know exactly when it was made. Estimates range from around two hundred and five to around eighty seven years before Christ.
+
+And here is what bothers me most. A machine this refined is not a first attempt. You do not cut perfect gears and pin and slot mechanisms on your first try. There must have been earlier machines. Teachers. Workshops. A whole tradition.
+
+And almost all of it is gone. Not one other machine like it has ever been found from the ancient world. For more than a thousand years afterwards, nothing of similar complexity appears. Astronomical clocks with gear trains like this only return in Europe in the fourteenth century.
+
+And now the flaw.
+
+The mechanism was brilliant, but it was not perfect. Its gears were cut and filed by hand. The teeth are not all the same size. Every gear wheel added a little play and a little friction. So the real machine was probably less accurate than the beautiful theory inside it.
+
+But the bigger flaw was not in the bronze. It was in us.
+
+When it was found, experts were so sure the ancient world could not make something like this that they almost dismissed it. And while they argued, the machine itself was left to dry out, crack and warp in a storeroom.
+
+The most advanced object of the ancient world survived two thousand years under the sea, and then nearly fell apart on land, because nobody believed what they were looking at.
+
+So why does this matter today?
+
+Because it shows that knowledge can be lost. A whole branch of engineering existed, and then it disappeared so completely that when we found the proof, we did not recognise it.
+
+Today engineers build working copies of it. Students study its gear trains. And every new scan reveals a few more letters, a few more numbers.
+
+Next time you look at the Moon, think about someone on a Greek island, more than two thousand years ago, turning a small bronze crank and watching it move.
+
+Tell me in the comments: what other ancient invention do you think we might have lost?
+
+In the next episode, we look at a bridge that was built to be beautiful, and tore itself apart in a light wind.

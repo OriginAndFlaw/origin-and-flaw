@@ -173,22 +173,55 @@ def _norm(w: str) -> str:
     return re.sub(r"[^a-z0-9]", "", w.lower())
 
 
-NUMWORDS = set("zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen "
-               "seventeen eighteen nineteen twenty thirty forty fifty sixty seventy eighty ninety hundred thousand "
-               "million billion".split())
+UNITS = {w: i for i, w in enumerate("zero one two three four five six seven eight nine ten eleven twelve thirteen "
+                                     "fourteen fifteen sixteen seventeen eighteen nineteen".split())}
+TENS = {w: 10 * i for i, w in enumerate("_ _ twenty thirty forty fifty sixty seventy eighty ninety".split()) if w != "_"}
+SCALES = {"hundred": 100, "thousand": 1000, "million": 10 ** 6, "billion": 10 ** 9}
+NUMWORDS = set(UNITS) | set(TENS) | set(SCALES)
+
+
+def _isnum(t: str) -> bool:
+    return t in NUMWORDS or (bool(t) and re.sub(r"(st|nd|rd|th)$", "", t).isdigit())
+
+
+def _value(tokens: list[str]) -> int | None:
+    """Value of a run of number tokens: "1938", "nineteen thirty eight", "three hundred and twenty seven",
+    "nineteen hundred and two", "twenty sixteen" (a year), "two million"."""
+    toks = [t for t in tokens if t != "and"]
+    if all(re.sub(r"(st|nd|rd|th)$", "", t).isdigit() for t in toks):
+        return int("".join(re.sub(r"(st|nd|rd|th)$", "", t) for t in toks))
+    def plain(ts):
+        total = cur = 0
+        for t in ts:
+            if t in UNITS:
+                cur += UNITS[t]
+            elif t in TENS:
+                cur += TENS[t]
+            elif t == "hundred":
+                cur = (cur or 1) * 100
+            elif t in SCALES:
+                total += (cur or 1) * SCALES[t]
+                cur = 0
+            else:
+                return None
+        return total + cur
+    if len(toks) >= 2 and (toks[0] in TENS or 10 <= UNITS.get(toks[0], 0) <= 19) and not any(t in SCALES for t in toks):
+        rest = plain(toks[1:])  # spoken years: "nineteen thirty eight", "twenty sixteen"
+        if rest is not None and rest >= 10:
+            return plain(toks[:1]) * 100 + rest
+    return plain(toks)
 
 
 def _skeleton(tokens: list[str]) -> tuple[list[str], list[int]]:
-    """Collapse every run of number tokens (digits or spelled out, with 'and' inside) to '#', so a cue written
-    "nineteen thirty eight" still matches speech the recogniser wrote as "1938". Returns tokens + start indexes."""
+    """Collapse every run of number tokens (digits or spelled out, with 'and' inside) to '#<value>', so a cue
+    written "nineteen thirty eight" matches speech the recogniser wrote as "1938" (and only 1938)."""
     out, idx, i = [], [], 0
-    isnum = lambda t: t in NUMWORDS or (t and t.replace("st", "").replace("nd", "").replace("rd", "").replace("th", "").isdigit())
     while i < len(tokens):
-        if isnum(tokens[i]):
+        if _isnum(tokens[i]):
             j = i + 1
-            while j < len(tokens) and (isnum(tokens[j]) or (tokens[j] == "and" and j + 1 < len(tokens) and isnum(tokens[j + 1]))):
+            while j < len(tokens) and (_isnum(tokens[j]) or (tokens[j] == "and" and j + 1 < len(tokens) and _isnum(tokens[j + 1]))):
                 j += 1
-            out.append("#")
+            out.append(f"#{_value(tokens[i:j])}")
             idx.append(i)
             i = j
         else:
@@ -200,7 +233,7 @@ def _skeleton(tokens: list[str]) -> tuple[list[str], list[int]]:
 
 def find_phrase(ws: list[dict], phrase: str) -> float | None:
     """Start time of the first place the narration says `phrase` (words compared without punctuation; numbers
-    match whether spelled out or written as digits)."""
+    match by value whether spelled out or written as digits)."""
     want = [_norm(w) for w in phrase.split() if _norm(w)]
     heard = [_norm(w["w"]) for w in ws]
     for i in range(len(heard) - len(want) + 1):
