@@ -217,6 +217,9 @@ def build_long(ep: dict, folder: Path, cfg: dict, work: Path, out: Path, max_wor
     voice = tts.narrate(read_script(folder, ep["scripts"]["en"], max_words), "en", cfg, work / "voice_en.wav")
     total = duration(voice)
     log(f"English narration {total / 60:.1f} min")
+    min_s = cfg.get("quality", {}).get("min_long_seconds", 480)
+    if max_words is None and total < min_s:  # channel rule: every long video runs past 8 minutes
+        raise SystemExit(f"narration is {total / 60:.1f} min, under the {min_s / 60:.0f}-minute minimum: lengthen the script")
     scenes = ep["scenes"]
     if max_words:
         scenes = scenes[:6]

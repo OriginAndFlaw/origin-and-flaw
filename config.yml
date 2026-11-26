@@ -73,3 +73,6 @@ research:
 # Extra audio tracks for YouTube's multi-language audio (uploaded in Studio): audio_track_<lang>.m4a.
 # Scripts: script_<lang>.txt in the episode folder (tools/translate_scripts.py makes them; Arabic by hand).
 dubs: [es]          # English + Spanish (owner, 26 Nov): the best second language for reach and CPM
+
+quality:
+  min_long_seconds: 480   # owner's rule: every long video over 8 minutes (render stops if shorter)
