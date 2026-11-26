@@ -1,0 +1,448 @@
+{
+  "id": "ep04-teflon",
+  "title": "Your Frying Pan Helped Build the Atomic Bomb",
+  "alt_titles": [
+    "The Accident Inside Every Non-Stick Pan",
+    "A Gas Vanished in 1938. It Became Teflon."
+  ],
+  "description": "On 6 April 1938, a 27-year-old DuPont chemist named Roy Plunkett opened a cylinder of gas and nothing came out. The cylinder was still heavy. When he cut it open, he found a white, waxy powder that nothing would stick to and almost nothing could destroy. He had made polytetrafluoroethylene, PTFE, by accident.\n\nFor years nobody knew what to do with it. Then the Manhattan Project needed a material that could survive uranium hexafluoride, one of the most corrosive substances ever handled in industry. PTFE coated the valves and seals of the enrichment plant at Oak Ridge. After the war it got a brand name, Teflon, and a French engineer and his wife put it on a frying pan.\n\nThis is the story of the slipperiest material on Earth: the accident, the bomb, the kitchen, and the hidden flaw that took decades to come out.\n\nChapters\n0:00 The pan in your kitchen\n0:40 A gas that vanished\n2:20 The slipperiest thing on Earth\n3:50 The bomb needed it\n5:40 From fishing line to frying pan\n7:00 The hidden flaw\n8:20 What it means today\n\nSources: Wikipedia, Polytetrafluoroethylene; Wikipedia, Roy J. Plunkett; US Patent 2,230,654 (1941).\n\nAI note: narration voice and visuals are AI-generated; no images show the real people involved.\n\n#engineering #history #documentary #teflon #science",
+  "tags": [
+    "teflon history",
+    "ptfe",
+    "non stick pan",
+    "roy plunkett",
+    "accidental inventions",
+    "manhattan project",
+    "uranium hexafluoride",
+    "oak ridge k-25",
+    "tefal history",
+    "pfoa",
+    "forever chemicals",
+    "history of everyday objects",
+    "engineering history",
+    "documentary",
+    "origin and flaw"
+  ],
+  "thumbnail": {
+    "scene": 5,
+    "words": "BOMB PAN."
+  },
+  "hook_seconds": 20,
+  "intro_chapter": "The pan in your kitchen",
+  "scripts": {
+    "en": "script_en.txt",
+    "es": "script_es.txt"
+  },
+  "scenes": [
+    {
+      "n": 1,
+      "t": "0:00",
+      "tool": "flow",
+      "prompt": "Close-up of a black non-stick frying pan on a gas stove at night, a single egg slides freely across the surface, blue flame below, static camera",
+      "sfx": "sizzle",
+      "clip": "hook/01.mp4"
+    },
+    {
+      "n": 2,
+      "t": "0:04",
+      "tool": "flow",
+      "prompt": "A 1938 chemistry laboratory, a steel gas cylinder on a bench, a gloved hand opens its valve and nothing comes out, a faint wisp of cold vapour, static camera",
+      "sfx": "valve squeak",
+      "clip": "hook/02.mp4"
+    },
+    {
+      "n": 3,
+      "t": "0:08",
+      "tool": "flow",
+      "prompt": "A hacksaw cutting through a steel gas cylinder in a dim 1930s lab, white waxy powder spilling out onto the bench, slow push-in",
+      "sfx": "metal sawing",
+      "clip": "hook/03.mp4"
+    },
+    {
+      "n": 4,
+      "t": "0:12",
+      "tool": "flow",
+      "prompt": "Wide shot of a vast 1940s industrial plant at dusk in a valley, long low buildings, steam rising, lights coming on, slow aerial drift",
+      "sfx": "deep hum",
+      "clip": "hook/04.mp4"
+    },
+    {
+      "n": 5,
+      "t": "0:16",
+      "tool": "flux",
+      "prompt": "A black non-stick frying pan on a dark stove, faint orange glow reflected in its surface",
+      "sfx": "kitchen ambience"
+    },
+    {
+      "n": 6,
+      "t": "0:24",
+      "tool": "flux",
+      "prompt": "Modern kitchen at night, a pan on the stove, warm light",
+      "sfx": "fridge hum"
+    },
+    {
+      "n": 7,
+      "t": "0:32",
+      "tool": "flux",
+      "prompt": "A white waxy powder in a glass dish under a lab lamp",
+      "sfx": "soft tick"
+    },
+    {
+      "n": 8,
+      "t": "0:40",
+      "tool": "flux",
+      "prompt": "Exterior of a 1930s brick chemical laboratory in New Jersey at dawn",
+      "sfx": "birds",
+      "chapter": "A gas that vanished",
+      "cue": "On the sixth of April"
+    },
+    {
+      "n": 9,
+      "t": "0:52",
+      "tool": "flux",
+      "prompt": "A young chemist in a 1930s white lab coat seen from behind at a bench of glassware",
+      "sfx": "glass clink"
+    },
+    {
+      "n": 10,
+      "t": "1:04",
+      "tool": "flux",
+      "prompt": "1930s refrigerators lined up in a showroom, rounded white doors",
+      "sfx": "showroom murmur"
+    },
+    {
+      "n": 11,
+      "t": "1:16",
+      "tool": "flux",
+      "prompt": "Small steel gas cylinders packed in a box of dry ice, cold vapour rising",
+      "sfx": "hiss"
+    },
+    {
+      "n": 12,
+      "t": "1:28",
+      "tool": "flux",
+      "prompt": "A gloved hand on the valve of a steel gas cylinder, laboratory, 1938",
+      "sfx": "valve"
+    },
+    {
+      "n": 13,
+      "t": "1:40",
+      "tool": "flux",
+      "prompt": "An old laboratory scale weighing a steel gas cylinder, the needle showing it is heavy",
+      "sfx": "scale creak"
+    },
+    {
+      "n": 14,
+      "t": "1:52",
+      "tool": "flux",
+      "prompt": "A hacksaw resting next to a sawn-open steel cylinder on a workbench",
+      "sfx": "metal clink"
+    },
+    {
+      "n": 15,
+      "t": "2:04",
+      "tool": "flux",
+      "prompt": "Macro of white waxy flakes inside the curved wall of a cut metal cylinder",
+      "sfx": "soft crunch"
+    },
+    {
+      "n": 16,
+      "t": "2:20",
+      "tool": "flux",
+      "prompt": "Clean 3D diagram on dark teal: a long molecular chain of carbon atoms wrapped in fluorine atoms, amber glow, no labels",
+      "sfx": "soft tone",
+      "chapter": "The slipperiest thing on Earth",
+      "cue": "What they had made"
+    },
+    {
+      "n": 17,
+      "t": "2:32",
+      "tool": "flux",
+      "prompt": "A drop of water beading up perfectly round on a smooth white surface",
+      "sfx": "drip"
+    },
+    {
+      "n": 18,
+      "t": "2:44",
+      "tool": "flux",
+      "prompt": "Strong acid in a glass beaker steaming around a white plastic block that stays untouched",
+      "sfx": "fizz"
+    },
+    {
+      "n": 19,
+      "t": "2:56",
+      "tool": "flux",
+      "prompt": "A white block sliding effortlessly down a steel ramp",
+      "sfx": "slide"
+    },
+    {
+      "n": 20,
+      "t": "3:08",
+      "tool": "flux",
+      "prompt": "Close-up of a blowtorch flame next to a white plastic part that does not melt",
+      "sfx": "torch"
+    },
+    {
+      "n": 21,
+      "t": "3:20",
+      "tool": "flux",
+      "prompt": "A 1941 patent document on a desk, unreadable text, a fountain pen",
+      "sfx": "paper"
+    },
+    {
+      "n": 22,
+      "t": "3:34",
+      "tool": "flux",
+      "prompt": "A dusty storeroom shelf with a jar of white powder forgotten among bottles",
+      "sfx": "silence"
+    },
+    {
+      "n": 23,
+      "t": "3:50",
+      "tool": "flux",
+      "prompt": "A 1940s map table with pins and a desk lamp, war-room atmosphere, no readable words",
+      "sfx": "radio static",
+      "chapter": "The bomb needed it",
+      "cue": "Then came the war"
+    },
+    {
+      "n": 24,
+      "t": "4:02",
+      "tool": "flux",
+      "prompt": "Aerial view of an enormous U-shaped industrial building in a green valley, 1945",
+      "sfx": "wind"
+    },
+    {
+      "n": 25,
+      "t": "4:14",
+      "tool": "flux",
+      "prompt": "Clean 3D diagram on dark teal: two kinds of atoms of slightly different size being separated through a fine barrier, amber glow, no labels",
+      "sfx": "hum"
+    },
+    {
+      "n": 26,
+      "t": "4:26",
+      "tool": "flux",
+      "prompt": "A corroded, eaten-away metal valve, green and grey crust, dramatic light",
+      "sfx": "drip"
+    },
+    {
+      "n": 27,
+      "t": "4:38",
+      "tool": "flux",
+      "prompt": "Miles of steel pipes and valves inside a 1940s industrial plant, workers tiny in the distance",
+      "sfx": "machinery"
+    },
+    {
+      "n": 28,
+      "t": "4:50",
+      "tool": "flux",
+      "prompt": "Close-up of a white gasket being fitted into a steel pipe flange by gloved hands",
+      "sfx": "metal"
+    },
+    {
+      "n": 29,
+      "t": "5:02",
+      "tool": "flux",
+      "prompt": "1940s workers seen from behind walking into a giant factory gate at shift change",
+      "sfx": "footsteps"
+    },
+    {
+      "n": 30,
+      "t": "5:14",
+      "tool": "flux",
+      "prompt": "A desert dawn sky with a distant bright glow on the horizon, 1945",
+      "sfx": "low rumble"
+    },
+    {
+      "n": 31,
+      "t": "5:26",
+      "tool": "flux",
+      "prompt": "Steel drums of white powder stacked in a 1948 warehouse",
+      "sfx": "forklift"
+    },
+    {
+      "n": 32,
+      "t": "5:40",
+      "tool": "flux",
+      "prompt": "A quiet French lakeside at morning, a fishing rod on a wooden jetty",
+      "sfx": "water lapping",
+      "chapter": "From fishing line to frying pan",
+      "cue": "In France, an engineer"
+    },
+    {
+      "n": 33,
+      "t": "5:52",
+      "tool": "flux",
+      "prompt": "Close-up of a fishing reel and a tangled fishing line on a workbench",
+      "sfx": "line zip"
+    },
+    {
+      "n": 34,
+      "t": "6:04",
+      "tool": "flux",
+      "prompt": "A 1950s French home kitchen, an aluminium pan on a stove, morning light",
+      "sfx": "kettle"
+    },
+    {
+      "n": 35,
+      "t": "6:16",
+      "tool": "flux",
+      "prompt": "A 1950s small workshop with aluminium pans being coated, steam, no faces",
+      "sfx": "spray"
+    },
+    {
+      "n": 36,
+      "t": "6:28",
+      "tool": "flux",
+      "prompt": "Rows of shiny new non-stick pans on a 1950s factory line",
+      "sfx": "conveyor"
+    },
+    {
+      "n": 37,
+      "t": "6:40",
+      "tool": "flux",
+      "prompt": "A 1960s American department store display of non-stick pans, no readable brand names",
+      "sfx": "store murmur"
+    },
+    {
+      "n": 38,
+      "t": "6:52",
+      "tool": "flux",
+      "prompt": "A 1960s family kitchen, eggs sliding out of a pan onto a plate",
+      "sfx": "sizzle"
+    },
+    {
+      "n": 39,
+      "t": "7:00",
+      "tool": "flux",
+      "prompt": "A river beside a large chemical factory at dusk, mist over the water",
+      "sfx": "river",
+      "chapter": "The hidden flaw",
+      "cue": "But there is a flaw"
+    },
+    {
+      "n": 40,
+      "t": "7:12",
+      "tool": "flux",
+      "prompt": "Laboratory test tubes of water samples in a rack, amber light",
+      "sfx": "glass"
+    },
+    {
+      "n": 41,
+      "t": "7:28",
+      "tool": "flux",
+      "prompt": "A 1990s courtroom seen from the back, empty benches, tall windows",
+      "sfx": "gavel echo"
+    },
+    {
+      "n": 42,
+      "t": "7:44",
+      "tool": "flux",
+      "prompt": "Clean 3D diagram on dark teal: a falling line on a chart, amber, no labels or numbers",
+      "sfx": "soft tone"
+    },
+    {
+      "n": 43,
+      "t": "8:00",
+      "tool": "flux",
+      "prompt": "An empty non-stick pan glowing too hot on a red electric hob, faint smoke",
+      "sfx": "heat crackle"
+    },
+    {
+      "n": 44,
+      "t": "8:20",
+      "tool": "flux",
+      "prompt": "Spacesuit fabric and wire insulation laid out on a white bench",
+      "sfx": "fabric",
+      "chapter": "What it means today",
+      "cue": "So what does this mean"
+    },
+    {
+      "n": 45,
+      "t": "8:40",
+      "tool": "flux",
+      "prompt": "A roll of white thread-seal tape and dental floss on a dark surface",
+      "sfx": "snap"
+    },
+    {
+      "n": 46,
+      "t": "9:00",
+      "tool": "flux",
+      "prompt": "A single black frying pan hanging on a kitchen wall under amber light",
+      "sfx": "silence"
+    }
+  ],
+  "short": {
+    "title": "Your Frying Pan Helped Build the Atomic Bomb #shorts",
+    "en": "short_en.txt",
+    "ar": "short_ar.txt",
+    "scenes": [
+      {
+        "n": "s1",
+        "tool": "flow",
+        "prompt": "An egg sliding freely across a black non-stick pan on a blue gas flame.",
+        "clip": "hook/short.mp4",
+        "use": 5
+      },
+      {
+        "tool": "flux",
+        "use": 5
+      },
+      {
+        "tool": "flux",
+        "use": 15
+      },
+      {
+        "tool": "flux",
+        "use": 25
+      },
+      {
+        "tool": "flux",
+        "use": 35
+      },
+      {
+        "tool": "flux",
+        "use": 46
+      }
+    ]
+  },
+  "callouts": [
+    {
+      "cue": "in a laboratory in nineteen thirty eight",
+      "text": "1938"
+    },
+    {
+      "cue": "He was twenty seven years old",
+      "text": "27"
+    },
+    {
+      "cue": "three hundred and twenty seven degrees",
+      "text": "327 °C"
+    },
+    {
+      "cue": "patented it in nineteen forty one",
+      "text": "1941"
+    },
+    {
+      "cue": "It was called K twenty five",
+      "text": "K-25"
+    },
+    {
+      "cue": "In nineteen fifty four",
+      "text": "1954"
+    },
+    {
+      "cue": "In nineteen sixty one",
+      "text": "1961"
+    },
+    {
+      "cue": "fell by about seventy percent",
+      "text": "−70%"
+    },
+    {
+      "cue": "two hundred and sixty degrees",
+      "text": "260 °C"
+    }
+  ]
+}
