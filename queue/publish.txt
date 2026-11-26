@@ -1,4 +1,3 @@
-ep02-roman-concrete 2026-11-26
 ep01-hyatt-regency 2026-11-27 b
 ep03-gimli-glider 2026-11-28
 ep02-roman-concrete 2026-11-29 b
