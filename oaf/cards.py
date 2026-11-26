@@ -39,6 +39,25 @@ def chapter_overlay(number: int, title: str, dst: Path, w: int = 1920, h: int = 
     return dst
 
 
+def callout(text: str, dst: Path, w: int = 1920, h: int = 1080) -> Path:
+    """Transparent PNG: one big number or very short fact (e.g. "114", "60% -> 30%") in amber, upper right,
+    away from the chapter card (upper left) and the viewer's captions (bottom). Numbers read in any language."""
+    im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    glow = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    ImageDraw.Draw(glow).ellipse((int(w * 0.56), int(h * 0.04), int(w * 0.98), int(h * 0.46)), fill=(0, 0, 0, 120))
+    im = Image.alpha_composite(im, glow.filter(ImageFilter.GaussianBlur(60)))
+    d = ImageDraw.Draw(im)
+    size = int(h * (0.16 if len(text) <= 6 else 0.10))
+    font = _font(True, size)
+    tw = d.textlength(text, font=font)
+    x, y = int(w * 0.94 - tw), int(h * 0.12)
+    d.text((x + 3, y + 4), text, font=font, fill=(0, 0, 0, 160))
+    d.text((x, y), text, font=font, fill=AMBER)
+    d.line((x, y + size + int(h * 0.025), x + min(tw, w * 0.2), y + size + int(h * 0.025)), fill=CREAM, width=4)
+    im.save(dst)
+    return dst
+
+
 def thumbnail(still: Path, words: str, dst: Path) -> Path:
     """1280x720: the chosen still, darkened at the edges, 2-4 bold amber words on the left."""
     base = Image.open(still).convert("RGB").resize((1280, 720))

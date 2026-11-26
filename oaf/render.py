@@ -216,6 +216,33 @@ def anchor_chapters(scenes: list[dict], lengths: list[float], ws: list[dict]):
 
 # ---------- builders ----------
 
+def add_callouts(picture: Path, callouts: list[dict], ws: list[dict], total: float, cfg: dict, work: Path,
+                 w: int, h: int) -> Path:
+    """Big numbers on screen at the moment the narration says them: [{"cue": "a hundred and fourteen",
+    "text": "114"}]. Each shows for about 3 s, fading in and out."""
+    shown = []
+    for k, c in enumerate(callouts):
+        t = find_phrase(ws, c["cue"])
+        if t is None:
+            log(f"callout cue not heard, skipped: {c['cue']}")
+            continue
+        shown.append((t, cards.callout(c["text"], work / f"callout_{k}.png", w, h)))
+    if not shown:
+        return picture
+    cmd = ["ffmpeg", "-y", "-i", str(picture)]
+    fc, last = [], "0:v"
+    for k, (t, png) in enumerate(shown):
+        cmd += ["-loop", "1", "-t", f"{total:.2f}", "-i", str(png)]
+        fc.append(f"[{k + 1}:v]format=rgba,fade=in:st={t:.2f}:d=0.3:alpha=1,"
+                  f"fade=out:st={t + 2.7:.2f}:d=0.4:alpha=1[c{k}]")
+        fc.append(f"[{last}][c{k}]overlay=shortest=1[v{k}]")
+        last = f"v{k}"
+    dst = work / "picture_long_callouts.mp4"
+    run(cmd + ["-filter_complex", ";".join(fc), "-map", f"[{last}]"] + enc(cfg) + ["-an", str(dst)])
+    log(f"{len(shown)} number callouts added")
+    return dst
+
+
 def build_long(ep: dict, folder: Path, cfg: dict, work: Path, out: Path, max_words: int | None) -> dict:
     W, H = cfg["video"]["width"], cfg["video"]["height"]
     voice = tts.narrate(read_script(folder, ep["scripts"]["en"], max_words), "en", cfg, work / "voice_en.wav")
@@ -262,6 +289,7 @@ def build_long(ep: dict, folder: Path, cfg: dict, work: Path, out: Path, max_wor
         parts.append(seg)
         log(f"scene {i + 1}/{len(scenes)} done ({d:.1f}s)")
     picture = concat(parts, work / "picture_long.mp4")
+    picture = add_callouts(picture, ep.get("callouts", []), ws, total, cfg, work, W, H)
     audio = mix_audio(voice, total, cfg, work / "mix_en.wav", ep["id"])
     ass = None
     subtitles.write_srt(ws, out / "long_en.srt")
