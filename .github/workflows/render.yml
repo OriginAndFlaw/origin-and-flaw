@@ -10,8 +10,8 @@ on:
         description: "episode folder name, e.g. ep01-hyatt-regency"
         required: true
       only:
-        description: "long,arabic,short,extra,thumb"
-        default: "long,arabic,short,extra,thumb"
+        description: "long,arabic,dubs,short,extra,thumb"
+        default: "long,arabic,dubs,short,extra,thumb"
       upload:
         description: "send to YouTube when done (yes/no)"
         default: "no"
@@ -26,7 +26,7 @@ jobs:
     timeout-minutes: 150
     env:
       EPISODE: ${{ github.event.client_payload.episode || inputs.episode }}
-      ONLY: ${{ github.event.client_payload.only || inputs.only || 'long,arabic,short,extra,thumb' }}
+      ONLY: ${{ github.event.client_payload.only || inputs.only || 'long,arabic,dubs,short,extra,thumb' }}
       UPLOAD: ${{ inputs.upload || 'yes' }}
     steps:
       - uses: actions/checkout@v4

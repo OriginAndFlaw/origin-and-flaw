@@ -267,22 +267,34 @@ def upload_copy(src: Path, total: float, cfg: dict) -> None:
          "-c:a", "aac", "-b:a", "160k", "-movflags", "+faststart", str(src.with_name("long_upload.mp4"))])
 
 
-def build_arabic_track(ep: dict, folder: Path, cfg: dict, work: Path, out: Path, total: float,
-                       max_words: int | None) -> None:
-    """Arabic narration fitted to the English video's length, with the same music: for YouTube's
-    multi-language audio feature (added in Studio), plus Arabic subtitles."""
-    voice = tts.narrate(read_script(folder, ep["scripts"]["ar"], max_words), "ar", cfg, work / "voice_ar.wav")
-    d = duration(voice)
-    ratio = d / total
-    fitted = work / "voice_ar_fit.wav"
+def build_dub(ep: dict, folder: Path, cfg: dict, work: Path, out: Path, total: float,
+              max_words: int | None, lang: str) -> None:
+    """Narration in another language fitted to the English video's length, with the same music: for
+    YouTube's multi-language audio (added in Studio). Arabic also gets its own subtitle file."""
+    name = ep["scripts"].get(lang) or f"script_{lang}.txt"
+    if not (folder / name).exists():
+        log(f"no {name}: {lang} track skipped")
+        return
+    text = read_script(folder, name, max_words)
+    voice = tts.narrate(text, lang, cfg, work / f"voice_{lang}.wav")
+    ratio = duration(voice) / total
+    if ratio > 1.15:  # too long: speak faster rather than squeeze it all with atempo
+        base = int(str(cfg["voice"]["edge"]["rate"]).rstrip("%"))
+        c2 = json.loads(json.dumps(cfg))
+        c2["voice"]["edge"]["rate"] = f"{base + round((ratio - 1.05) * 100):+d}%"
+        log(f"{lang} is {ratio:.2f}x the English length: re-reading at {c2['voice']['edge']['rate']}")
+        voice = tts.narrate(text, lang, c2, work / f"voice_{lang}.wav")
+        ratio = duration(voice) / total
+    fitted = work / f"voice_{lang}_fit.wav"
     if 0.8 <= ratio <= 1.25:
         run(["ffmpeg", "-y", "-i", str(voice), "-af", f"atempo={ratio:.4f}", str(fitted)])
     else:
-        log(f"Arabic is {ratio:.2f}x the English length: not stretched (shorten or lengthen the Arabic script)")
+        log(f"{lang} is {ratio:.2f}x the English length: not stretched (shorten or lengthen the script)")
         shutil.copy(voice, fitted)
-    mix = mix_audio(fitted, total, cfg, work / "mix_ar.wav", ep["id"])
-    run(["ffmpeg", "-y", "-i", str(mix), "-c:a", "aac", "-b:a", "192k", str(out / "audio_track_ar.m4a")])
-    subtitles.write_srt(subtitles.words(fitted, "ar", cfg["subtitles"]["model"]), out / "long_ar.srt")
+    mix = mix_audio(fitted, total, cfg, work / f"mix_{lang}.wav", ep["id"])
+    run(["ffmpeg", "-y", "-i", str(mix), "-c:a", "aac", "-b:a", "192k", str(out / f"audio_track_{lang}.m4a")])
+    if lang == "ar":
+        subtitles.write_srt(subtitles.words(fitted, "ar", cfg["subtitles"]["model"]), out / "long_ar.srt")
 
 
 def build_short(ep: dict, folder: Path, cfg: dict, work: Path, out: Path, lang: str,
@@ -329,7 +341,7 @@ def build_thumb(ep: dict, folder: Path, cfg: dict, out: Path) -> None:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--episode", required=True)
-    ap.add_argument("--only", default="long,arabic,short,extra,thumb")
+    ap.add_argument("--only", default="long,arabic,dubs,short,extra,thumb")
     ap.add_argument("--test", action="store_true", help="first 120 words and 6 scenes only")
     a = ap.parse_args()
     need("ffmpeg")
@@ -343,9 +355,11 @@ def main() -> None:
     info = {}
     if "long" in what:
         info = build_long(ep, folder, cfg, work, out, mw)
-    if "arabic" in what and ep["scripts"].get("ar"):
+    dubs = [l for l in cfg.get("dubs", ["ar"]) if ("arabic" in what and l == "ar") or ("dubs" in what and l != "ar")]
+    if dubs:
         total = info.get("total") or duration(out / "long.mp4")
-        build_arabic_track(ep, folder, cfg, work, out, total, mw)
+        for lang in dubs:
+            build_dub(ep, folder, cfg, work, out, total, mw, lang)
     if "short" in what and ep.get("short") and not a.test:
         for lang in ("en", "ar"):
             if ep["short"].get(lang):

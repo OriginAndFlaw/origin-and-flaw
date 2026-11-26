@@ -64,6 +64,74 @@ def _chirp(text: str, voice: str, rate: float, out: Path) -> None:
     run(["ffmpeg", "-y", "-f", "concat", "-safe", "0", "-i", str(lst), str(out)])
 
 
+class GeminiQuota(Exception):
+    pass
+
+
+def _gemini_key() -> str:
+    k = env("GEMINI_API_KEY")
+    if k:
+        return k.strip()
+    f = Path.home() / ".flow-mcp" / "gemini-key"
+    return f.read_text(encoding="utf-8").strip() if f.exists() else ""
+
+
+def _chunks(text: str, limit: int = 2400) -> list[str]:
+    """Split at paragraph (then sentence) ends so each request stays a natural read."""
+    out, cur = [], ""
+    for para in [p.strip() for p in text.split("\n\n") if p.strip()]:
+        pieces = [para] if len(para) <= limit else re.split(r"(?<=[.!?।؟])\s+", para)
+        for piece in pieces:
+            if cur and len(cur) + len(piece) + 2 > limit:
+                out.append(cur)
+                cur = ""
+            cur = f"{cur}\n\n{piece}" if cur else piece
+    if cur:
+        out.append(cur)
+    return out
+
+
+def _gemini(text: str, voice: str, style: str, model: str, out_wav: Path) -> None:
+    """Google AI Studio text-to-speech, read in chunks and joined with short pauses. Raises GeminiQuota
+    when the free daily limit is used up (the caller then reads the whole thing with edge-tts)."""
+    key = _gemini_key()
+    if not key:
+        raise GeminiQuota("no Gemini key")
+    parts = []
+    for i, chunk in enumerate(_chunks(text)):
+        words = len(chunk.split())
+        for attempt in range(3):
+            prompt = f"Read {style}:\n\n{chunk}" if style and attempt < 2 else chunk
+            r = requests.post(f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
+                              headers={"content-type": "application/json", "x-goog-api-key": key}, timeout=300,
+                              json={"contents": [{"parts": [{"text": prompt}]}],
+                                    "generationConfig": {"responseModalities": ["AUDIO"], "speechConfig": {
+                                        "voiceConfig": {"prebuiltVoiceConfig": {"voiceName": voice}}}}})
+            if r.status_code == 429 or "quota" in r.text[:500].lower():
+                raise GeminiQuota(r.text[:200])
+            if r.status_code >= 500:
+                continue
+            r.raise_for_status()
+            inline = next(p["inlineData"] for p in r.json()["candidates"][0]["content"]["parts"] if "inlineData" in p)
+            rate = int(re.search(r"rate=(\d+)", inline.get("mimeType", "")).group(1)) if "rate=" in inline.get("mimeType", "") else 24000
+            raw = out_wav.with_name(f"{out_wav.stem}_g{i:02d}.pcm")
+            raw.write_bytes(base64.b64decode(inline["data"]))
+            part = out_wav.with_name(f"{out_wav.stem}_g{i:02d}.wav")
+            run(["ffmpeg", "-y", "-f", "s16le", "-ar", str(rate), "-ac", "1", "-i", str(raw), "-ar", "48000",
+                 "-af", "apad=pad_dur=0.45", str(part)])
+            secs = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0",
+                                         str(part)], capture_output=True, text=True).stdout or 0)
+            if secs < words / 0.9:  # far longer than any natural read = the model rambled: ask again
+                parts.append(part)
+                break
+            log(f"Gemini take {i} is {secs:.0f}s for {words} words: asking again")
+        else:
+            raise RuntimeError(f"Gemini could not read chunk {i}")
+    lst = out_wav.with_name(out_wav.stem + "_g.txt")
+    lst.write_text("".join(f"file '{p.name}'\n" for p in parts), encoding="utf-8")
+    run(["ffmpeg", "-y", "-f", "concat", "-safe", "0", "-i", str(lst), "-c", "copy", str(out_wav)])
+
+
 def trim_silence(src: Path, dst: Path, tool: str = "ffmpeg") -> Path:
     """Shorten every pause longer than 0.6 s to 0.35 s. Default is ffmpeg silenceremove: auto-editor 2x
     (tested 2026-11-25) squeezed the opening words and inserted 4 s gaps, so it is opt-in only."""
@@ -87,10 +155,18 @@ def narrate(text: str, lang: str, cfg: dict, out_wav: Path) -> Path:
     if engine == "chirp" and not env("GOOGLE_TTS_KEY_JSON"):
         log("chirp chosen but GOOGLE_TTS_KEY_JSON is not set: using edge-tts")
         engine = "edge"
+    if engine == "gemini":
+        g = vc["gemini"]
+        try:
+            raw = raw.with_suffix(".wav")
+            _gemini(text, g.get("voices", {}).get(lang, g["voice"]), g.get("style", ""), g["model"], raw)
+        except GeminiQuota as e:
+            log(f"Gemini voice not available ({str(e)[:80]}): reading {lang} with edge-tts")
+            engine = "edge"
     if engine == "chirp":
         raw = raw.with_suffix(".wav")
         _chirp(text, vc["chirp"][lang], vc["chirp"]["speaking_rate"], raw)
-    else:
+    elif engine == "edge":
         raw = raw.with_suffix(".mp3")
         asyncio.run(_edge(text, vc["edge"][lang], vc["edge"]["rate"], raw))
     wav = out_wav.with_name(out_wav.stem + "_full.wav")

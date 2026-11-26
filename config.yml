@@ -10,11 +10,21 @@ video:
   ken_burns_zoom: 0.10   # how far each still zooms over its time (0.10 = 10 %)
 
 voice:
-  engine: edge        # edge (free, no key) | chirp (Google Cloud TTS Chirp 3 HD, needs GOOGLE_TTS_KEY_JSON + billing)
+  engine: gemini      # gemini (Google AI Studio voice, free daily limit, falls back to edge) | edge (free, no key) | chirp (Google Cloud TTS Chirp 3 HD, needs GOOGLE_TTS_KEY_JSON + billing)
   edge:
     en: en-US-AndrewNeural
     ar: ar-SA-HamedNeural
+    es: es-MX-JorgeNeural
+    pt: pt-BR-AntonioNeural
+    hi: hi-IN-MadhurNeural
+    fr: fr-FR-HenriNeural
+    de: de-DE-ConradNeural
+    id: id-ID-ArdiNeural
     rate: "-6%"        # a little slower = documentary pace and longer runtime
+  gemini:
+    model: gemini-2.5-flash-preview-tts
+    voice: Charon        # same voice in every language: the channel sounds like one narrator
+    style: "as a calm, suspenseful documentary narrator"
   chirp:
     en: en-US-Chirp3-HD-Charon
     ar: ar-XA-Chirp3-HD-Charon
@@ -59,3 +69,7 @@ research:
   outlier_multiplier: 3
   days: 30
   trends_keywords: [ancient engineering, engineering disaster, history of inventions, roman concrete, lost technology]
+
+# Extra audio tracks for YouTube's multi-language audio (uploaded in Studio): audio_track_<lang>.m4a.
+# Scripts: script_<lang>.txt in the episode folder (tools/translate_scripts.py makes them; Arabic by hand).
+dubs: [ar]          # more languages later if analytics show demand: add es, pt, hi, fr, de, id
