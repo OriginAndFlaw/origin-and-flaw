@@ -173,13 +173,44 @@ def _norm(w: str) -> str:
     return re.sub(r"[^a-z0-9]", "", w.lower())
 
 
+NUMWORDS = set("zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen "
+               "seventeen eighteen nineteen twenty thirty forty fifty sixty seventy eighty ninety hundred thousand "
+               "million billion".split())
+
+
+def _skeleton(tokens: list[str]) -> tuple[list[str], list[int]]:
+    """Collapse every run of number tokens (digits or spelled out, with 'and' inside) to '#', so a cue written
+    "nineteen thirty eight" still matches speech the recogniser wrote as "1938". Returns tokens + start indexes."""
+    out, idx, i = [], [], 0
+    isnum = lambda t: t in NUMWORDS or (t and t.replace("st", "").replace("nd", "").replace("rd", "").replace("th", "").isdigit())
+    while i < len(tokens):
+        if isnum(tokens[i]):
+            j = i + 1
+            while j < len(tokens) and (isnum(tokens[j]) or (tokens[j] == "and" and j + 1 < len(tokens) and isnum(tokens[j + 1]))):
+                j += 1
+            out.append("#")
+            idx.append(i)
+            i = j
+        else:
+            out.append(tokens[i])
+            idx.append(i)
+            i += 1
+    return out, idx
+
+
 def find_phrase(ws: list[dict], phrase: str) -> float | None:
-    """Start time of the first place the narration says `phrase` (words compared without punctuation)."""
+    """Start time of the first place the narration says `phrase` (words compared without punctuation; numbers
+    match whether spelled out or written as digits)."""
     want = [_norm(w) for w in phrase.split() if _norm(w)]
     heard = [_norm(w["w"]) for w in ws]
     for i in range(len(heard) - len(want) + 1):
         if heard[i:i + len(want)] == want:
             return ws[i]["s"]
+    sw, _ = _skeleton(want)
+    sh, ih = _skeleton(heard)
+    for i in range(len(sh) - len(sw) + 1):
+        if sh[i:i + len(sw)] == sw:
+            return ws[ih[i]]["s"]
     return None
 
 
