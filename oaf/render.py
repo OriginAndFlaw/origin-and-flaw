@@ -332,7 +332,7 @@ def build_dub(ep: dict, folder: Path, cfg: dict, work: Path, out: Path, total: f
         voice = tts.narrate(text, lang, c2, work / f"voice_{lang}.wav")
         ratio = duration(voice) / total
     fitted = work / f"voice_{lang}_fit.wav"
-    if 0.8 <= ratio <= 1.25:
+    if 0.8 <= ratio <= 1.35:  # Spanish runs ~20-30% longer than English; up to 1.35x still sounds natural
         run(["ffmpeg", "-y", "-i", str(voice), "-af", f"atempo={ratio:.4f}", str(fitted)])
     else:
         log(f"{lang} is {ratio:.2f}x the English length: not stretched (shorten or lengthen the script)")
