@@ -347,6 +347,7 @@ def main() -> None:
     need("ffmpeg")
     cfg = load_config()
     ep, folder = load_episode(a.episode)
+    tts.PREREC = folder / "voice"
     out = OUT / a.episode
     work = out / "work"
     work.mkdir(parents=True, exist_ok=True)
@@ -361,12 +362,12 @@ def main() -> None:
         for lang in dubs:
             build_dub(ep, folder, cfg, work, out, total, mw, lang)
     if "short" in what and ep.get("short") and not a.test:
-        for lang in ["en"] + cfg.get("dubs", []):
+        for lang in ["en"]:  # Shorts stay English; the second language rides on the long video's audio track
             if ep["short"].get(lang):
                 build_short(ep, folder, cfg, work, out, lang)
     if "extra" in what and not a.test:
         for x in ep.get("extra_shorts", []):
-            for lang in ["en"] + cfg.get("dubs", []):
+            for lang in ["en"]:
                 if x.get(lang):
                     build_short(ep, folder, cfg, work, out, lang, x, x["id"])
     if "thumb" in what:

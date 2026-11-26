@@ -146,10 +146,28 @@ def trim_silence(src: Path, dst: Path, tool: str = "ffmpeg") -> Path:
     return dst
 
 
+# Pre-recorded narration: render sets PREREC to episodes/<ep>/voice. A Gemini take made on the PC (where the key
+# lives) is saved there as <hash>.m4a when OAF_SAVE_VOICE=1, committed, and reused by the cloud render.
+PREREC: Path | None = None
+
+
+def _take_id(text: str, lang: str, vc: dict) -> str:
+    import hashlib
+    g = vc.get("gemini", {})
+    sig = f"{lang}|{g.get('voices', {}).get(lang, g.get('voice'))}|{g.get('style')}|{text}"
+    return hashlib.sha1(sig.encode("utf-8")).hexdigest()[:16]
+
+
 def narrate(text: str, lang: str, cfg: dict, out_wav: Path) -> Path:
     """Speak `text` in `lang` ("en"/"ar"); returns a 48 kHz mono WAV, loudness-levelled."""
+    import os
     text = clean_for_speech(text)
     vc = cfg["voice"]
+    take = PREREC / f"{_take_id(text, lang, vc)}.m4a" if PREREC else None
+    if take and take.exists() and vc["engine"] == "gemini":
+        log(f"using the pre-recorded {lang} narration {take.name}")
+        run(["ffmpeg", "-y", "-i", str(take), "-ac", "1", "-ar", "48000", str(out_wav)])
+        return out_wav
     raw = out_wav.with_name(out_wav.stem + "_raw")
     engine = vc["engine"]
     if engine == "chirp" and not env("GOOGLE_TTS_KEY_JSON"):
@@ -175,4 +193,8 @@ def narrate(text: str, lang: str, cfg: dict, out_wav: Path) -> Path:
         wav = trim_silence(wav, out_wav.with_name(out_wav.stem + "_tight.wav"), vc.get("trim_tool", "ffmpeg"))
     run(["ffmpeg", "-y", "-i", str(wav), "-af", "loudnorm=I=-16:TP=-1.5:LRA=11", "-ar", "48000", "-ac", "1",
          str(out_wav)])
+    if take and engine == "gemini" and os.environ.get("OAF_SAVE_VOICE") == "1":
+        take.parent.mkdir(parents=True, exist_ok=True)
+        run(["ffmpeg", "-y", "-i", str(out_wav), "-c:a", "aac", "-b:a", "128k", str(take)])
+        log(f"saved {lang} narration as {take}")
     return out_wav
