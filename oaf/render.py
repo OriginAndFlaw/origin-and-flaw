@@ -31,17 +31,21 @@ def enc(cfg: dict) -> list[str]:
 
 
 def ken_burns(img: Path, dur: float, dst: Path, idx: int, cfg: dict, w: int, h: int,
-              overlay: Path | None = None) -> Path:
-    """One still -> a moving shot. Alternates push-in / pull-back and drifts a little sideways."""
+              overlay: Path | None = None, variant: int = 0) -> Path:
+    """One still -> a moving shot. Alternates push-in / pull-back and drifts a little sideways.
+    variant > 0 = a closer framing of a different part of the same still (a "new shot" for long holds)."""
     fps = cfg["video"]["fps"]
     n = max(2, int(round(dur * fps)))
     z = cfg["video"]["ken_burns_zoom"]
     bw, bh = int(w * 1.5), int(h * 1.5)
-    rnd = random.Random(idx)
+    rnd = random.Random(idx * 10 + variant)
     a, b = rnd.choice([(0.5, 0.5), (0.35, 0.65), (0.65, 0.35), (0.5, 0.4)])
-    zexpr = f"1+{z}*on/{n}" if idx % 2 == 0 else f"1+{z}-{z}*on/{n}"
+    base = 1 + (0.3 + 0.1 * (variant % 2)) * (variant > 0)
+    if variant:
+        a, b = rnd.choice([(0.15, 0.3), (0.85, 0.7), (0.3, 0.15), (0.7, 0.85)])
+    zexpr = f"{base}+{z}*on/{n}" if (idx + variant) % 2 == 0 else f"{base}+{z}-{z}*on/{n}"
     vf = (f"scale={bw}:{bh}:force_original_aspect_ratio=increase,crop={bw}:{bh},"
-          f"zoompan=z='{zexpr}':x='(iw-iw/zoom)*({a}+({b}-{a})*on/{n})':y='(ih-ih/zoom)*0.5'"
+          f"zoompan=z='{zexpr}':x='(iw-iw/zoom)*({a}+({b}-{a})*on/{n})':y='(ih-ih/zoom)*{0.5 if not variant else rnd.choice([0.3, 0.5, 0.7])}'"
           f":d={n}:s={w}x{h}:fps={fps},setsar=1")
     cmd = ["ffmpeg", "-y", "-i", str(img)]
     if overlay:
@@ -243,7 +247,18 @@ def build_long(ep: dict, folder: Path, cfg: dict, work: Path, out: Path, max_wor
             if sc.get("chapter"):
                 chapter_no += 1
                 ov = cards.chapter_overlay(chapter_no, sc["chapter"], work / f"chapter_{chapter_no}.png", W, H)
-            ken_burns(images.get_still(sc, folder, cfg), d, seg, i, cfg, W, H, ov)
+            still = images.get_still(sc, folder, cfg)
+            hold = cfg["video"].get("max_hold", 7.5)
+            k = max(1, int(-(-d // hold)))  # owner/Gemini review: change the picture every 5-8 s
+            if k == 1:
+                ken_burns(still, d, seg, i, cfg, W, H, ov)
+            else:
+                subs = []
+                for j in range(k):
+                    sp = work / f"seg_{i:03d}_{j}.mp4"
+                    ken_burns(still, d / k, sp, i, cfg, W, H, ov if j == 0 else None, variant=j)
+                    subs.append(sp)
+                concat(subs, seg)
         parts.append(seg)
         log(f"scene {i + 1}/{len(scenes)} done ({d:.1f}s)")
     picture = concat(parts, work / "picture_long.mp4")

@@ -4,6 +4,7 @@ video:
   width: 1920
   height: 1080
   fps: 25
+  max_hold: 7          # no still stays on screen longer than this: longer holds become 2-3 moving shots
   crf: 21            # lower = sharper + bigger file
   preset: veryfast
   vignette: true

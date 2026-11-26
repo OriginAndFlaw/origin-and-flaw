@@ -61,7 +61,10 @@ def main(pkg: str, ep_id: str) -> None:
                 later[0]["cue"] = cue.strip()
 
     (folder / "script_en.txt").write_text(body_text(section(md, 3)), encoding="utf-8")
-    (folder / "script_ar.txt").write_text(body_text(section(md, 4)), encoding="utf-8")
+    # section 4 = the second-language script; its heading names the language (SPANISH -> es, ARABIC -> ar)
+    head4 = re.search(r"^## 4\.(.*)$", md, re.M)
+    lang2 = "es" if head4 and "SPANISH" in head4.group(1).upper() else "ar"
+    (folder / f"script_{lang2}.txt").write_text(body_text(section(md, 4)), encoding="utf-8")
     short = section(md, 5)
     en = re.search(r"\*\*English.*?\*\*\n(.*?)\n\*\*Arabic", short, re.S)
     ar = re.search(r"\*\*Arabic.*?\*\*\n(.*?)\n\*\*Short title", short, re.S)
@@ -82,7 +85,7 @@ def main(pkg: str, ep_id: str) -> None:
                       "words": thumb_words.group(1).strip() if thumb_words else ""},
         "hook_seconds": 20,
         "intro_chapter": parsed[0][1].strip() if chapters else "Intro",
-        "scripts": {"en": "script_en.txt", "ar": "script_ar.txt"},
+        "scripts": {"en": "script_en.txt", lang2: f"script_{lang2}.txt"},
         "scenes": scenes,
         "short": {
             "title": stitle.group(1).strip() if stitle else "",
