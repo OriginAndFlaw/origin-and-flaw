@@ -1,0 +1,30 @@
+name: monitor
+# Every night at 23:30 Qatar (20:30 UTC), an hour after the post: did today's video(s) really go out, public, the
+# right length, with a thumbnail? On any problem it opens a GitHub issue, which GitHub emails to the owner.
+on:
+  schedule:
+    - cron: "30 20 * * *"
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Check today's posts
+        id: check
+        run: python -m oaf.monitor
+        continue-on-error: true
+      - name: Open an issue on a problem
+        if: steps.check.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          [ -f monitor_problems.txt ] || echo "The monitor itself failed; see the run log." > monitor_problems.txt
+          gh issue create --title "Channel problem $(date -u +%F)" --body-file monitor_problems.txt
