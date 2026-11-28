@@ -12,6 +12,15 @@ video:
 
 voice:
   engine: gemini      # gemini (Google AI Studio voice, free daily limit, falls back to edge) | edge (free, no key) | chirp (Google Cloud TTS Chirp 3 HD, needs GOOGLE_TTS_KEY_JSON + billing)
+  pronounce:          # respelled for the voice only (whole words); add any word the pronunciation check flags
+    kilns: kilnz
+    pozzolana: pot-so-LAH-nah
+    Aspdin: ASP-din
+    Pozzuoli: pot-SWO-lee
+    Vitruvius: vih-TROO-vee-us
+    Caesarea: see-zuh-REE-uh
+    Masic: MAH-sitch
+    pumice: PUM-iss
   edge:
     en: en-US-AndrewNeural
     ar: ar-SA-HamedNeural

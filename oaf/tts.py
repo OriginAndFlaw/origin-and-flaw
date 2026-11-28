@@ -163,6 +163,12 @@ def narrate(text: str, lang: str, cfg: dict, out_wav: Path) -> Path:
     import os
     text = clean_for_speech(text)
     vc = cfg["voice"]
+    # Words the voice gets wrong are respelled for speech only (config voice.pronounce, whole words, English):
+    # EP02 said "kills" for kilns, "Potalana" for pozzolana, "Aston" for Aspdin (viewer review 27 Nov).
+    if lang == "en":
+        import re as _re
+        for word, say in (vc.get("pronounce") or {}).items():
+            text = _re.sub(rf"{_re.escape(word)}", say, text, flags=_re.I)
     take = PREREC / f"{_take_id(text, lang, vc)}.m4a" if PREREC else None
     if take and take.exists() and vc["engine"] == "gemini":
         log(f"using the pre-recorded {lang} narration {take.name}")

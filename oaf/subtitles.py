@@ -19,8 +19,10 @@ def words(audio: Path, lang: str, model_size: str = "small") -> list[dict]:
     pcm = subprocess.run(["ffmpeg", "-v", "error", "-i", str(audio), "-f", "f32le", "-ac", "1", "-ar", "16000", "-"],
                          capture_output=True, check=True).stdout
     samples = np.frombuffer(pcm, dtype=np.float32)
+    # NO vad_filter: on a clean 10-minute voice track it shifted every word ~9 s EARLY (EP03, 27 Nov), so pictures,
+    # chapters, callouts and captions all came in before the voice. Checked against the audio itself.
     segs, _ = _MODELS[model_size].transcribe(samples, language=lang, word_timestamps=True,
-                                             vad_filter=True, beam_size=5)
+                                             vad_filter=False, beam_size=5)
     out = []
     for s in segs:
         for w in s.words or []:
@@ -28,6 +30,36 @@ def words(audio: Path, lang: str, model_size: str = "small") -> list[dict]:
             if t:
                 out.append({"w": t, "s": float(w.start), "e": float(w.end)})
     return out
+
+
+def script_timed(ws: list[dict], script: str) -> list[dict]:
+    """The SCRIPT's own words carrying the listener's times, so captions are spelled as written ("Pozzuoli",
+    "Vitruvius", "Aspdin") instead of as misheard ("Po Swalli", "Vituvius", "Aston"; EP02 CC, 28 Nov).
+    Matched words take the heard word's time; unmatched runs share the time span between their neighbours."""
+    import difflib, re
+    norm = lambda w: re.sub(r"[^a-z0-9]", "", w.lower())
+    toks = [t for t in script.split() if norm(t)]
+    a, b = [norm(t) for t in toks], [norm(w["w"]) for w in ws]
+    out: list[dict | None] = [None] * len(toks)
+    for blk in difflib.SequenceMatcher(a=a, b=b, autojunk=False).get_matching_blocks():
+        for k in range(blk.size):
+            w = ws[blk.b + k]
+            out[blk.a + k] = {"w": toks[blk.a + k], "s": w["s"], "e": w["e"]}
+    i = 0
+    while i < len(out):
+        if out[i] is not None:
+            i += 1
+            continue
+        j = i
+        while j < len(out) and out[j] is None:
+            j += 1
+        t0 = out[i - 1]["e"] if i > 0 else (ws[0]["s"] if ws else 0.0)
+        t1 = out[j]["s"] if j < len(out) else (ws[-1]["e"] if ws else t0 + 0.4 * (j - i))
+        step = max(t1 - t0, 0.05 * (j - i)) / (j - i)
+        for k in range(i, j):
+            out[k] = {"w": toks[k], "s": t0 + step * (k - i), "e": t0 + step * (k - i + 1)}
+        i = j
+    return [o for o in out if o]
 
 
 def _ts(t: float, sep: str = ",") -> str:

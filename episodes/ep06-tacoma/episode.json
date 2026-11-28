@@ -1,0 +1,450 @@
+{
+  "id": "ep06-tacoma",
+  "title": "They Rode This Bridge for Fun. Then It Fell.",
+  "alt_titles": [
+    "The Bridge Collapse Your Textbook Got Wrong",
+    "Galloping Gertie: The Bridge Your Textbook Got Wrong"
+  ],
+  "description": "In the summer of 1940, the new Tacoma Narrows Bridge in Washington State moved in the wind. Not a little. Its road rose and fell in waves you could see from the shore, and people came on purpose to drive across and feel it. The workers called it Galloping Gertie.\n\nOn 7 November 1940, just four months after it opened, a wind of around 40 miles an hour twisted the bridge until 600 feet of its deck fell into the water. No person died. The one death was a dog named Tubby.\n\nThe famous film of the collapse is in almost every physics class, usually with one word attached: resonance. That explanation is incomplete. This is the real story: the cheaper, slimmer design that replaced a safer one, the fixes that failed, the last morning, and the mechanism engineers call flutter.\n\nChapters\n0:00 They rode it for fun\n0:45 Two designs, one cheaper\n2:05 Galloping Gertie\n3:20 The last morning\n5:20 The fall\n6:40 Not resonance\n8:20 What it changed\n\nSources: Washington State Department of Transportation, Tacoma Narrows Bridge history pages; HistoryLink essay 5048; American Physical Society, \"Collapse of the Tacoma Narrows Bridge\" (2016); K. Y. Billah and R. H. Scanlan, American Journal of Physics (1991); Wikipedia, Tacoma Narrows Bridge (1940).\n\nAI note: narration voice and visuals are AI-generated; no images show the real people involved.\n\n#engineering #history #documentary #tacomanarrows #gallopinggertie",
+  "tags": [
+    "tacoma narrows bridge",
+    "galloping gertie",
+    "bridge collapse",
+    "tacoma narrows bridge collapse explained",
+    "aeroelastic flutter",
+    "resonance myth",
+    "engineering disasters",
+    "engineering history",
+    "suspension bridge",
+    "documentary",
+    "the 1 inch mistake",
+    "origin and flaw"
+  ],
+  "thumbnail": {
+    "scene": 6,
+    "words": "THEY RODE IT"
+  },
+  "hook_seconds": 20,
+  "intro_chapter": "They rode it for fun",
+  "scripts": {
+    "en": "script_en.txt",
+    "es": "script_es.txt"
+  },
+  "scenes": [
+    {
+      "n": 1,
+      "t": "0:00",
+      "tool": "flow",
+      "prompt": "A long 1940 suspension bridge over grey water, its narrow road deck rising and falling in slow waves along its length while a 1930s car drives across, wide shot from the shore, static camera",
+      "sfx": "wind, creaking steel",
+      "clip": "hook/01.mp4"
+    },
+    {
+      "n": 2,
+      "t": "0:04",
+      "tool": "flow",
+      "prompt": "Inside a 1930s car on a bridge, seen from the back seat, the road ahead rising and dipping like a gentle wave, the driver's hands on the wheel, no faces, slow forward motion",
+      "sfx": "engine hum",
+      "clip": "hook/02.mp4"
+    },
+    {
+      "n": 3,
+      "t": "0:08",
+      "tool": "flow",
+      "prompt": "Wide shot of a long suspension bridge deck twisting from side to side in strong wind, one side rising as the other falls, grey stormy sky, static camera",
+      "sfx": "howling wind",
+      "clip": "hook/03.mp4"
+    },
+    {
+      "n": 4,
+      "t": "0:12",
+      "tool": "flow",
+      "prompt": "A large section of a suspension bridge road deck breaking away and falling into grey water with a huge white splash, wide shot from the shore, static camera",
+      "sfx": "roar, splash",
+      "clip": "hook/04.mp4"
+    },
+    {
+      "n": 5,
+      "t": "0:16",
+      "tool": "flux",
+      "prompt": "A school physics textbook open on a desk with a diagram of a wave, no readable words",
+      "sfx": "page turn"
+    },
+    {
+      "n": 6,
+      "t": "0:26",
+      "tool": "flux",
+      "prompt": "A long slender suspension bridge twisting over grey water, a single car stopped on the tilted deck",
+      "sfx": "wind"
+    },
+    {
+      "n": 7,
+      "t": "0:36",
+      "tool": "flux",
+      "prompt": "An old film projector beam in a dark classroom",
+      "sfx": "projector clatter"
+    },
+    {
+      "n": 8,
+      "t": "0:45",
+      "tool": "flux",
+      "prompt": "Aerial view of the Tacoma Narrows strait in Washington State, green hills, grey water, 1938",
+      "sfx": "gulls",
+      "chapter": "Two designs, one cheaper",
+      "cue": "To understand why"
+    },
+    {
+      "n": 9,
+      "t": "0:55",
+      "tool": "flux",
+      "prompt": "A 1930s engineer's drafting table with a bridge drawing showing a deep steel truss under the road, no readable words",
+      "sfx": "pencil"
+    },
+    {
+      "n": 10,
+      "t": "1:05",
+      "tool": "flux",
+      "prompt": "A 1930s engineer seen from behind studying a large suspension bridge blueprint pinned to a wall",
+      "sfx": "paper"
+    },
+    {
+      "n": 11,
+      "t": "1:15",
+      "tool": "flux",
+      "prompt": "Clean 3D diagram on dark teal: a cross-section of a deep open steel truss under a bridge road, amber glow, no labels",
+      "sfx": "soft tone"
+    },
+    {
+      "n": 12,
+      "t": "1:25",
+      "tool": "flux",
+      "prompt": "A 1930s office desk with stacks of dollar bills and a bridge plan, dramatic light, no readable words",
+      "sfx": "coins"
+    },
+    {
+      "n": 13,
+      "t": "1:35",
+      "tool": "flux",
+      "prompt": "Clean 3D diagram on dark teal: a cross-section of a thin solid steel plate girder under a bridge road, amber glow, no labels",
+      "sfx": "soft tone"
+    },
+    {
+      "n": 14,
+      "t": "1:45",
+      "tool": "flux",
+      "prompt": "A sleek slender suspension bridge at sunset, elegant thin road deck, 1940",
+      "sfx": "wind"
+    },
+    {
+      "n": 15,
+      "t": "1:55",
+      "tool": "flux",
+      "prompt": "Clean 3D diagram on dark teal: two bridge cross-sections side by side, one deep and open, one thin and solid, amber glow, no labels",
+      "sfx": "soft tone"
+    },
+    {
+      "n": 16,
+      "t": "2:05",
+      "tool": "flux",
+      "prompt": "Opening day of a 1940 suspension bridge, cars and crowds as tiny silhouettes, flags, sunny summer day",
+      "sfx": "crowd",
+      "chapter": "Galloping Gertie",
+      "cue": "The bridge opened on"
+    },
+    {
+      "n": 17,
+      "t": "2:17",
+      "tool": "flux",
+      "prompt": "1930s construction workers seen from behind on a steel bridge deck high above water",
+      "sfx": "wind, hammering"
+    },
+    {
+      "n": 18,
+      "t": "2:29",
+      "tool": "flux",
+      "prompt": "Close-up of a worker's gloved hand holding a lemon on a steel bridge railing",
+      "sfx": "wind"
+    },
+    {
+      "n": 19,
+      "t": "2:41",
+      "tool": "flux",
+      "prompt": "A 1930s car on a bridge road that rises in a visible wave ahead of it, seen from the shore",
+      "sfx": "engine"
+    },
+    {
+      "n": 20,
+      "t": "2:53",
+      "tool": "flux",
+      "prompt": "People in 1940 clothing standing at the shore watching a long bridge sway, seen from behind",
+      "sfx": "murmur"
+    },
+    {
+      "n": 21,
+      "t": "3:05",
+      "tool": "flux",
+      "prompt": "Heavy steel cables anchored to a huge concrete block at the shore beneath a bridge",
+      "sfx": "creak"
+    },
+    {
+      "n": 22,
+      "t": "3:20",
+      "tool": "flux",
+      "prompt": "Grey dawn over the Tacoma Narrows, wind whipping the water, 1940",
+      "sfx": "strong wind",
+      "chapter": "The last morning",
+      "cue": "On the seventh of November"
+    },
+    {
+      "n": 23,
+      "t": "3:32",
+      "tool": "flux",
+      "prompt": "A wind gauge spinning on a pole in a storm",
+      "sfx": "whirr"
+    },
+    {
+      "n": 24,
+      "t": "3:44",
+      "tool": "flux",
+      "prompt": "A 1930s sedan alone on a long bridge in strong wind, seen from behind",
+      "sfx": "wind"
+    },
+    {
+      "n": 25,
+      "t": "3:56",
+      "tool": "flux",
+      "prompt": "A professor in a 1940 hat and coat seen from behind holding a film camera on a windy bridge",
+      "sfx": "wind"
+    },
+    {
+      "n": 26,
+      "t": "4:08",
+      "tool": "flux",
+      "prompt": "Close-up of a suspension cable band on a bridge cable, bolts straining",
+      "sfx": "metal groan"
+    },
+    {
+      "n": 27,
+      "t": "4:20",
+      "tool": "flow",
+      "prompt": "A long suspension bridge road deck twisting slowly, one edge rising high while the other drops, seen along its length from one tower, grey sky, static camera",
+      "sfx": "groaning steel",
+      "clip": "hook/27.mp4"
+    },
+    {
+      "n": 28,
+      "t": "4:30",
+      "tool": "flux",
+      "prompt": "A bridge road deck tilted steeply sideways, the railing high in the sky",
+      "sfx": "wind"
+    },
+    {
+      "n": 29,
+      "t": "4:42",
+      "tool": "flux",
+      "prompt": "A 1930s car stopped crooked against a bridge curb on a tilted road, door open",
+      "sfx": "creak"
+    },
+    {
+      "n": 30,
+      "t": "4:54",
+      "tool": "flux",
+      "prompt": "A man in a 1940 coat seen from behind crawling on hands and knees along a tilted bridge road toward a tower",
+      "sfx": "wind"
+    },
+    {
+      "n": 31,
+      "t": "5:06",
+      "tool": "flux",
+      "prompt": "A cocker spaniel sitting alone in the back seat of a 1930s car, frightened eyes",
+      "sfx": "soft whine"
+    },
+    {
+      "n": 32,
+      "t": "5:20",
+      "tool": "flux",
+      "prompt": "A bridge tower seen from below with the twisted road deck tearing at mid-span",
+      "sfx": "snapping steel",
+      "chapter": "The fall",
+      "cue": "Then, at about eleven"
+    },
+    {
+      "n": 33,
+      "t": "5:32",
+      "tool": "flux",
+      "prompt": "A huge section of bridge road falling toward grey water, debris in the air",
+      "sfx": "roar"
+    },
+    {
+      "n": 34,
+      "t": "5:44",
+      "tool": "flux",
+      "prompt": "A gaping empty gap in a suspension bridge, broken cables hanging over grey water",
+      "sfx": "wind, silence"
+    },
+    {
+      "n": 35,
+      "t": "5:56",
+      "tool": "flux",
+      "prompt": "A 1940 film camera on a tripod pointed at a ruined bridge, film reel beside it",
+      "sfx": "camera whirr"
+    },
+    {
+      "n": 36,
+      "t": "6:08",
+      "tool": "flux",
+      "prompt": "Grainy black-and-white film frames on a lightbox showing a twisting bridge",
+      "sfx": "projector"
+    },
+    {
+      "n": 37,
+      "t": "6:20",
+      "tool": "flux",
+      "prompt": "A cinema screen in 1940 showing a newsreel of a bridge, audience silhouettes",
+      "sfx": "newsreel music"
+    },
+    {
+      "n": 38,
+      "t": "6:40",
+      "tool": "flux",
+      "prompt": "Clean 3D diagram on dark teal: a playground swing being pushed in rhythm, amber glow, no labels",
+      "sfx": "soft tone",
+      "chapter": "Not resonance",
+      "cue": "So why did the bridge twist"
+    },
+    {
+      "n": 39,
+      "t": "6:52",
+      "tool": "flux",
+      "prompt": "Clean 3D diagram on dark teal: wind swirls peeling off a flat bridge deck, amber glow, no labels",
+      "sfx": "wind tone"
+    },
+    {
+      "n": 40,
+      "t": "7:04",
+      "tool": "flux",
+      "prompt": "Clean 3D diagram on dark teal: a bridge deck twisting and its own twist catching more wind, arrows of air, amber, no labels",
+      "sfx": "soft tone"
+    },
+    {
+      "n": 41,
+      "t": "7:16",
+      "tool": "flux",
+      "prompt": "A flag snapping in strong wind, close-up",
+      "sfx": "flapping"
+    },
+    {
+      "n": 42,
+      "t": "7:28",
+      "tool": "flux",
+      "prompt": "A 1990s physics office with papers and a model bridge, lamp light, no readable words",
+      "sfx": "quiet"
+    },
+    {
+      "n": 43,
+      "t": "7:42",
+      "tool": "flux",
+      "prompt": "A university wind tunnel lab in 1941 with a long model bridge inside",
+      "sfx": "fan hum"
+    },
+    {
+      "n": 44,
+      "t": "7:56",
+      "tool": "flux",
+      "prompt": "Engineers seen from behind watching a model bridge twist in a wind tunnel",
+      "sfx": "fan"
+    },
+    {
+      "n": 45,
+      "t": "8:20",
+      "tool": "flux",
+      "prompt": "The 1950 replacement suspension bridge with a deep open steel truss under its road, sunny day",
+      "sfx": "traffic",
+      "chapter": "What it changed",
+      "cue": "The new Tacoma Narrows Bridge"
+    },
+    {
+      "n": 46,
+      "t": "8:32",
+      "tool": "flux",
+      "prompt": "Close-up of open steel grates in a bridge road letting wind through",
+      "sfx": "wind"
+    },
+    {
+      "n": 47,
+      "t": "8:44",
+      "tool": "flux",
+      "prompt": "Underwater view of a sunken steel bridge deck covered in sea life, fish swimming",
+      "sfx": "water"
+    },
+    {
+      "n": 48,
+      "t": "8:56",
+      "tool": "flux",
+      "prompt": "A modern long suspension bridge model in a modern wind tunnel lab",
+      "sfx": "fan"
+    },
+    {
+      "n": 49,
+      "t": "9:08",
+      "tool": "flux",
+      "prompt": "Twin modern suspension bridges over the Tacoma Narrows at sunset",
+      "sfx": "gentle wind"
+    },
+    {
+      "n": 50,
+      "t": "9:20",
+      "tool": "flux",
+      "prompt": "A small dog's collar resting on a car seat in soft light",
+      "sfx": "silence"
+    },
+    {
+      "n": 51,
+      "t": "9:32",
+      "tool": "flux",
+      "prompt": "A long bridge over calm water at dusk, lights coming on",
+      "sfx": "gentle music"
+    },
+    {
+      "n": 52,
+      "t": "9:44",
+      "tool": "flux",
+      "prompt": "Two half-built bridge sections reaching toward each other over a river, a visible height gap between them",
+      "sfx": "wind"
+    }
+  ],
+  "short": {
+    "title": "They Rode This Bridge for Fun. Then It Fell. #shorts",
+    "en": "short_en.txt",
+    "ar": "short_ar.txt",
+    "scenes": [
+      {
+        "n": "s1",
+        "tool": "flow",
+        "prompt": "A long suspension bridge road twisting in the wind, one edge rising as the other falls.",
+        "clip": "hook/short.mp4",
+        "use": 5
+      },
+      {
+        "tool": "flux",
+        "use": 5
+      },
+      {
+        "tool": "flux",
+        "use": 16
+      },
+      {
+        "tool": "flux",
+        "use": 29
+      },
+      {
+        "tool": "flux",
+        "use": 40
+      },
+      {
+        "tool": "flux",
+        "use": 52
+      }
+    ]
+  }
+}

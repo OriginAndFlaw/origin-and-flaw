@@ -1,0 +1,89 @@
+In the summer of nineteen forty, people came to ride a bridge like a rollercoaster. They waited for a windy day. They drove onto the bridge. And they felt the road rise and fall under their wheels.
+
+Four months later, that bridge tore itself apart. You may have seen the famous film of it. But the story that comes with that film is usually wrong.
+
+The word most of us learned in school, resonance, is not the real answer. Here is what really happened, and why the people who built it made it that way.
+
+To understand why, we have to start with two drawings of the same bridge.
+
+In the late nineteen thirties, Washington State wanted a bridge across the Tacoma Narrows. The Narrows is a strait, a deep, narrow channel of water, near the city of Tacoma. The new bridge would be a suspension bridge. That means the road hangs from two huge cables.
+
+The state's own engineer, Clark Eldridge, drew the first design. Under the road, he put a deep steel frame called a stiffening truss. A truss is a frame made of steel bars joined in triangles, with open space between them. His truss was twenty five feet deep. Think of it as a strong, open backbone. It stops the road from bending and twisting.
+
+His design would cost around eleven million dollars.
+
+But the government money came with a condition. The money would pay for a different design. It came from a famous New York engineer named Leon Moisseiff. His idea was slimmer and cheaper. He took away the deep truss. In its place, he used solid steel beams along the sides of the road. They were just eight feet deep.
+
+It looked light and graceful. And it cost about eight million dollars.
+
+Hold on to that difference. Twenty five feet of backbone, or eight. Because the wind was about to notice.
+
+The bridge opened on the first of July, nineteen forty. The main span, the part between the two towers, was two thousand eight hundred feet long. But the road was only thirty nine feet wide. It had just two lanes. Long, narrow, and very thin.
+
+And it moved.
+
+Even while it was being built, the road had started to ripple, like a wave. Workers on the deck, the flat road surface, said it made them feel seasick. Some of them sucked on lemons to keep the sick feeling away. On a bridge.
+
+They gave it a nickname. Galloping Gertie.
+
+On windy days, the road rose and fell in long waves. You could stand on the shore and watch a car drop into a dip. Then you would see it come back up again. People did not stay away. They came on purpose. They waited for the right wind and drove across to feel the ride.
+
+The engineers were not laughing. They tried tying the road down with cables. The cables were fixed to heavy concrete blocks on the shore. They tried other fixes too. A professor from the University of Washington, Frederick "Burt" Farquharson, built small models of the bridge. He wanted to study how it moved.
+
+None of it solved the problem.
+
+Remember this. In all those months, the bridge only moved up and down. That was frightening. But a bridge can live through that. What happened next was different.
+
+On the seventh of November, nineteen forty, the wind across the Narrows was blowing at around forty miles an hour. That is strong, but it is not a storm. Bridges are supposed to handle wind like that.
+
+That morning, Gertie was moving up and down as usual. A newspaper editor named Leonard Coatsworth was driving across. Professor Farquharson was on the bridge too. He had a film camera with him.
+
+And then, at about three minutes past ten, the motion changed.
+
+The road stopped just rising and falling. It started to twist. One edge of the road went up while the other edge went down. Then they swapped. Again and again, about once every five seconds. At its worst, the edges were rising and falling about twenty eight feet. The road was tilting as steeply as forty five degrees. That is halfway to standing on its side.
+
+Coatsworth's car was thrown against the curb, the raised edge of the road. He climbed out. But he could not stand up. So he crawled on his hands and knees, all the way to the tower.
+
+But he left someone behind. In the car was Tubby, his daughter's cocker spaniel, a kind of pet dog.
+
+Professor Farquharson went out onto the twisting road to try to save the dog. Tubby was terrified, and bit him. Farquharson had to leave him there.
+
+Then, at about eleven o'clock, the bridge gave up.
+
+A section of road around six hundred feet long tore away. It fell about one hundred and ninety five feet into the water below. The car went with it.
+
+No person died that day. The only life lost in the collapse was a dog named Tubby.
+
+And the whole thing was filmed. Two men from a local camera shop, Barney Elliott and Harbine Monroe, filmed the bridge as it twisted and fell. Their film is now in the United States National Film Registry. That is a list of films the country has chosen to keep safe for the future. There is a small detail about the film that most people never notice. A film is made of many still pictures, called frames. Some of this film was shot at sixteen frames a second. So many copies play it faster than real life. The twisting you see in that famous clip was really slower and heavier than it looks.
+
+Ever since, that film has been shown in classrooms. And it usually comes with one word: resonance.
+
+If you like finding out what the textbooks got wrong, now is a good time to subscribe.
+
+So why did the bridge twist, if resonance is not the answer?
+
+First, here is what resonance means. Think of a child on a swing. You push at exactly the right moment, every time. And the swing goes higher and higher. Your pushes match the swing's own rhythm.
+
+The popular story says the wind pushed the bridge in rhythm, just like that, until it broke.
+
+But the numbers do not fit. As the wind passed the bridge, it made swirls of air. Those swirls were pushing at roughly once a second. The bridge was twisting about once every five seconds. The pushes and the twisting were not in step.
+
+What really happened is called flutter. Once the thin, solid road began to twist, the twist changed the way the wind hit it. Each twist made the wind push harder in the same direction. That made a bigger twist. And the bigger twist made the wind push harder again. The bridge was feeding its own motion. Nothing outside was rocking it. It was shaking itself apart.
+
+Think of a flag snapping in the wind. Nobody is pushing it in rhythm. The flag and the wind work together.
+
+Engineers at the time already doubted the resonance story. Then, in nineteen ninety one, two engineers, Billah and Scanlan, wrote a paper about it. They explained that many physics textbooks had described the collapse wrongly. Many still do.
+
+And this is the flaw at the heart of the story. Not one broken bolt. Not a storm. A choice. A slimmer, cheaper, more elegant design that took away the deep, open backbone. The road now had solid beams on its sides. And so it caught the wind like a sail.
+
+The new Tacoma Narrows Bridge opened in nineteen fifty. Before it was built, Professor Farquharson tested its design on a model in a wind tunnel at his university. A wind tunnel is a tunnel where engineers blow strong wind over a model to see how it behaves. The new bridge had a deep, open steel truss, thirty three feet deep. It also had open gaps in the road, so the wind could pass through.
+
+Since then, testing long bridges against wind on scale models has become normal practice. A scale model is a small copy, built to the same shape. Every great suspension bridge built since owes something to Galloping Gertie.
+
+And the old bridge is still down there. Its wreck lies at the bottom of the Narrows. It has become an artificial reef, a man-made home for fish and other sea life. It is even listed on the National Register of Historic Places, the country's official list of places worth protecting.
+
+So the next time you see that famous film, you will know three things most people do not. People once rode that bridge for fun. It was a cheaper design that made it dance. And it was not resonance. It was flutter.
+
+Tell me in the comments. Would you have paid to ride Galloping Gertie on a windy day? Yes or no, and why?
+
+In the next episode, two countries build one bridge from opposite sides of a river. When the two halves meet in the middle, one is more than half a metre higher than the other. And the reason is a question you would never think to ask. Where exactly is sea level?

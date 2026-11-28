@@ -231,19 +231,26 @@ def _skeleton(tokens: list[str]) -> tuple[list[str], list[int]]:
     return out, idx
 
 
-def find_phrase(ws: list[dict], phrase: str) -> float | None:
-    """Start time of the first place the narration says `phrase` (words compared without punctuation; numbers
-    match by value whether spelled out or written as digits)."""
+def find_phrase(ws: list[dict], phrase: str, after: float = -1.0) -> float | None:
+    """Start time of the first place, later than `after`, where the narration says `phrase` (words compared
+    without punctuation; numbers match by value whether spelled out or written as digits)."""
     want = [_norm(w) for w in phrase.split() if _norm(w)]
     heard = [_norm(w["w"]) for w in ws]
     for i in range(len(heard) - len(want) + 1):
-        if heard[i:i + len(want)] == want:
+        if ws[i]["s"] > after and heard[i:i + len(want)] == want:
             return ws[i]["s"]
     sw, _ = _skeleton(want)
     sh, ih = _skeleton(heard)
     for i in range(len(sh) - len(sw) + 1):
-        if sh[i:i + len(sw)] == sw:
+        if ws[ih[i]]["s"] > after and sh[i:i + len(sw)] == sw:
             return ws[ih[i]]["s"]
+    # Near match: the listener writes "rulebook", "liter", "130-ton" where the script says "rule book", "litre",
+    # "a hundred and thirty tonne" (EP03: 4 of 42 cues missed). Take the first window where 70% of the words agree.
+    n = len(want)
+    if n >= 3:
+        for i in range(len(heard) - n + 1):
+            if ws[i]["s"] > after and sum(a == b for a, b in zip(heard[i:i + n], want)) >= 0.7 * n:
+                return ws[i]["s"]
     return None
 
 
@@ -252,19 +259,39 @@ def anchor_chapters(scenes: list[dict], lengths: list[float], ws: list[dict]):
     phrase; the stills between two anchors are stretched or squeezed evenly. Returns new lengths and
     [(time, chapter title)] for the description's chapter list."""
     starts = [sum(lengths[:i]) for i in range(len(lengths))]
+    # Every scene with a `cue` (the words it illustrates) starts when the voice says them, not only chapter
+    # scenes: even pacing between chapters put pictures 1-2 scenes behind the voice (EP02, viewer review 27 Nov).
     anchors = {}
+    last = -1.0
     for i, sc in enumerate(scenes):
-        if sc.get("chapter") and sc.get("cue"):
-            t = find_phrase(ws, sc["cue"])
+        if sc.get("cue") and sc["tool"] != "flow" or (sc.get("chapter") and sc.get("cue")):
+            t = find_phrase(ws, sc["cue"], after=last)
             if t is None:
-                log(f"chapter cue not heard: {sc['cue']!r} (scene {sc['n']}): left where it was")
-            else:
+                log(f"cue not heard: {sc['cue']!r} (scene {sc['n']}): left where it was")
+            elif i == 0 or t - 0.3 > last + 0.5:
                 anchors[i] = max(t - 0.3, 0.0)
+                last = t
+            else:
+                log(f"cue out of order or too close: {sc['cue']!r} (scene {sc['n']}): left where it was")
     if not anchors:
         return lengths, [(starts[i], sc["chapter"]) for i, sc in enumerate(scenes) if sc.get("chapter")]
     total = sum(lengths)
     keys = sorted(anchors)
     bounds = [(0, 0.0)] + [(i, anchors[i]) for i in keys] + [(len(scenes), total)]
+    # A stretch holding only fixed-length Flow clips cannot be stretched to reach the next anchor: the hook's four 4 s
+    # clips ended at 16 s while scene 5's cue was at 24.7 s, and that 8.5 s gap pulled EVERY later scene 8.5 s early
+    # (EP03, 28 Nov). Drop such an anchor so the next stretch (which has stills) absorbs the gap.
+    merged = [bounds[0]]
+    for b in bounds[1:]:
+        a = merged[-1][0]
+        has_flex = any(scenes[k]["tool"] != "flow" for k in range(a, b[0]))
+        if not has_flex and b[0] != len(scenes) and len(merged) > 0 and a != b[0]:
+            fixed = sum(lengths[k] for k in range(a, b[0]))
+            if abs((b[1] - merged[-1][1]) - fixed) > 0.05:
+                log(f"anchor at scene {scenes[b[0]]['n']} dropped: only fixed clips before it")
+                continue
+        merged.append(b)
+    bounds = merged
     new = list(lengths)
     for (a, ta), (b, tb) in zip(bounds, bounds[1:]):
         fixed = sum(lengths[k] for k in range(a, b) if scenes[k]["tool"] == "flow")
@@ -356,7 +383,9 @@ def build_long(ep: dict, folder: Path, cfg: dict, work: Path, out: Path, max_wor
     picture = add_callouts(picture, ep.get("callouts", []), ws, total, cfg, work, W, H)
     audio = mix_audio(voice, total, cfg, work / "mix_en.wav", ep["id"])
     ass = None
-    subtitles.write_srt(ws, out / "long_en.srt")
+    # Captions spelled as the script is written, timed by the listener (whisper misspells names).
+    cap = subtitles.script_timed(ws, read_script(folder, ep["scripts"]["en"], max_words))
+    subtitles.write_srt(cap, out / "long_en.srt")
     if cfg["subtitles"].get("burn_in_long"):
         ass = subtitles.write_word_ass(ws, work / "long.ass", W, H, cfg["subtitles"]["font"], per_group=6)
     finish(picture, audio, total, cfg, out / "long.mp4", ass)
@@ -436,6 +465,8 @@ def build_short(ep: dict, folder: Path, cfg: dict, work: Path, out: Path, lang: 
     picture = concat(parts, work / f"picture_short_{lang_tag}.mp4")
     audio = mix_audio(voice, total, cfg, work / f"mix_short_{lang_tag}.wav", ep["id"] + lang_tag)
     ws = subtitles.words(voice, lang, cfg["subtitles"]["model"])
+    if lang == "en":  # burned captions spelled as written, not as misheard
+        ws = subtitles.script_timed(ws, (folder / sh[lang]).read_text(encoding="utf-8"))
     font = "Noto Naskh Arabic" if lang == "ar" else cfg["subtitles"]["font"]
     ass = subtitles.write_word_ass(ws, work / f"short_{lang_tag}.ass", W, H, font)
     finish(picture, audio, total, cfg, out / f"short_{lang_tag}.mp4", ass)

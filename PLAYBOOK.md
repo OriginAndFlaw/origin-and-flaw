@@ -58,3 +58,12 @@ monetization for templated AI slideshows).
 - Every Short gets a Related Video link to its episode; end screens + series playlists; every teaser points to a real video.
 - Spanish audio track on every episode (multi-language channels got 25%+ of watch time from other tracks).
 - Judge by unique viewers, retention and engaged views, not subscriber count.
+
+## Checks that already caught real mistakes (do every one, every episode)
+- Every non-flow scene has a `cue` (exact script words); pictures start when the voice says them. No cue = no render.
+- After recording: `python tools/pron_check.py <audio> <script>`; respell flagged words in config.yml voice.pronounce, re-record.
+- Every Flow still checked on a numbered contact sheet (old uploads, ID cards and strangers' photos have slipped in).
+- Seat 20 reviews the rendered video every 2 s before the evaluator may pass it.
+- One 4 s clip at the start of each chapter (EP06 on).
+- Captions (CC and Shorts) are spelled from the SCRIPT, timed by the listener (subtitles.script_timed): never whisper's spelling.
+- Gemini draft review: `python tools/gemini_review.py <ep>` on the rendered long video; fix every issue it lists, then queue.
